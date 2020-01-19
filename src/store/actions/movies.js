@@ -6,19 +6,19 @@ export const getMovies = () => {
   return dispatch => {
     asyncWrapper(getMovieIdsList, getMovieData, callGetMovieImageData).then(
       response => {
-        // console.log('response 4 : after promise : ', response);
-        dispatch(updateAndAddMovies(response));
+        console.log('response 4 : after promise : ', response);
+        dispatch(updateAndAddMoviesListTopRated(response));
       }
     );
   };
 };
 
-export const updateAndAddMovies = list => {
-  return {
-    type: actionTypes.GET_MOVIES,
-    updatedMovieList: list
-  };
-};
+export const updateAndAddMoviesListTopRated = list => {
+         return {
+           type: actionTypes.GET_MOVIES,
+           updatedMovieListTopRated: list
+         };
+       };
 
 const asyncWrapper = async (func1, func2, func3) => {
   return await func1().then(response => {

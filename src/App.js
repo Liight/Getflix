@@ -4,9 +4,11 @@ import { connect } from "react-redux";
 import "./App.css";
 import * as actions from "./store/actions/index";
 
+import MovieRowsDisplay from './containers/MovieRowsDisplay/MovieRowsDisplay';
+
 class App extends Component {
   state = {
-    movies: []
+    moviesTopRated: []
   };
 
   componentWillMount() {
@@ -14,7 +16,7 @@ class App extends Component {
   }
 
   shouldComponentUpdate = (nextProps, nextState) => {
-    return nextProps.movies !== this.state.movies;
+    return nextProps.moviesTopRated !== this.state.moviesTopRated;
   };
 
   componentDidUpdate() {
@@ -22,33 +24,16 @@ class App extends Component {
     this.setState(prevState => {
       return {
         ...prevState,
-        movies: this.props.movies
+        moviesTopRated: this.props.moviesTopRated
       };
     });
   }
 
   render() {
     console.log("render", this.state);
-    let movieRow;
-
-    if (this.state.movies.length > 0) {
-      movieRow = this.state.movies[0].map(movie => {
-        return (
-          <div id="movie-row-item" key={Math.random() * 10}>
-            <p>{movie.title}</p>
-            <p>{movie.overview}</p>
-            <img
-              src={movie.posterUrl}
-              width={"auto"}
-              height={"100px"}
-              alt=""
-            ></img>
-          </div>
-        );
-      });
-    } else {
-      movieRow = <p>Loading...</p>;
-    }
+    let movieRow= this.state.moviesTopRated.length > 0 ? 
+      <MovieRowsDisplay movieList={this.state.moviesTopRated} />
+      : <p>Loading...</p>;
 
     return (
       <div className="App">
@@ -61,7 +46,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    movies: state.movies.updatedMovieList
+    moviesTopRated: state.movies.updatedMovieListTopRated
   };
 };
 
