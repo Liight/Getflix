@@ -12,7 +12,7 @@ class App extends Component {
   };
 
   componentWillMount() {
-    this.props.onLoadMovies();
+    this.props.onLoadTopRatedMovies();
   }
 
   shouldComponentUpdate = (nextProps, nextState) => {
@@ -31,15 +31,23 @@ class App extends Component {
 
   render() {
     console.log("render", this.state);
-    let movieRow= this.state.moviesTopRated.length > 0 ? 
+    // Top Rated Row
+    let topRatedMovieRow= this.state.moviesTopRated.length > 0 ? 
       <MovieRowsDisplay movieList={this.state.moviesTopRated} />
       : <p>Loading...</p>;
 
+    // Some Other Row
+let someOtherMovieRow =
+  this.state.moviesTopRated.length > 0 ? (
+    <MovieRowsDisplay movieList={this.state.moviesTopRated} />
+  ) : (
+    <p>Loading...</p>
+  );
     return (
       <div className="App">
         <h1>running...</h1>
-        {movieRow}
-        {/* {movieRow} */}
+        {topRatedMovieRow}
+        {someOtherMovieRow}
       </div>
     );
   }
@@ -53,7 +61,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLoadMovies: () => dispatch(actions.getMovies())
+    onLoadTopRatedMovies: () => dispatch(actions.getTopRatedMovies()),
+    onLoadSomeOtherMovies: () => dispatch(actions.getSomeOtherMovies())
   };
 };
 

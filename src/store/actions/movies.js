@@ -2,20 +2,42 @@ import * as actionTypes from "./actionTypes";
 import axios from "axios";
 import { apiKey } from "../../secret/secret";
 
-export const getMovies = () => {
+export const getTopRatedMovies = () => {
   return dispatch => {
-    asyncWrapper(getMovieIdsList, getMovieData, callGetMovieImageData).then(
-      response => {
-        console.log('response 4 : after promise : ', response);
-        dispatch(updateAndAddMoviesListTopRated(response));
-      }
-    );
+    asyncWrapper(
+      getTopRatedMovieIdsList,
+      getMovieData,
+      callGetMovieImageData
+    ).then(response => {
+      console.log("response 4 : after promise : ", response);
+      dispatch(updateAndAddMoviesListTopRated(response));
+    });
+  };
+};
+
+export const getSomeOtherMovies = () => {
+  return dispatch => {
+    asyncWrapper(
+      getSomeOtherMovieIdsList,
+      getMovieData,
+      callGetMovieImageData
+    ).then(response => {
+      console.log("response 4 : after promise : ", response);
+      dispatch(updateAndAddMoviesListSomeOther(response));
+    });
   };
 };
 
 export const updateAndAddMoviesListTopRated = list => {
          return {
-           type: actionTypes.GET_MOVIES,
+           type: actionTypes.GET_TOP_RATED_MOVIES,
+           updatedMovieListTopRated: list
+         };
+       };
+
+       export const updateAndAddMoviesListSomeOther = list => {
+         return {
+           type: actionTypes.GET_TOP_RATED_MOVIES,
            updatedMovieListTopRated: list
          };
        };
@@ -33,7 +55,7 @@ const asyncWrapper = async (func1, func2, func3) => {
   });
 };
 
-const getMovieIdsList = async () => {
+const getTopRatedMovieIdsList = async () => {
   let movieIds = [];
   await axios
     .get("https://api.themoviedb.org/3/movie/top_rated?", {
@@ -45,6 +67,30 @@ const getMovieIdsList = async () => {
     })
     .then(response => {
       const smallArray = response.data.results //.slice(0, 10); // shorten array
+      for (let obj in smallArray) {
+        movieIds.push(smallArray[obj].id.toString()); // push the id as a string to movieIds array
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  return {
+    movieIds
+  };
+};
+
+const getSomeOtherMovieIdsList = async () => {
+  let movieIds = [];
+  await axios
+    .get("https://api.themoviedb.org/3/movie/top_rated?", {
+      params: {
+        api_key: apiKey,
+        language: "en-US",
+        page: 1
+      }
+    })
+    .then(response => {
+      const smallArray = response.data.results; //.slice(0, 10); // shorten array
       for (let obj in smallArray) {
         movieIds.push(smallArray[obj].id.toString()); // push the id as a string to movieIds array
       }
