@@ -1,36 +1,53 @@
 import React from "react";
 import "./MovieRow.css";
 
-import MovieRowItem from '../MovieRowItem/MovieRowItem';
+import MovieRowItem from "../MovieRowItem/MovieRowItem";
 
 // props: movieList
 
 const MovieRow = props => {
-    console.log('props', props);
+  console.log("props", props);
 
+  const handleClick = e => {
+    console.log(e.id);
+    switch(e.id){
+        case "left":
 
-  let movieRow =
+            break;
+        case "right":
+                
+            break;
+        default: 
+        return;
+    }
+  };
+
+  let movieRowItems =
     props.movies.length > 0 ? (
       props.movies.map(movie => {
-        return (
-            <MovieRowItem movie={movie}/>
-        //   <div id="movie-row-item" key={Math.random() * 10}>
-        //     <p>{movie.title}</p>
-        //     <p>{movie.overview}</p>
-        //     <img
-        //       src={movie.posterUrl}
-        //       width={"auto"}
-        //       height={"100px"}
-        //       alt=""
-        //     ></img>
-        //   </div>
-        );
+        return <MovieRowItem key={movie.id} movie={movie} />;
       })
     ) : (
       <p>Loading</p>
     );
 
-  return <div className="container">{movieRow}</div>;
+  return (
+    <div className="movie-row-container">
+      <div className="movie-row">
+        <div className="leftArrow">
+          <span id="left" onClick={(event) => handleClick(event.target)}>
+            leftArrow
+          </span>
+        </div>
+        <div className="movie-row-items-container">{movieRowItems}</div>
+        <div className="rightArrow">
+          <span id="right" onClick={event => handleClick(event.target)}>
+            rightArrow
+          </span>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default MovieRow;
