@@ -13,10 +13,32 @@
     height: 513px;
 }
 
+.movie-row-item:hover .movie-row-item-image {
+    z-index: 0;
+}
+
+.movie-row-item:hover .movie-row-item-info {
+    z-index: 1000;
+}
+
+.movie-row-item-image {
+    opacity: 1;
+    position: "absolute";
+    top: 0;
+    left: 0;
+}
+
 .movie-row-item-image:hover {
-    opacity: 0.5;
+    opacity: 0;
 }
 
 .movie-row-item-info {
-    
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.movie-row-item-info:hover {
+    opacity: 1;
 }

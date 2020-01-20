@@ -8,14 +8,6 @@ const MovieRowItem = props => {
       <div className="movie-row-item" key={Math.random() * 10}>
         <div
           className="movie-row-item-image"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            // backgroundImage: "url(" + props.movie.posterUrl + ")",
-            // backgroundSize: "cover",
-            // backgroundRepeat: "no-repeat"
-          }}
         >
           <img src={props.movie.posterUrl} alt=""></img>
         </div>
