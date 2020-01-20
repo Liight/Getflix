@@ -93,7 +93,7 @@ const MovieRow = props => {
 
   return (
     <div className="movie-row-container">
-    <span>{}</span>
+      <span>{}</span>
       <div className="movie-row" style={{ width: window.innerWidth - 100 }}>
         <div className="leftArrow">
           {/* <span id="left" onClick={event => handleClick(event.target)}> */}
@@ -112,18 +112,18 @@ const MovieRow = props => {
             >
               <g
                 fill="none"
-                fill-rule="nonzero"
+                fillRule="nonzero"
                 stroke="none"
-                stroke-width="1"
-                stroke-linecap="butt"
-                stroke-linejoin="miter"
-                stroke-miterlimit="10"
-                stroke-dasharray=""
-                stroke-dashoffset="0"
-                font-family="none"
-                font-weight="none"
-                font-size="none"
-                text-anchor="none"
+                strokeWidth="1"
+                strokeLinecap="butt"
+                strokeLinejoin="miter"
+                strokeMiterlimit="10"
+                strokeDasharray=""
+                strokeDashoffset="0"
+                fontFamily="none"
+                fontWeight="none"
+                fontSize="none"
+                textAnchor="none"
                 // style="mix-blend-mode: normal"
               >
                 <path d="M0,172v-172h172v172z" fill="none"></path>
@@ -151,18 +151,18 @@ const MovieRow = props => {
             >
               <g
                 fill="none"
-                fill-rule="nonzero"
+                fillRule="nonzero"
                 stroke="none"
-                stroke-width="1"
-                stroke-linecap="butt"
-                stroke-linejoin="miter"
-                stroke-miterlimit="10"
-                stroke-dasharray=""
-                stroke-dashoffset="0"
-                font-family="none"
-                font-weight="none"
-                font-size="none"
-                text-anchor="none"
+                strokeWidth="1"
+                strokeLinecap="butt"
+                strokeLinejoin="miter"
+                strokeMiterlimit="10"
+                strokeDasharray=""
+                strokeDashoffset="0"
+                fontFamily="none"
+                fontWeight="none"
+                fontSize="none"
+                textAnchor="none"
                 // style="mix-blend-mode: normal"
               >
                 <path d="M0,172v-172h172v172z" fill="none"></path>

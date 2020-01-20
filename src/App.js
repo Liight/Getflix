@@ -8,15 +8,17 @@ import MovieRowsDisplay from './containers/MovieRowsDisplay/MovieRowsDisplay';
 
 class App extends Component {
   state = {
-    moviesTopRated: []
+    moviesTopRated: [],
+    moviesSomeOther: []
   };
 
   componentWillMount() {
     this.props.onLoadTopRatedMovies();
+    this.props.onLoadSomeOtherMovies();
   }
 
   shouldComponentUpdate = (nextProps, nextState) => {
-    return nextProps.moviesTopRated !== this.state.moviesTopRated;
+    return nextProps.moviesTopRated !== this.state.moviesTopRated || nextProps.moviesSomeOther !== this.state.moviesSomeOther
   };
 
   componentDidUpdate() {
@@ -24,7 +26,8 @@ class App extends Component {
     this.setState(prevState => {
       return {
         ...prevState,
-        moviesTopRated: this.props.moviesTopRated
+        moviesTopRated: this.props.moviesTopRated,
+        moviesSomeOther: this.props.moviesSomeOther
       };
     });
   }
@@ -32,17 +35,20 @@ class App extends Component {
   render() {
     console.log("render", this.state);
     // Top Rated Row
-    let topRatedMovieRow= this.state.moviesTopRated.length > 0 ? 
-      <MovieRowsDisplay movieList={this.state.moviesTopRated} />
-      : <p>Loading...</p>;
+    let topRatedMovieRow =
+      this.state.moviesTopRated.length > 0 ? (
+        <MovieRowsDisplay movieList={this.state.moviesTopRated} />
+      ) : (
+        <p style={{color: "white"}}>Loading...</p>
+      );
 
     // Some Other Row
-let someOtherMovieRow =
-  this.state.moviesTopRated.length > 0 ? (
-    <MovieRowsDisplay movieList={this.state.moviesTopRated} />
-  ) : (
-    <p>Loading...</p>
-  );
+    let someOtherMovieRow =
+      this.state.moviesSomeOther.length > 0 ? (
+        <MovieRowsDisplay movieList={this.state.moviesSomeOther} />
+      ) : (
+        <p style={{ color: "white" }}>Loading...</p>
+      );
     return (
       <div className="App">
         <h1>running...</h1>
@@ -55,7 +61,8 @@ let someOtherMovieRow =
 
 const mapStateToProps = state => {
   return {
-    moviesTopRated: state.movies.updatedMovieListTopRated
+    moviesTopRated: state.movies.updatedMovieListTopRated,
+    moviesSomeOther: state.movies.updatedMovieListSomeOther
   };
 };
 

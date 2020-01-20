@@ -9,7 +9,7 @@ export const getTopRatedMovies = () => {
       getMovieData,
       callGetMovieImageData
     ).then(response => {
-      console.log("response 4 : after promise : ", response);
+      console.log("response 4 : after promise : Some Other : ", response);
       dispatch(updateAndAddMoviesListTopRated(response));
     });
   };
@@ -22,25 +22,25 @@ export const getSomeOtherMovies = () => {
       getMovieData,
       callGetMovieImageData
     ).then(response => {
-      console.log("response 4 : after promise : ", response);
+      console.log("response 4 : after promise : Some Other : ", response);
       dispatch(updateAndAddMoviesListSomeOther(response));
     });
   };
 };
 
 export const updateAndAddMoviesListTopRated = list => {
-         return {
-           type: actionTypes.GET_TOP_RATED_MOVIES,
-           updatedMovieListTopRated: list
-         };
-       };
+  return {
+    type: actionTypes.GET_TOP_RATED_MOVIES,
+    updatedMovieListTopRated: list
+  };
+};
 
-       export const updateAndAddMoviesListSomeOther = list => {
-         return {
-           type: actionTypes.GET_TOP_RATED_MOVIES,
-           updatedMovieListTopRated: list
-         };
-       };
+export const updateAndAddMoviesListSomeOther = list => {
+  return {
+    type: actionTypes.GET_SOME_OTHER_MOVIES,
+    updatedMovieListSomeOther: list
+  };
+};
 
 const asyncWrapper = async (func1, func2, func3) => {
   return await func1().then(response => {
@@ -66,7 +66,7 @@ const getTopRatedMovieIdsList = async () => {
       }
     })
     .then(response => {
-      const smallArray = response.data.results //.slice(0, 10); // shorten array
+      const smallArray = response.data.results; //.slice(0, 10); // shorten array
       for (let obj in smallArray) {
         movieIds.push(smallArray[obj].id.toString()); // push the id as a string to movieIds array
       }
@@ -82,7 +82,7 @@ const getTopRatedMovieIdsList = async () => {
 const getSomeOtherMovieIdsList = async () => {
   let movieIds = [];
   await axios
-    .get("https://api.themoviedb.org/3/movie/top_rated?", {
+    .get("https://api.themoviedb.org/3/movie/popular?", {
       params: {
         api_key: apiKey,
         language: "en-US",

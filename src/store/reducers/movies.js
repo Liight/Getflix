@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
       );
       return {
         ...state,
-        updatedMovieListTopRated: action.updatedMovieListSomeOther
+        updatedMovieListSomeOther: action.updatedMovieListSomeOther
       };
     default:
       return state;
