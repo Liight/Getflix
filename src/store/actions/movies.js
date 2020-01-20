@@ -44,7 +44,7 @@ const getMovieIdsList = async () => {
       }
     })
     .then(response => {
-      const smallArray = response.data.results.slice(0, 10); // shorten array
+      const smallArray = response.data.results //.slice(0, 10); // shorten array
       for (let obj in smallArray) {
         movieIds.push(smallArray[obj].id.toString()); // push the id as a string to movieIds array
       }

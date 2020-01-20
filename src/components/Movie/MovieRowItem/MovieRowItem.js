@@ -11,7 +11,7 @@ const MovieRowItem = props => {
         onClick={() => props.updateSelectedMovie(props.movie)}
       >
         <div className="movie-row-item-image">
-          <img src={props.movie.posterUrl} alt=""></img>
+          <img src={props.movie.posterUrl} alt="" height="300" width="200"></img>
         </div>
 
         <div className="movie-row-item-info">

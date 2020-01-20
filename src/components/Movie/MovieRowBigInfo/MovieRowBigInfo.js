@@ -3,11 +3,12 @@ import "./MovieRowBigInfo.css";
 
 const MovieRowBigInfo = (props) => {
   console.log('movie in movieitem : ', props.movie)
-
+  if(props.movie === ""){
+    return (null)
+  } else {
   return (
     <div className="movie-row-big-info-container">
       <div className="info-column">
-        <p>MovieRowBIGINFO</p>
         <p>{props.movie.title}</p>
         <p>{props.movie.release_date}</p>
         <p>{props.movie.status}</p>
@@ -19,6 +20,7 @@ const MovieRowBigInfo = (props) => {
       </div>
     </div>
   );
+  };
 };
 
 export default MovieRowBigInfo;
