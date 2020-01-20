@@ -61,7 +61,13 @@ const MovieRow = props => {
             ref={setRef}
           >
             {section.map(movie => {
-              return <MovieRowItem key={Math.random() * 10} movie={movie} />;
+              return (
+                <MovieRowItem
+                  key={Math.random() * 10}
+                  movie={movie}
+                  updateSelectedMovie={props.updateSelectedMovie}
+                />
+              );
             })}
           </div>
         );
