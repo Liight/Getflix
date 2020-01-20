@@ -85,7 +85,7 @@ const getMovieData = async movieIdsArray => {
 };
 
 const callGetMovieImageData = async MovieObjectsArray => {
-  let prefix = "https://image.tmdb.org/t/p/original";
+  let prefix = "https://image.tmdb.org/t/p/w342";
   let moviesWithImages = MovieObjectsArray;
   let promises = [];
 

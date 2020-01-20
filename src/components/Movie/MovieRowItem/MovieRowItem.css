@@ -1,9 +1,13 @@
 .movie-row-item-container {
-    background-color: aqua;
+    display: flex;
+    background-color: transparent;
     height: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
 }
 
 .movie-row-item {
-    width: 300px;
-    height: 300px;
+    width: 342px;
+    height: 513px;
 }

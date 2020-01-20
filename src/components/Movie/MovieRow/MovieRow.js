@@ -16,7 +16,7 @@ const MovieRow = props => {
   };
   let focusedSection = 0;
   const focusInput = id => {
-    console.log("scrollerRefs", scrollerRefs);
+    // console.log("scrollerRefs", scrollerRefs);
     if(id < 0){
       id = 0;
     } else if (id >= scrollerRefs.length - 1){
@@ -31,7 +31,7 @@ const MovieRow = props => {
   let numberOfMovieRowSections = 0;
   let movieRowSections = [];
   if (props.movies.length > 0) {
-    let tempChunkSize = 3;
+    let tempChunkSize = Math.floor((window.innerWidth - 100) / 342);
     let chunk = (arr, chunkSize) => {
       var R = [];
       for (var i = 0, len = arr.length; i < len; i += chunkSize) {
@@ -53,6 +53,10 @@ const MovieRow = props => {
           <div
             id={index.toString()}
             className="movie-row-section"
+            style={{
+              paddingLeft: Math.floor((window.innerWidth - 100) % 342) / 2,
+              paddingRight: Math.floor((window.innerWidth - 100) % 342) / 2
+            }}
             key={Math.random() * 10}
             ref={setRef}
           >
@@ -68,7 +72,7 @@ const MovieRow = props => {
 
   return (
     <div className="movie-row-container">
-      <div className="movie-row">
+      <div className="movie-row" style={{ width: window.innerWidth - 100 }}>
         <div className="leftArrow">
           {/* <span id="left" onClick={event => handleClick(event.target)}> */}
           <span id="left" onClick={() => focusInput(focusedSection - 1)}>
