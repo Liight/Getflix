@@ -13,6 +13,10 @@
     height: 513px;
 }
 
+.movie-row-item:hover {
+    cursor: pointer;
+}
+
 .movie-row-item:hover .movie-row-item-image {
     z-index: 0;
 }
@@ -37,6 +41,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    height: 100%;
 }
 
 .movie-row-item-info:hover {
