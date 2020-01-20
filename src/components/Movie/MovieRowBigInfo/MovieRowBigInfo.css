@@ -1,8 +1,29 @@
-.movie-row-big-info-container{
-    background-color: aqua;
+.movie-row-big-info-container {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 700px;
+}
+
+.info-column {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 50%;
+    color: white;
 }
 
+.image-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:  50%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
