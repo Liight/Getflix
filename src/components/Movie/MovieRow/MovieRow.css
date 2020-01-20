@@ -24,6 +24,11 @@
     scroll-behavior: smooth;
 }
 
+.movie-row-section {
+    display: flex;
+    flex-direction: row;
+}
+
 .leftArrow {
     position: absolute;
     left: 0;
