@@ -16,7 +16,6 @@ const MovieRowItem = props => {
 
         <div className="movie-row-item-info">
           <p>{props.movie.title}</p>
-          <p>{props.movie.overview}</p>
         </div>
       </div>
     </div>
