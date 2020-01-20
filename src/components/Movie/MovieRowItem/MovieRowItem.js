@@ -1,27 +1,32 @@
-import React from 'react';
-import './MovieRowItem.css';
-
+import React from "react";
+import "./MovieRowItem.css";
 
 /// props: movie
-const MovieRowItem = (props) => {
-    return (
-      <div className="movie-row-item-container">
+const MovieRowItem = props => {
+  return (
+    <div className="movie-row-item-container">
+      <div className="movie-row-item" key={Math.random() * 10}>
         <div
-          style={{ backgroundImage: "url("+props.movie.posterUrl+")", backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
-          className="movie-row-item"
-          key={Math.random() * 10}
+          className="movie-row-item-image"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            // backgroundImage: "url(" + props.movie.posterUrl + ")",
+            // backgroundSize: "cover",
+            // backgroundRepeat: "no-repeat"
+          }}
         >
+          <img src={props.movie.posterUrl} alt=""></img>
+        </div>
+
+        <div className="movie-row-item-info">
           <p>{props.movie.title}</p>
           <p>{props.movie.overview}</p>
-          {/* <img
-            src={props.movie.posterUrl}
-            width={"auto"}
-            height={"100%"}
-            alt=""
-          ></img> */}
         </div>
       </div>
-    );
-}
+    </div>
+  );
+};
 
 export default MovieRowItem;
