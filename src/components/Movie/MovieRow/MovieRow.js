@@ -48,8 +48,8 @@ const MovieRow = props => {
     let tempChunkSize = Math.floor((window.innerWidth - 100) / 200);
     let chunk = (arr, chunkSize) => {
       var R = [];
-      for (var i = 0, len = arr.length; i < len; i += chunkSize) {
-        R.push(arr.slice(i, i + chunkSize));
+      for (var i = 0, len = arr.length; i < len; i += chunkSize-1) {
+        R.push(arr.slice(i, i + chunkSize-1));
         numberOfMovieRowSections = numberOfMovieRowSections + 1;
       }
 
@@ -89,10 +89,8 @@ const MovieRow = props => {
             id={index.toString()}
             className="movie-row-section"
             style={{
-              paddingLeft: "40px",
-              paddingRight: "40px"
-              // width:
-              //   Math.floor((window.innerWidth))
+              width:
+                Math.floor((window.innerWidth - 200)),
             }}
             key={Math.random() * 10}
             ref={setRef}
@@ -114,7 +112,7 @@ const MovieRow = props => {
     );
 
   return (
-    <div className="movie-row-container" style={{ width: window.innerWidth }}>
+    <div className="movie-row-container" style={{ width: window.innerWidth}}>
       <span
         style={{
           color: "white",

@@ -15,7 +15,7 @@ const MovieRowItem = props => {
         </div>
 
         <div className="movie-row-item-info">
-          <p>{props.movie.title}</p>
+          {/* <p>{props.movie.title}</p> */}
         </div>
       </div>
     </div>
