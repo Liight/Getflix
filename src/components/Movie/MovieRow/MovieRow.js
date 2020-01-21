@@ -37,7 +37,11 @@ const MovieRow = props => {
       console.log(direction, id);
     }
 
-    scrollerRefs[id].scrollIntoView(); // Scroll selected section into view
+    scrollerRefs[id].scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+    }); // Scroll selected section into view
     focusedSection = id; // Save focused section
   };
 

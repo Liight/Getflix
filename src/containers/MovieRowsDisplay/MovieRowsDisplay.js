@@ -11,17 +11,21 @@ class MovieRowsDisplay extends Component {
   };
 
   updateCurrentSelectedMovieOnThisMovieRowsDisplay = movie => {
-    this.setState(
-      prevState => {
-        return {
-          ...prevState,
-          currentlySelectedMovie: movie
-        };
-      },
-      () => {
-        console.log("state : ", this.state);
-      }
-    );
+    // Check for empty object
+    if (Object.keys(movie).length === 0 && movie.constructor === Object){
+      return 0;
+    }
+      this.setState(
+        prevState => {
+          return {
+            ...prevState,
+            currentlySelectedMovie: movie
+          };
+        },
+        () => {
+          console.log("state : ", this.state);
+        }
+      );
   };
 
   render() {

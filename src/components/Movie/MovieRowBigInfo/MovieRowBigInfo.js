@@ -14,7 +14,7 @@ const MovieRowBigInfo = props => {
           <span>
             <span className="status">{props.movie.status + " "}</span>
             <span className="release-date">
-              {props.movie.release_date.slice(0, 4) + " "}
+              {props.movie.release_date.length > 0 ? props.movie.release_date.slice(0, 4) + " " : null}}
             </span>
             <span className="runtime"> {props.movie.runtime} mins</span>
           </span>
