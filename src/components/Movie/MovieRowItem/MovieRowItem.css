@@ -20,11 +20,7 @@
 }
 
 .movie-row-item:hover {
-    /* transform: scale(1.5, 1.5); */
-    /* width: 240px; */
-    /* height: 420px; */
-    /* transform-origin: top; */
-    /* background-color: transparent; */
+
 }
 
 .scale-up:hover {
@@ -33,6 +29,7 @@
     transform: scale(1.5, 1.5);
     transform-origin: top;
     background-color: transparent;
+
 }
 
 .movie-row-item:hover .movie-row-item-image {

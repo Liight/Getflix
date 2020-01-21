@@ -1,11 +1,28 @@
+.movie-row-big-info-wrapper {
+    height: 700px;
+    position: relative;
+    transition: all .2s ease-in-out;
+}
+
+.no-reveal {
+    height: 0px;
+}
+
 .movie-row-big-info-container {
+    position: absolute;
+    top: -70px;
+    left: 0;
     background-color: black;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 700px;
-    /* top: -500px; */
+    height: 100%;
+}
+
+.reveal {
+    transform-origin: top;
+    background-color: transparent;
 }
 
 .info-column {
@@ -14,8 +31,8 @@
     align-items: flex-start;
     justify-content: flex-start;
     /* margin: 1em; */
-    padding: 5em 1em 1em 1em;
-    width: 50%;
+    padding: 5em 1em 1em 0em;
+    width: 60%;
     height: 700px;
     color: white;
     box-sizing: border-box;
@@ -26,7 +43,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 40%;
     height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
