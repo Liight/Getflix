@@ -5,6 +5,7 @@ import "./App.css";
 import * as actions from "./store/actions/index";
 
 import MovieRowsDisplay from './containers/MovieRowsDisplay/MovieRowsDisplay';
+import MovieFeature from './containers/MovieFeature/MovieFeature';
 
 class App extends Component {
   state = {
@@ -33,30 +34,40 @@ class App extends Component {
   }
 
   render() {
-    console.log("render", this.state);
-    // Top Rated Row
-    let topRatedMovieRow =
-      this.state.moviesTopRated.length > 0 ? (
-        <MovieRowsDisplay movieList={this.state.moviesTopRated} />
-      ) : (
-        <p style={{color: "white"}}>Loading...</p>
-      );
+             console.log("render", this.state);
+             // Top Rated Row
+             let topRatedMovieRow =
+               this.state.moviesTopRated.length > 0 ? (
+                 <MovieRowsDisplay movieList={this.state.moviesTopRated} />
+               ) : (
+                 <p style={{ color: "white" }}>Loading...</p>
+               );
 
-    // Some Other Row
-    let someOtherMovieRow =
-      this.state.moviesSomeOther.length > 0 ? (
-        <MovieRowsDisplay movieList={this.state.moviesSomeOther} />
-      ) : (
-        <p style={{ color: "white" }}>Loading...</p>
-      );
-    return (
-      <div className="App">
-        <h1>running...</h1>
-        {topRatedMovieRow}
-        {someOtherMovieRow}
-      </div>
-    );
-  }
+             // Some Other Row
+             let someOtherMovieRow =
+               this.state.moviesSomeOther.length > 0 ? (
+                 <MovieRowsDisplay movieList={this.state.moviesSomeOther} />
+               ) : (
+                 <p style={{ color: "white" }}>Loading...</p>
+               );
+
+             // Feature
+             let featureMovies =
+               this.state.moviesSomeOther.length > 0 ? (
+                 <MovieFeature movieList={this.state.moviesSomeOther} />
+               ) : (
+                 <p style={{ color: "white" }}>Loading...</p>
+               );
+
+             return (
+               <div className="App">
+                 <h1>running...</h1>
+                 {featureMovies}
+                 {topRatedMovieRow}
+                 {someOtherMovieRow}
+               </div>
+             );
+           }
 }
 
 const mapStateToProps = state => {
