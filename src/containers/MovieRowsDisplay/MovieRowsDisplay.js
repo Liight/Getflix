@@ -7,7 +7,8 @@ import MovieRowBigInfo from "../../components/Movie/MovieRowBigInfo/MovieRowBigI
 // props: movieList
 class MovieRowsDisplay extends Component {
   state = {
-    currentlySelectedMovie: ""
+    currentlySelectedMovie: "",
+    hoverScaleMovieItems: true
   };
 
   updateCurrentSelectedMovieOnThisMovieRowsDisplay = movie => {
@@ -19,7 +20,8 @@ class MovieRowsDisplay extends Component {
         prevState => {
           return {
             ...prevState,
-            currentlySelectedMovie: movie
+            currentlySelectedMovie: movie,
+            hoverScaleMovieItems: false
           };
         },
         () => {
@@ -32,15 +34,15 @@ class MovieRowsDisplay extends Component {
     console.log("props", this.props);
 
     return (
-      <div className="container">
+      <div className="movie-rows-display-container">
         <MovieRow
           movies={this.props.movieList}
           updateSelectedMovie={
             this.updateCurrentSelectedMovieOnThisMovieRowsDisplay
           }
+          scaleOnHover={this.state.hoverScaleMovieItems}
         />
         <MovieRowBigInfo movie={this.state.currentlySelectedMovie} />
-        {/* <MovieRowBigInfo movie={"testing"} /> */}
       </div>
     );
   }

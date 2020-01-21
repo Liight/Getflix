@@ -1,3 +1,4 @@
-.container{
+.movie-rows-display-container {
     background-color: #141414;
+    position: relative;
 }

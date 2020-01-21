@@ -20,29 +20,33 @@ const MovieRow = props => {
     let highLimit = scrollerRefs.length - 1;
     let lowLimit = 0;
 
-    // console.log("scrollerRefs", scrollerRefs);
+    console.log("scrollerRefs", scrollerRefs);
 
     // Keep in Bounds Checks
     if (id <= lowLimit && direction === "left") {
       id = lowLimit;
-      console.log(direction, id);
+      // console.log(direction, id);
     } else if (id <= lowLimit && direction === "right") {
       id = lowLimit + 1;
-      console.log(direction, id);
+      // console.log(direction, id);
     } else if (id >= highLimit && direction === "right") {
       id = highLimit;
-      console.log(direction, id);
+      // console.log(direction, id);
     } else if (id >= highLimit && direction === "left") {
       id = highLimit - 1;
-      console.log(direction, id);
+      // console.log(direction, id);
     }
 
     scrollerRefs[id].scrollIntoView({
+      alignTo: false,
       behavior: "smooth",
-      block: "start",
+      block: "nearest",
       inline: "nearest"
     }); // Scroll selected section into view
     focusedSection = id; // Save focused section
+
+
+
   };
 
   // Define movie row sections as an array of sub arrays
@@ -104,6 +108,7 @@ const MovieRow = props => {
                   key={Math.random() * 10}
                   movie={movie}
                   updateSelectedMovie={props.updateSelectedMovie}
+                  scaleOnHover={props.scaleOnHover}
                 />
               );
             })}
@@ -118,16 +123,11 @@ const MovieRow = props => {
 
   return (
     <div className="movie-row-container" style={{}}>
-      <span
+      <span className="row-heading"
         style={{
-          color: "white",
           paddingLeft:
-            ((window.innerWidth - (movieRowSections[0].length - 1) * 200) / 2) +
-            (windowWidthPercentage * 5),
-
-          fontSize: "2em",
-          width: "100%",
-          textAlign: "left"
+            ((window.innerWidth - (movieRowSections[0].length + 1) * 200) / 2) +
+            (windowWidthPercentage * 2) + 50,
         }}
       >
         {"category listing"}
