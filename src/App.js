@@ -61,7 +61,6 @@ class App extends Component {
 
              return (
                <div className="App">
-                 <h1>running...</h1>
                  {featureMovies}
                  {topRatedMovieRow}
                  {someOtherMovieRow}
