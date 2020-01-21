@@ -89,8 +89,7 @@ const MovieRow = props => {
             id={index.toString()}
             className="movie-row-section"
             style={{
-              width:
-                Math.floor((window.innerWidth - 200)),
+
             }}
             key={Math.random() * 10}
             ref={setRef}
@@ -111,15 +110,20 @@ const MovieRow = props => {
       <p>Loading</p>
     );
 
+    let windowWidthPercentage = window.innerWidth / 100;
+
   return (
-    <div className="movie-row-container" style={{ width: window.innerWidth}}>
+    <div className="movie-row-container" style={{}}>
       <span
         style={{
           color: "white",
           paddingLeft:
-            Math.floor((window.innerWidth - 100) / movieRowSections[0].length) /
-            2,
-          fontSize: "2em"
+            ((window.innerWidth - (movieRowSections[0].length - 1) * 200) / 2) +
+            (windowWidthPercentage * 5),
+
+          fontSize: "2em",
+          width: "100%",
+          textAlign: "left"
         }}
       >
         {"category listing"}
@@ -164,7 +168,17 @@ const MovieRow = props => {
             </svg>
           </span>
         </div>
-        <div className="movie-row-items-container">{movieRowItems}</div>
+        <div
+          className="movie-row-items-container"
+          style={{
+            marginRight:
+              (window.innerWidth - (movieRowSections[0].length + 1) * 200) / 2,
+            marginLeft:
+              (window.innerWidth - (movieRowSections[0].length + 1) * 200) / 2
+          }}
+        >
+          {movieRowItems}
+        </div>
         <div className="rightArrow">
           <span
             id="right"
