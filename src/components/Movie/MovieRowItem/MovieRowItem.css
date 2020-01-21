@@ -5,7 +5,7 @@
     height: 100%;
     padding: 0px;
     margin: 0px;
-    overflow: hidden;
+    overflow: visible;
     background-color: #141414;
 }
 

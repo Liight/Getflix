@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./MovieRow.css";
 
 import MovieRowItem from "../MovieRowItem/MovieRowItem";
@@ -9,7 +9,6 @@ const MovieRow = props => {
   console.log("props", props);
 
   // Dynamic Refs
-  const ref = React.useRef(null);
   let scrollerRefs = [];
   const setRef = ref => {
     scrollerRefs.push(ref);
@@ -51,13 +50,34 @@ const MovieRow = props => {
       var R = [];
       for (var i = 0, len = arr.length; i < len; i += chunkSize) {
         R.push(arr.slice(i, i + chunkSize));
-        numberOfMovieRowSections += 1;
+        numberOfMovieRowSections = numberOfMovieRowSections + 1;
       }
 
       return R;
     };
 
     movieRowSections = chunk(props.movies, tempChunkSize);
+
+    // Check for correct items per section
+    let check = _movieRowSections => {
+      if (
+        _movieRowSections[0].length !==
+        _movieRowSections[_movieRowSections.length - 1].length
+      ) {
+        let additionalChunkLength =
+          _movieRowSections[0].length -
+          _movieRowSections[_movieRowSections.length - 1].length;
+        // generate empty objects
+        let additionalChunk = {};
+        // push changes to array
+        for (let j = 0; j < additionalChunkLength; j++) {
+          _movieRowSections[_movieRowSections.length - 1].push(additionalChunk);
+        }
+        _movieRowSections[_movieRowSections.length - 1].push();
+      }
+    };
+    check(movieRowSections);
+
     console.log("movieRowSections : FINAL : ", movieRowSections);
   }
 
@@ -69,8 +89,10 @@ const MovieRow = props => {
             id={index.toString()}
             className="movie-row-section"
             style={{
-              paddingLeft: Math.floor((window.innerWidth - 100) % 200) / 2,
-              paddingRight: Math.floor((window.innerWidth - 100) % 200) / 2
+              paddingLeft: "40px",
+              paddingRight: "40px"
+              // width:
+              //   Math.floor((window.innerWidth))
             }}
             key={Math.random() * 10}
             ref={setRef}
@@ -92,9 +114,19 @@ const MovieRow = props => {
     );
 
   return (
-    <div className="movie-row-container">
-      <span>{}</span>
-      <div className="movie-row" style={{ width: window.innerWidth - 100 }}>
+    <div className="movie-row-container" style={{ width: window.innerWidth }}>
+      <span
+        style={{
+          color: "white",
+          paddingLeft:
+            Math.floor((window.innerWidth - 100) / movieRowSections[0].length) /
+            2,
+          fontSize: "2em"
+        }}
+      >
+        {"category listing"}
+      </span>
+      <div className="movie-row" style={{ width: window.innerWidth - 200 }}>
         <div className="leftArrow">
           {/* <span id="left" onClick={event => handleClick(event.target)}> */}
           <span
