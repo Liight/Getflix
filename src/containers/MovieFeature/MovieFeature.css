@@ -1,3 +1,52 @@
-.container{
-    /* background-color: aqua; */
+.movie-feature-container {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    height: 500px;
+}
+
+.movie-feature-info-column {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    color: white;
+}
+
+.movie-feature-image-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+}
+
+.movie-feature-title {
+    font-size: 6em;
+}
+
+.movie-feature-tagline {
+    font-size: 2em;
+}
+
+.movie-feature-status {
+    font-size: 2em;
+}
+
+.movie-feature-release-date {
+    font-size: 2em;
+}
+
+.movie-feature-runtime {
+    font-size: 2em;
+}
+
+.movie-feature-overview {
+    font-size: 1.7em;
 }

@@ -1,3 +1,16 @@
-.container{
-    background-color: aqua;
+.top-bar-container{
+    background-color: transparent;
+    height: 4em;
+    width: 100%;
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items:  center;
+}
+
+.header{
+    font-size: 4em;
+    padding-left: 1em;
 }

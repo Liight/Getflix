@@ -3,8 +3,8 @@ import './TopBar.css';
 
 const TopBar = () => {
     return (
-        <div className="container">
-            
+        <div className="top-bar-container">
+            <span className="header">GETFLIX</span>
         </div>
     );
 }

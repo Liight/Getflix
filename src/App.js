@@ -6,7 +6,7 @@ import * as actions from "./store/actions/index";
 
 import MovieRowsDisplay from './containers/MovieRowsDisplay/MovieRowsDisplay';
 import MovieFeature from './containers/MovieFeature/MovieFeature';
-import { findByLabelText } from "@testing-library/react";
+import TopBar from './components/Navigation/TopBar/TopBar';
 
 class App extends Component {
   state = {
@@ -84,6 +84,7 @@ class App extends Component {
 
              return (
                <div className="App">
+               <TopBar />
                  {featureMovies}
                  {topRatedMovieRow}
                  {someOtherMovieRow}
