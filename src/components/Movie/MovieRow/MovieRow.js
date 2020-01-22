@@ -130,7 +130,7 @@ const MovieRow = props => {
             (windowWidthPercentage * 2) + 50,
         }}
       >
-        {"category listing"}
+        {props.category}
       </span>
       <div className="movie-row" style={{ width: window.innerWidth - 200 }}>
         <div className="leftArrow">

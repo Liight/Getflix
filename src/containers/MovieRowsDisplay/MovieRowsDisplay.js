@@ -35,7 +35,7 @@ class MovieRowsDisplay extends Component {
 console.log("movie row display props : ", this.props);
 
     let movieRowsDisplayContainer =
-      this.props.movieList.length > 0 ? 
+      this.props.movieList.length > 0 ? (
         <div className="movie-rows-display-container">
           <MovieRow
             movies={this.props.movieList}
@@ -43,10 +43,11 @@ console.log("movie row display props : ", this.props);
               this.updateCurrentSelectedMovieOnThisMovieRowsDisplay
             }
             scaleOnHover={this.state.hoverScaleMovieItems}
+            category={this.props.category}
           />
           <MovieRowBigInfo movie={this.state.currentlySelectedMovie} />
         </div>
-       : null;
+      ) : null;
 
     return ( movieRowsDisplayContainer );
   }

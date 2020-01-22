@@ -61,7 +61,10 @@ class App extends Component {
              // Top Rated Row
              let topRatedMovieRow =
                this.state.moviesTopRated.length > 0 ? (
-                 <MovieRowsDisplay movieList={this.state.moviesTopRated} />
+                 <MovieRowsDisplay
+                   movieList={this.state.moviesTopRated}
+                   category={"Top Rated"}
+                 />
                ) : (
                  <p style={{ color: "white" }}>Loading...</p>
                );
@@ -69,7 +72,7 @@ class App extends Component {
              // Some Other Row
              let someOtherMovieRow =
                this.state.moviesSomeOther.length > 0 ? (
-                 <MovieRowsDisplay movieList={this.state.moviesSomeOther} />
+                 <MovieRowsDisplay movieList={this.state.moviesSomeOther} category={"Some Other"}/>
                ) : (
                  <p style={{ color: "white" }}>Loading...</p>
                );
