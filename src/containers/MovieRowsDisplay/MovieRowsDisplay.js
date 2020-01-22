@@ -13,38 +13,42 @@ class MovieRowsDisplay extends Component {
 
   updateCurrentSelectedMovieOnThisMovieRowsDisplay = movie => {
     // Check for empty object
-    if (Object.keys(movie).length === 0 && movie.constructor === Object){
+    if (Object.keys(movie).length === 0 && movie.constructor === Object) {
       return 0;
     }
-      this.setState(
-        prevState => {
-          return {
-            ...prevState,
-            currentlySelectedMovie: movie,
-            hoverScaleMovieItems: false
-          };
-        },
-        () => {
-          console.log("state : ", this.state);
-        }
-      );
+    this.setState(
+      prevState => {
+        return {
+          ...prevState,
+          currentlySelectedMovie: movie,
+          hoverScaleMovieItems: false
+        };
+      },
+      () => {
+        console.log("movie row display state : ", this.state);
+      }
+    );
   };
 
   render() {
-    console.log("props", this.props);
 
-    return (
-      <div className="movie-rows-display-container">
-        <MovieRow
-          movies={this.props.movieList}
-          updateSelectedMovie={
-            this.updateCurrentSelectedMovieOnThisMovieRowsDisplay
-          }
-          scaleOnHover={this.state.hoverScaleMovieItems}
-        />
-        <MovieRowBigInfo movie={this.state.currentlySelectedMovie} />
-      </div>
-    );
+console.log("movie row display props : ", this.props);
+
+    let movieRowsDisplayContainer =
+      this.props.movieList.length > 0 ? 
+        <div className="movie-rows-display-container">
+          <MovieRow
+            movies={this.props.movieList}
+            updateSelectedMovie={
+              this.updateCurrentSelectedMovieOnThisMovieRowsDisplay
+            }
+            scaleOnHover={this.state.hoverScaleMovieItems}
+          />
+          <MovieRowBigInfo movie={this.state.currentlySelectedMovie} />
+        </div>
+       : null;
+
+    return ( movieRowsDisplayContainer );
   }
 }
 

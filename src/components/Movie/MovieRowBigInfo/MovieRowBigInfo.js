@@ -2,7 +2,7 @@ import React from "react";
 import "./MovieRowBigInfo.css";
 
 const MovieRowBigInfo = props => {
-  console.log("movie in movieitem : ", props.movie);
+  // console.log("movie in movieitem : ", props.movie);
   if (props.movie === "") {
     return <div className="movie-row-big-info-wrapper no-reveal"></div>
   } else {

@@ -6,7 +6,7 @@ import MovieRowItem from "../MovieRowItem/MovieRowItem";
 // props: movieList
 
 const MovieRow = props => {
-  console.log("props", props);
+  // console.log("props", props);
 
   // Dynamic Refs
   let scrollerRefs = [];
@@ -20,7 +20,7 @@ const MovieRow = props => {
     let highLimit = scrollerRefs.length - 1;
     let lowLimit = 0;
 
-    console.log("scrollerRefs", scrollerRefs);
+    // console.log("scrollerRefs", scrollerRefs);
 
     // Keep in Bounds Checks
     if (id <= lowLimit && direction === "left") {
@@ -86,7 +86,7 @@ const MovieRow = props => {
     };
     check(movieRowSections);
 
-    console.log("movieRowSections : FINAL : ", movieRowSections);
+    // console.log("movieRowSections : FINAL : ", movieRowSections);
   }
 
   let movieRowItems =

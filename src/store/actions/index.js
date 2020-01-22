@@ -1,1 +1,5 @@
-export { getTopRatedMovies, getSomeOtherMovies } from "./movies";
+export {
+  getTopRatedMovies,
+  getSomeOtherMovies,
+  verifyInitialListUpdatesAreComplete
+} from "./movies";

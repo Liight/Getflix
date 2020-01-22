@@ -1,15 +1,29 @@
+// Note: Some of these actions check local storage before dispatching
 import * as actionTypes from "./actionTypes";
+import * as localStorageHandler from "../../utility/localStorage";
 import axios from "axios";
 import { apiKey } from "../../secret/secret";
 
 export const getTopRatedMovies = () => {
   return dispatch => {
+    // Check if we've already called the api and stored the result in localStorage
+    if (
+      localStorageHandler.getLocalStorageKeyCheck("updatedMovieListTopRated")
+    ) {
+      console.log("local storage key confirmed in actions");
+      let localStorageTopRatedMovies = localStorageHandler.getLocalStorage(
+        "updatedMovieListTopRated"
+      );
+      console.log("localStorageTopRatedMovies", localStorageTopRatedMovies);
+      dispatch(updateAndAddMoviesListTopRated(localStorageTopRatedMovies));
+    }
+
     asyncWrapper(
       getTopRatedMovieIdsList,
       getMovieData,
       callGetMovieImageData
     ).then(response => {
-      console.log("response 4 : after promise : Some Other : ", response);
+      // console.log("response 4 : after promise : Some Other : ", response);
       dispatch(updateAndAddMoviesListTopRated(response));
     });
   };
@@ -17,14 +31,32 @@ export const getTopRatedMovies = () => {
 
 export const getSomeOtherMovies = () => {
   return dispatch => {
+    // Check if we've already called the api and stored the result in localStorage
+    if (
+      localStorageHandler.getLocalStorageKeyCheck("updatedMovieListSomeOther")
+    ) {
+      console.log("local storage key confirmed in actions");
+      let localStorageSomeOtherMovies = localStorageHandler.getLocalStorage(
+        "updatedMovieListSomeOther"
+      );
+      console.log("localStorageSomeOtherMovies", localStorageSomeOtherMovies);
+      dispatch(updateAndAddMoviesListTopRated(localStorageSomeOtherMovies));
+    }
+
     asyncWrapper(
       getSomeOtherMovieIdsList,
       getMovieData,
       callGetMovieImageData
     ).then(response => {
-      console.log("response 4 : after promise : Some Other : ", response);
+      // console.log("response 4 : after promise : Some Other : ", response);
       dispatch(updateAndAddMoviesListSomeOther(response));
     });
+  };
+};
+
+export const verifyInitialListUpdatesAreComplete = () => {
+  return {
+    type: actionTypes.VERIFY_INITIAL_LIST_UPDATES_ARE_COMPLETE
   };
 };
 

@@ -6,6 +6,7 @@ import * as actions from "./store/actions/index";
 
 import MovieRowsDisplay from './containers/MovieRowsDisplay/MovieRowsDisplay';
 import MovieFeature from './containers/MovieFeature/MovieFeature';
+import { findByLabelText } from "@testing-library/react";
 
 class App extends Component {
   state = {
@@ -14,8 +15,16 @@ class App extends Component {
   };
 
   componentWillMount() {
-    this.props.onLoadTopRatedMovies();
-    this.props.onLoadSomeOtherMovies();
+    if (!this.props.initialListsUpdatesComplete){
+      this.props.onLoadTopRatedMovies();
+      this.props.onLoadSomeOtherMovies();
+      setTimeout(() => {
+        this.props.onVerifyInitialListUpdatesAreComplete();
+      }, 1000)
+      
+    } else {
+      console.log('no need to spam external apis, this has been handled and call responses have been added to global state for caching.')
+    }
   }
 
   shouldComponentUpdate = (nextProps, nextState) => {
@@ -23,7 +32,7 @@ class App extends Component {
   };
 
   componentDidUpdate() {
-    console.log("component updated : ", this.state);
+    // console.log("component updated : ", this.state);
     this.setState(prevState => {
       return {
         ...prevState,
@@ -34,6 +43,20 @@ class App extends Component {
   }
 
   render() {
+          // This is to fix an issue where react starts requiring RAM resources very fast 
+          // on screen widths below 500px this occurs
+          // There is a lot of dimensions reading with javascript in this application, 
+          // this may be the cause of this issue, requires more investigation
+          if(window.innerWidth < 500){
+            return (
+              <div style={{ color: "white", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>Cannot render screen to small</div>
+            )
+          }
+          // Leave ^^^^^^
+
+
+          
+
              console.log("render", this.state);
              // Top Rated Row
              let topRatedMovieRow =
@@ -72,14 +95,16 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     moviesTopRated: state.movies.updatedMovieListTopRated,
-    moviesSomeOther: state.movies.updatedMovieListSomeOther
+    moviesSomeOther: state.movies.updatedMovieListSomeOther,
+    initialListsUpdatesComplete: state.movies.initialListsUpdatesComplete
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onLoadTopRatedMovies: () => dispatch(actions.getTopRatedMovies()),
-    onLoadSomeOtherMovies: () => dispatch(actions.getSomeOtherMovies())
+    onLoadSomeOtherMovies: () => dispatch(actions.getSomeOtherMovies()),
+    onVerifyInitialListUpdatesAreComplete: () => dispatch(actions.verifyInitialListUpdatesAreComplete())
   };
 };
 

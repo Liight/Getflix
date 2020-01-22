@@ -3,7 +3,7 @@ import "./MovieRowItem.css";
 
 /// props: movie
 const MovieRowItem = props => {
-  console.log('props : scale : ', props.scaleOnHover)
+  // console.log('props : scale : ', props.scaleOnHover)
   return (
     <div className="movie-row-item-container">
       <div
