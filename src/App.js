@@ -7,6 +7,7 @@ import * as actions from "./store/actions/index";
 import MovieRowsDisplay from './containers/MovieRowsDisplay/MovieRowsDisplay';
 import MovieFeature from './containers/MovieFeature/MovieFeature';
 import TopBar from './components/Navigation/TopBar/TopBar';
+import Footer from './components/Navigation/Footer/Footer';
 
 class App extends Component {
   state = {
@@ -91,6 +92,7 @@ class App extends Component {
                  {featureMovies}
                  {topRatedMovieRow}
                  {someOtherMovieRow}
+                 <Footer />
                </div>
              );
            }

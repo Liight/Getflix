@@ -1,4 +1,5 @@
 .movie-feature-container {
+    position: relative;
     background-color: transparent;
     display: flex;
     flex-direction: row;
