@@ -48,7 +48,7 @@ export const getSomeOtherMovies = () => {
         "updatedMovieListSomeOther"
       );
       // console.log("localStorageSomeOtherMovies", localStorageSomeOtherMovies);
-      dispatch(updateAndAddMoviesListTopRated(localStorageSomeOtherMovies));
+      dispatch(updateAndAddMoviesListSomeOther(localStorageSomeOtherMovies));
     }
 
     asyncWrapper(
@@ -58,6 +58,29 @@ export const getSomeOtherMovies = () => {
     ).then(response => {
       // console.log("response 4 : after promise : Some Other : ", response);
       dispatch(updateAndAddMoviesListSomeOther(response));
+    });
+  };
+};
+
+export const getLatestMovies = () => {
+  return dispatch => {
+    // Check if we've already called the api and stored the result in localStorage
+    if (
+      localStorageHandler.getLocalStorageKeyCheck("updatedMovieListLatest")
+    ) {
+      // console.log("local storage key confirmed in actions");
+      let localStorageLatestMovies = localStorageHandler.getLocalStorage(
+        "updatedMovieListLatest"
+      );
+      dispatch(updateAndAddMoviesListTopRated(localStorageLatestMovies));
+    }
+
+    asyncWrapper(
+      getLatestMovieIdsList,
+      getMovieData,
+      callGetMovieImageData
+    ).then(response => {
+      dispatch(updateAndAddMoviesListLatest(response));
     });
   };
 };
@@ -79,6 +102,13 @@ export const updateAndAddMoviesListSomeOther = list => {
   return {
     type: actionTypes.GET_SOME_OTHER_MOVIES,
     updatedMovieListSomeOther: list
+  };
+};
+
+export const updateAndAddMoviesListLatest = list => {
+  return {
+    type: actionTypes.GET_LATEST_MOVIES,
+    updatedMovieListLatest: list
   };
 };
 
@@ -123,6 +153,30 @@ const getSomeOtherMovieIdsList = async () => {
   let movieIds = [];
   await axios
     .get("https://api.themoviedb.org/3/movie/popular?", {
+      params: {
+        api_key: apiKey,
+        language: "en-US",
+        page: 1
+      }
+    })
+    .then(response => {
+      const smallArray = response.data.results; //.slice(0, 10); // shorten array
+      for (let obj in smallArray) {
+        movieIds.push(smallArray[obj].id.toString()); // push the id as a string to movieIds array
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  return {
+    movieIds
+  };
+};
+
+const getLatestMovieIdsList = async () => {
+  let movieIds = [];
+  await axios
+    .get("https://api.themoviedb.org/3/movie/upcoming?", {
       params: {
         api_key: apiKey,
         language: "en-US",

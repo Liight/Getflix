@@ -6,6 +6,7 @@ const initialState = {
   initialListsUpdatesComplete: false,
   updatedMovieListTopRated: [],
   updatedMovieListSomeOther: [],
+  updatedMovieListLatest: [],
   activeBigInfoKey: Number
 };
 
@@ -37,6 +38,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         updatedMovieListSomeOther: action.updatedMovieListSomeOther
       };
+    case actionTypes.GET_LATEST_MOVIES: // CASE
+      localStorageHandler.setLocalStorage(
+        "updatedMovieListLatest",
+        action.updatedMovieListLatest
+      );
+      // console.log(
+      //   "reducer updated movie list : ",
+      //   action.updatedMovieListTopRated
+      // );
+      return {
+        ...state,
+        updatedMovieListLatest: action.updatedMovieListLatest
+      };
     case actionTypes.VERIFY_INITIAL_LIST_UPDATES_ARE_COMPLETE: // CASE
       // console.log("action.type", action.type);
       return {
@@ -49,6 +63,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         activeBigInfoKey: action.activeBigInfoKey
       };
+
     default:
       return state;
   }

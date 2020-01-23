@@ -12,13 +12,15 @@ import Footer from './components/Navigation/Footer/Footer';
 class App extends Component {
   state = {
     moviesTopRated: [],
-    moviesSomeOther: []
+    moviesSomeOther: [],
+    moviesLatest: [],
   };
 
   componentWillMount() {
     if (!this.props.initialListsUpdatesComplete){
       this.props.onLoadTopRatedMovies();
       this.props.onLoadSomeOtherMovies();
+      this.props.onLoadLatestMovies();
       setTimeout(() => {
         this.props.onVerifyInitialListUpdatesAreComplete();
       }, 1000)
@@ -29,37 +31,49 @@ class App extends Component {
   }
 
   shouldComponentUpdate = (nextProps, nextState) => {
-    return nextProps.moviesTopRated !== this.state.moviesTopRated || nextProps.moviesSomeOther !== this.state.moviesSomeOther
+    return (
+      nextProps.moviesTopRated !== this.state.moviesTopRated ||
+      nextProps.moviesSomeOther !== this.state.moviesSomeOther ||
+      nextProps.moviesLatest !== this.state.moviesLatest
+    );
   };
 
   componentDidUpdate() {
-    // console.log("component updated : ", this.state);
+    console.log("app updated : ", this.state);
     this.setState(prevState => {
       return {
         ...prevState,
         moviesTopRated: this.props.moviesTopRated,
-        moviesSomeOther: this.props.moviesSomeOther
+        moviesSomeOther: this.props.moviesSomeOther,
+        moviesLatest: this.props.moviesLatest
       };
     });
   }
 
   render() {
-    console.log('App rendered')
-          // This is to fix an issue where react starts requiring RAM resources very fast 
-          // on screen widths below 500px this occurs
-          // There is a lot of dimensions reading with javascript in this application, 
-          // this may be the cause of this issue, requires more investigation
-          if(window.innerWidth < 500){
-            return (
-              <div style={{ color: "white", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>Cannot render screen to small</div>
-            )
-          }
-          // Leave ^^^^^^
+             console.log("App rendered");
+             // This is to fix an issue where react starts requiring RAM resources very fast
+             // on screen widths below 500px this occurs
+             // There is a lot of dimensions reading with javascript in this application,
+             // this may be the cause of this issue, requires more investigation
+             if (window.innerWidth < 500) {
+               return (
+                 <div
+                   style={{
+                     color: "white",
+                     display: "flex",
+                     flexDirection: "column",
+                     alignItems: "center",
+                     justifyContent: "center"
+                   }}
+                 >
+                   Cannot render screen to small
+                 </div>
+               );
+             }
+             // Leave ^^^^^^
 
-
-          
-
-            //  console.log("render", this.state);
+             //  console.log("render", this.state);
              // Top Rated Row
              let topRatedMovieRow =
                this.state.moviesTopRated.length > 0 ? (
@@ -74,7 +88,21 @@ class App extends Component {
              // Some Other Row
              let someOtherMovieRow =
                this.state.moviesSomeOther.length > 0 ? (
-                 <MovieRowsDisplay movieList={this.state.moviesSomeOther} category={"Some Other"}/>
+                 <MovieRowsDisplay
+                   movieList={this.state.moviesSomeOther}
+                   category={"Some Other"}
+                 />
+               ) : (
+                 <p style={{ color: "white" }}>Loading...</p>
+               );
+
+             // Latest Row
+             let latestMovieRow =
+               this.state.moviesLatest.length > 0 ? (
+                 <MovieRowsDisplay
+                   movieList={this.state.moviesLatest}
+                   category={"Upcoming"}
+                 />
                ) : (
                  <p style={{ color: "white" }}>Loading...</p>
                );
@@ -89,10 +117,11 @@ class App extends Component {
 
              return (
                <div className="App">
-               <TopBar />
+                 <TopBar />
                  {featureMovies}
                  {topRatedMovieRow}
                  {someOtherMovieRow}
+                 {latestMovieRow}
                  <Footer />
                </div>
              );
@@ -103,6 +132,7 @@ const mapStateToProps = state => {
   return {
     moviesTopRated: state.movies.updatedMovieListTopRated,
     moviesSomeOther: state.movies.updatedMovieListSomeOther,
+    moviesLatest: state.movies.updatedMovieListLatest,
     initialListsUpdatesComplete: state.movies.initialListsUpdatesComplete
   };
 };
@@ -111,7 +141,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onLoadTopRatedMovies: () => dispatch(actions.getTopRatedMovies()),
     onLoadSomeOtherMovies: () => dispatch(actions.getSomeOtherMovies()),
-    onVerifyInitialListUpdatesAreComplete: () => dispatch(actions.verifyInitialListUpdatesAreComplete())
+    onLoadLatestMovies: () => dispatch(actions.getLatestMovies()),
+    onVerifyInitialListUpdatesAreComplete: () =>
+      dispatch(actions.verifyInitialListUpdatesAreComplete())
   };
 };
 

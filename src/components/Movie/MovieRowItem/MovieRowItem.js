@@ -6,7 +6,7 @@ import "./MovieRowItem.css";
 
 /// props: movie
 const MovieRowItem = props => {
-  console.log('movie row item rendered', props)
+  // console.log('movie row item rendered', props)
 
   const updateParentStateAndGlobalState = (movie, rowKey) => {
     props.updateSelectedMovie(movie); // passed from parent
