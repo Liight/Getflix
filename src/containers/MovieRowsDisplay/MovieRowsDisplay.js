@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./MovieRowsDisplay.css";
 
 import MovieRow from "../../components/Movie/MovieRow/MovieRow";
@@ -8,8 +9,20 @@ import MovieRowBigInfo from "../../components/Movie/MovieRowBigInfo/MovieRowBigI
 class MovieRowsDisplay extends Component {
   state = {
     currentlySelectedMovie: "",
-    hoverScaleMovieItems: true,
     uniqueKeyForThisParticularComponent: Math.floor(Math.random() * 1000)
+  };
+
+  updateScaleMovieItems = () => {
+    if (
+      this.props.activeBigInfoKey !==
+      this.state.uniqueKeyForThisParticularComponent
+    ) {
+      // console.log("WOULD RESCALE");
+      return true;
+    } else {
+      // console.log('WOULD NOT RESCALE')
+      return false;
+    }
   };
 
   updateCurrentSelectedMovieOnThisMovieRowsDisplay = movie => {
@@ -17,12 +30,12 @@ class MovieRowsDisplay extends Component {
     if (Object.keys(movie).length === 0 && movie.constructor === Object) {
       return 0;
     }
+
     this.setState(
       prevState => {
         return {
           ...prevState,
-          currentlySelectedMovie: movie,
-          hoverScaleMovieItems: false
+          currentlySelectedMovie: movie
         };
       },
       () => {
@@ -35,6 +48,8 @@ class MovieRowsDisplay extends Component {
   render() {
     console.log("movie row display rendered");
 
+    let hoverScaleMovieItems = this.updateScaleMovieItems();
+
     let movieRowsDisplayContainer =
       this.props.movieList.length > 0 ? (
         <div className="movie-rows-display-container">
@@ -44,7 +59,7 @@ class MovieRowsDisplay extends Component {
               this.updateCurrentSelectedMovieOnThisMovieRowsDisplay
             }
             thisRowsBigInfoKey={this.state.uniqueKeyForThisParticularComponent} // unique key
-            scaleOnHover={this.state.hoverScaleMovieItems}
+            scaleOnHover={hoverScaleMovieItems}
             category={this.props.category}
           />
           <MovieRowBigInfo
@@ -58,4 +73,10 @@ class MovieRowsDisplay extends Component {
   }
 }
 
-export default MovieRowsDisplay;
+const mapStateToProps = state => {
+  return {
+    activeBigInfoKey: state.movies.activeBigInfoKey
+  };
+};
+
+export default connect(mapStateToProps)(MovieRowsDisplay);
