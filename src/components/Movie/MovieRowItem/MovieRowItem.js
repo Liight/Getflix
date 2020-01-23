@@ -6,11 +6,13 @@ import "./MovieRowItem.css";
 
 /// props: movie
 const MovieRowItem = props => {
+  console.log('movie row item rendered', props)
 
-  const updateParentStateAndGlobalState = (movie, key) => {
+  const updateParentStateAndGlobalState = (movie, rowKey) => {
     props.updateSelectedMovie(movie); // passed from parent
-    console.log("updateParentStateAndGlobalState", movie, key);
-    props.onUpdateActiveBigInfoKey(key);
+    console.log("movie row item updated movie  ", rowKey);
+    props.onUpdateActiveBigInfoKey(rowKey);
+    console.log("movie row item sent key ", rowKey);
   };
 
   // console.log('props : scale : ', props.scaleOnHover)

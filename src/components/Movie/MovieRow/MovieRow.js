@@ -6,7 +6,7 @@ import MovieRowItem from "../MovieRowItem/MovieRowItem";
 // props: movieList
 
 const MovieRow = props => {
-  // console.log("props", props);
+  console.log("movie row rendered ", props);
 
   // Dynamic Refs
   let scrollerRefs = [];

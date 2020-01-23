@@ -11,26 +11,26 @@ class MovieFeature extends Component {
     let value = this.state.currentMovie;
     let movie = this.state.movieList[value];
     // Change Featured Movie
-    setInterval(() => {
-      console.log("timed function");
-      if (value === this.state.movieList.length - 1) {
-        this.setState((prevState)=>{
-          return {
-            ...prevState,
-            currentMovie: 0
-          };
-        })
-        movie = this.state.movieList[this.state.currentMovie];
-      } else {
-        this.setState(prevState => {
-          return {
-            ...prevState,
-            currentMovie: value += 1
-          };
-        });
-        movie = this.state.movieList[this.state.currentMovie];
-      }
-    }, 10000);
+    // setInterval(() => {
+    //   console.log("timed function");
+    //   if (value === this.state.movieList.length - 1) {
+    //     this.setState((prevState)=>{
+    //       return {
+    //         ...prevState,
+    //         currentMovie: 0
+    //       };
+    //     })
+    //     movie = this.state.movieList[this.state.currentMovie];
+    //   } else {
+    //     this.setState(prevState => {
+    //       return {
+    //         ...prevState,
+    //         currentMovie: value += 1
+    //       };
+    //     });
+    //     movie = this.state.movieList[this.state.currentMovie];
+    //   }
+    // }, 10000);
 
     return (
       <div className="movie-feature-container">

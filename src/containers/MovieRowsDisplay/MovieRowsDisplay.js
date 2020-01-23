@@ -8,10 +8,9 @@ import MovieRowBigInfo from "../../components/Movie/MovieRowBigInfo/MovieRowBigI
 class MovieRowsDisplay extends Component {
   state = {
     currentlySelectedMovie: "",
-    hoverScaleMovieItems: true
+    hoverScaleMovieItems: true,
+    uniqueKeyForThisParticularComponent: Math.floor(Math.random() * 1000)
   };
-
-  
 
   updateCurrentSelectedMovieOnThisMovieRowsDisplay = movie => {
     // Check for empty object
@@ -27,18 +26,14 @@ class MovieRowsDisplay extends Component {
         };
       },
       () => {
-        console.log("movie row display state : ", this.state);
+        console.log("movie row display state updated : ", this.state);
+        console.log("movie row display props : ", this.props);
       }
     );
   };
 
   render() {
-
-    const uniqueKeyForThisParticularComponent = Math.floor(
-      Math.random() * 1000
-    ); // unique key
-
-console.log("movie row display props : ", this.props);
+    console.log("movie row display rendered");
 
     let movieRowsDisplayContainer =
       this.props.movieList.length > 0 ? (
@@ -48,18 +43,18 @@ console.log("movie row display props : ", this.props);
             updateSelectedMovie={
               this.updateCurrentSelectedMovieOnThisMovieRowsDisplay
             }
-            thisRowsBigInfoKey={uniqueKeyForThisParticularComponent} // unique key
+            thisRowsBigInfoKey={this.state.uniqueKeyForThisParticularComponent} // unique key
             scaleOnHover={this.state.hoverScaleMovieItems}
             category={this.props.category}
           />
           <MovieRowBigInfo
-            thisRowsBigInfoKey={uniqueKeyForThisParticularComponent} // unique key
+            thisRowsBigInfoKey={this.state.uniqueKeyForThisParticularComponent} // unique key
             movie={this.state.currentlySelectedMovie}
           />
         </div>
       ) : null;
 
-    return ( movieRowsDisplayContainer );
+    return movieRowsDisplayContainer;
   }
 }
 

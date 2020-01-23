@@ -5,7 +5,7 @@ import "./MovieRowBigInfo.css";
 
 class MovieRowBigInfo extends Component {
   state = {
-    thisInitialKey: this.props.activeBigInfoKey
+    // thisInitialKey: this.props.activeBigInfoKey
   };
 
   // shouldComponentUpdate = (nextProps, nextState) => {
@@ -15,19 +15,20 @@ class MovieRowBigInfo extends Component {
 
   render() {
     console.log(
-      " in MRBI activeBigInfoKey",
-      this.props.thisRowsBigInfoKey,
-      this.props.activeBigInfoKey,
-      this.state.thisInitialKey,
+      " movie row big info rendered",
+      "key from movie rows display ", this.props.thisRowsBigInfoKey,
+      "global state active key ",this.props.activeBigInfoKey,
+      // this.state.thisInitialKey,
       this.props.movie
     );
 
     let BigInfo =
-      this.props.movie === "" 
-      // this.props.thisRowsBigInfoKey !== this.props.activeBigInfoKey
-        ? (console.log("not evaluating to true"),
+      this.props.movie === "" ||
+      this.props.thisRowsBigInfoKey !== this.props.activeBigInfoKey
+        ? // this.props.thisRowsBigInfoKey !== this.props.activeBigInfoKey
+          (console.log("else: dont show"),
           (<div className="movie-row-big-info-wrapper no-reveal"></div>))
-        : (console.log("evaluating to true"),
+        : (console.log("evaluating to show"),
           (
             <div className="movie-row-big-info-wrapper">
               <div className="movie-row-big-info-container reveal">

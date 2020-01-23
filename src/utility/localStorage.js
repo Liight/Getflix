@@ -2,7 +2,7 @@ export const getLocalStorage = (key) => {
     let newKeyValue = window.localStorage.getItem(key);
     // console.log("localStorage : getItem : key : ", newKeyValue);
     newKeyValue = JSON.parse(newKeyValue);
-    console.log("newKey", newKeyValue);
+    // console.log("newKey", newKeyValue);
     return newKeyValue;
 }
 
@@ -19,7 +19,7 @@ export const getLocalStorageKeyCheck = (key) => {
         // console.log("localStorage : get : ", window.localStorage[key]);
         return true;
     } else {
-        console.log("BAD: localStore : " + key + " ", localStorage[key]);
+        // console.log("BAD: localStore : " + key + " ", localStorage[key]);
         return false;
     }
 };

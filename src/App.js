@@ -44,6 +44,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('App rendered')
           // This is to fix an issue where react starts requiring RAM resources very fast 
           // on screen widths below 500px this occurs
           // There is a lot of dimensions reading with javascript in this application, 
@@ -58,7 +59,7 @@ class App extends Component {
 
           
 
-             console.log("render", this.state);
+            //  console.log("render", this.state);
              // Top Rated Row
              let topRatedMovieRow =
                this.state.moviesTopRated.length > 0 ? (

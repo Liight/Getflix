@@ -5,7 +5,7 @@ import axios from "axios";
 import { apiKey } from "../../secret/secret";
 
 export const updateActiveBigInfoKey = (key) => {
-  console.log('updateActiveBigInfoKey in actions ', key);
+  console.log('ACTION: global key to be updated next ', key);
   return {
     type: actionTypes.UPDATE_ACTIVE_BIG_INFO_KEY,
     activeBigInfoKey: key
@@ -18,11 +18,11 @@ export const getTopRatedMovies = () => {
     if (
       localStorageHandler.getLocalStorageKeyCheck("updatedMovieListTopRated")
     ) {
-      console.log("local storage key confirmed in actions");
+      // console.log("local storage key confirmed in actions");
       let localStorageTopRatedMovies = localStorageHandler.getLocalStorage(
         "updatedMovieListTopRated"
       );
-      console.log("localStorageTopRatedMovies", localStorageTopRatedMovies);
+      // console.log("localStorageTopRatedMovies", localStorageTopRatedMovies);
       dispatch(updateAndAddMoviesListTopRated(localStorageTopRatedMovies));
     }
 
@@ -43,11 +43,11 @@ export const getSomeOtherMovies = () => {
     if (
       localStorageHandler.getLocalStorageKeyCheck("updatedMovieListSomeOther")
     ) {
-      console.log("local storage key confirmed in actions");
+      // console.log("local storage key confirmed in actions");
       let localStorageSomeOtherMovies = localStorageHandler.getLocalStorage(
         "updatedMovieListSomeOther"
       );
-      console.log("localStorageSomeOtherMovies", localStorageSomeOtherMovies);
+      // console.log("localStorageSomeOtherMovies", localStorageSomeOtherMovies);
       dispatch(updateAndAddMoviesListTopRated(localStorageSomeOtherMovies));
     }
 
