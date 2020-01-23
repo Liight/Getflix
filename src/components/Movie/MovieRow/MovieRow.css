@@ -48,27 +48,35 @@
     .leftArrow {
         position: absolute;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        left: 1%;
-        /* top: 35%; */
-        width: 50px;
-        height: 50px;
+        align-items: center;
+        left: 0px;
+        width: 100px;
+        height: 300px;
+        transition: .3s ease-in-out;
     }
     
     .rightArrow {
         position: absolute;
-        right: 1%;
-        /* top: 35%; */
-        width: 50px;
-        height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        right: 0px;
+        width: 100px;
+        height: 300px;
+        transition: .3s ease-in-out;
     }
     
     .leftArrow:hover {
         cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.1);
     }
     
     .rightArrow:hover {
         cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.1);
     }
     
     .row-heading {
