@@ -34,7 +34,7 @@ const MovieRowItem = props => {
             height="300"
             width="200"
           ></img>
-          <div className="clicker">V</div>
+          <div className={props.activeKey === props.thisRowsBigInfoKey ? "clicker" : "clicker-big"}>V</div>
         </div>
 
         <div className="movie-row-item-areaHolder">
@@ -45,11 +45,11 @@ const MovieRowItem = props => {
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
-
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    activeKey: state.movies.activeBigInfoKey
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -58,4 +58,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(MovieRowItem);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieRowItem);
