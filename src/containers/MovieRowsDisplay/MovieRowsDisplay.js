@@ -11,6 +11,8 @@ class MovieRowsDisplay extends Component {
     hoverScaleMovieItems: true
   };
 
+  
+
   updateCurrentSelectedMovieOnThisMovieRowsDisplay = movie => {
     // Check for empty object
     if (Object.keys(movie).length === 0 && movie.constructor === Object) {
@@ -32,6 +34,10 @@ class MovieRowsDisplay extends Component {
 
   render() {
 
+    const uniqueKeyForThisParticularComponent = Math.floor(
+      Math.random() * 1000
+    ); // unique key
+
 console.log("movie row display props : ", this.props);
 
     let movieRowsDisplayContainer =
@@ -42,10 +48,14 @@ console.log("movie row display props : ", this.props);
             updateSelectedMovie={
               this.updateCurrentSelectedMovieOnThisMovieRowsDisplay
             }
+            thisRowsBigInfoKey={uniqueKeyForThisParticularComponent} // unique key
             scaleOnHover={this.state.hoverScaleMovieItems}
             category={this.props.category}
           />
-          <MovieRowBigInfo movie={this.state.currentlySelectedMovie} />
+          <MovieRowBigInfo
+            thisRowsBigInfoKey={uniqueKeyForThisParticularComponent} // unique key
+            movie={this.state.currentlySelectedMovie}
+          />
         </div>
       ) : null;
 

@@ -1,5 +1,6 @@
 export {
   getTopRatedMovies,
   getSomeOtherMovies,
-  verifyInitialListUpdatesAreComplete
+  verifyInitialListUpdatesAreComplete,
+  updateActiveBigInfoKey
 } from "./movies";

@@ -8,7 +8,7 @@ export const getLocalStorage = (key) => {
 
 export const setLocalStorage = (name, value) => {
     let newValue = value;
-    console.log("about to store this value: ", newValue);
+    // console.log("about to store this value: ", newValue);
     newValue = JSON.stringify(newValue);
     window.localStorage.setItem(name, newValue);
     // console.log("localStorage : set : ", localStorage.getItem(name));

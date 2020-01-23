@@ -109,6 +109,7 @@ const MovieRow = props => {
                   movie={movie}
                   updateSelectedMovie={props.updateSelectedMovie}
                   scaleOnHover={props.scaleOnHover}
+                  thisRowsBigInfoKey={props.thisRowsBigInfoKey}
                 />
               );
             })}

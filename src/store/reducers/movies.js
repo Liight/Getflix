@@ -5,7 +5,8 @@ import * as localStorageHandler from "../../utility/localStorage";
 const initialState = {
   initialListsUpdatesComplete: false,
   updatedMovieListTopRated: [],
-  updatedMovieListSomeOther: []
+  updatedMovieListSomeOther: [],
+  activeBigInfoKey: Number
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,10 +16,10 @@ const reducer = (state = initialState, action) => {
         "updatedMovieListTopRated",
         action.updatedMovieListTopRated
       );
-      console.log(
-        "reducer updated movie list : ",
-        action.updatedMovieListTopRated
-      );
+      // console.log(
+      //   "reducer updated movie list : ",
+      //   action.updatedMovieListTopRated
+      // );
       return {
         ...state,
         updatedMovieListTopRated: action.updatedMovieListTopRated
@@ -28,19 +29,25 @@ const reducer = (state = initialState, action) => {
         "updatedMovieListSomeOther",
         action.updatedMovieListSomeOther
       );
-      console.log(
-        "reducer.updatedMovieListSomeOther",
-        action.updatedMovieListSomeOther
-      );
+      // console.log(
+      //   "reducer.updatedMovieListSomeOther",
+      //   action.updatedMovieListSomeOther
+      // );
       return {
         ...state,
         updatedMovieListSomeOther: action.updatedMovieListSomeOther
       };
     case actionTypes.VERIFY_INITIAL_LIST_UPDATES_ARE_COMPLETE: // CASE
-      console.log("action.type", action.type);
+      // console.log("action.type", action.type);
       return {
         ...state,
         initialListsUpdatesComplete: true
+      };
+    case actionTypes.UPDATE_ACTIVE_BIG_INFO_KEY: // CASE
+      console.log("action.type", action.type, "KEY: ", action.activeBigInfoKey);
+      return {
+        ...state,
+        activeBigInfoKey: action.activeBigInfoKey
       };
     default:
       return state;

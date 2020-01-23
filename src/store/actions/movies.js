@@ -4,6 +4,14 @@ import * as localStorageHandler from "../../utility/localStorage";
 import axios from "axios";
 import { apiKey } from "../../secret/secret";
 
+export const updateActiveBigInfoKey = (key) => {
+  console.log('updateActiveBigInfoKey in actions ', key);
+  return {
+    type: actionTypes.UPDATE_ACTIVE_BIG_INFO_KEY,
+    activeBigInfoKey: key
+  };
+}
+
 export const getTopRatedMovies = () => {
   return dispatch => {
     // Check if we've already called the api and stored the result in localStorage
