@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./MovieFeature.css";
 
+import MovieFeatureInfo from '../../components/Movie/MovieFeatureInfo/MovieFeatureInfo';
+
 class MovieFeature extends Component {
   state = {
     movieList: this.props.movieList,
@@ -86,7 +88,9 @@ class MovieFeature extends Component {
             </g>
           </svg>
         </div>
-        <div
+        {/* Movie */}
+        <MovieFeatureInfo movie={movie}/>
+        {/* <div
           className="movie-feature-info-column"
           style={{
             paddingLeft: window.innerWidth / 12
@@ -107,7 +111,8 @@ class MovieFeature extends Component {
         </div>
         <div className="movie-feature-image-column">
           <img src={movie.posterUrl} alt="" height="100%" width="auto" />
-        </div>
+        </div> */}
+        {/* Movie End */}
         <div
           className="movie-feature-arrow movie-feature-arrow-right"
           onClick={() => this.nextMovie()}
