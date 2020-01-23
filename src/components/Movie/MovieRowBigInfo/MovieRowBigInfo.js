@@ -38,30 +38,37 @@ class MovieRowBigInfo extends Component {
                     paddingLeft: window.innerWidth / 12
                   }}
                 >
-                  <span className="title">{this.props.movie.title}</span>
-                  <span className="tagline">{this.props.movie.tagline}</span>
-                  <span>
-                    <span className="status">
-                      {this.props.movie.status + " "}
-                    </span>
-                    {/* // Throws error here iterating over undefined */}
-                    <span className="release-date">
-                      {this.props.movie.release_date.length > 0
-                        ? this.props.movie.release_date.slice(0, 4) + " "
-                        : null}
-                    </span>
+                  <div className="info-column-top">
+                    <span className="title">{this.props.movie.title}</span>
+                    <span className="tagline">{this.props.movie.tagline}</span>
+                    <span>
+                      <span className="status">
+                        {this.props.movie.status + " "}
+                      </span>
+                      {/* // Throws error here iterating over undefined */}
+                      <span className="release-date">
+                        {this.props.movie.release_date.length > 0
+                          ? this.props.movie.release_date.slice(0, 4) + " "
+                          : null}
+                      </span>
 
-                    <span className="runtime">
-                      {" "}
-                      {this.props.movie.runtime} mins
+                      <span className="runtime">
+                        {" "}
+                        {this.props.movie.runtime} mins
+                      </span>
                     </span>
-                  </span>
-                  {/* <span>
+                    {/* <span>
             <span className="runtime"> budget ${this.props.movie.budget}</span>
             <span className="runtime"> revenue ${this.props.movie.revenue}</span>
           </span> */}
-                  {/* <span className="runtime">{this.props.movie.runtime}</span> */}
-                  <span className="overview">{this.props.movie.overview}</span>
+                    {/* <span className="runtime">{this.props.movie.runtime}</span> */}
+                    <span className="overview">
+                      {this.props.movie.overview}
+                    </span>
+                  </div>
+                  <div className="info-column-bottom">
+                    <button style={{height: "50px", width: "100px"}}>More Info</button>
+                  </div>
                 </div>
                 <div
                   className="image-column"
