@@ -7,8 +7,9 @@ class MovieFeature extends Component {
     currentMovie: 0
   };
 
-  nextMovie = () => { // Increments state.currentMovie by 1
-    if (this.state.currentMovie === this.state.movieList - 1) {
+  nextMovie = () => {
+    // Increments state.currentMovie by 1
+    if (this.state.currentMovie === this.state.movieList.length - 1) {
       this.setState(prevState => {
         return {
           ...prevState,
@@ -25,10 +26,14 @@ class MovieFeature extends Component {
     }
   };
 
-  prevMovie = () => { // Decreases state.currentMovie by 1
+  prevMovie = () => {
+    // Decreases state.currentMovie by 1
     if (this.state.currentMovie === 0) {
       this.setState(prevState => {
-        return 0;
+        return {
+          ...prevState,
+          currentMovie: this.state.movieList.length - 1
+        };
       });
     } else {
       this.setState(prevState => {
@@ -45,7 +50,10 @@ class MovieFeature extends Component {
 
     return (
       <div className="movie-feature-container">
-        <div className="movie-feature-arrow movie-feature-arrow-left">
+        <div
+          className="movie-feature-arrow movie-feature-arrow-left"
+          onClick={() => this.prevMovie()}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
@@ -100,7 +108,10 @@ class MovieFeature extends Component {
         <div className="movie-feature-image-column">
           <img src={movie.posterUrl} alt="" height="100%" width="auto" />
         </div>
-        <div className="movie-feature-arrow movie-feature-arrow-right">
+        <div
+          className="movie-feature-arrow movie-feature-arrow-right"
+          onClick={() => this.nextMovie()}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
