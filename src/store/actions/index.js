@@ -6,3 +6,7 @@ export {
   getLatestMovies,
   toggleModal
 } from "./movies";
+
+export {
+  toggleGlobalScrollbars
+} from "./ui";

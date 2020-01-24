@@ -7,6 +7,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import moviesReducer from "./store/reducers/movies";
+import uiReducer from "./store/reducers/ui";
 
 import thunk from "redux-thunk";
 
@@ -18,7 +19,8 @@ const composeEnhancers =
 
 // combine reducers
 const rootReducer = combineReducers({
-  movies: moviesReducer
+  movies: moviesReducer,
+  ui: uiReducer
 });
 
 // define store

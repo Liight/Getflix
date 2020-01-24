@@ -1,21 +1,39 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import * as actions from '../../../store/actions';
+import * as actions from "../../../store/actions";
 
-import './Modal.css';
+import "./Modal.css";
 
-const Modal = (props) => {
+const Modal = props => {
+  const toggleModal = () => {
+    props.onToggleModal();
+    props.onToggleGlobalScrollbars();
+  };
 
-    const toggleModal = () => {
-        props.onToggleModal()
-    }
+  let modal = props.showModal ? (
+    <div className="modal-container">
+      <div
+        className="modal-close-button"
+        style={{ fontSize: "2em", color: "white" }}
+        onClick={() => toggleModal()}
+      >
+        X
+      </div>
+      <div className="modal-inner-display">
+        <div className="modal-inner-display-info">
+          <h1>Title</h1>
+          <p>Other stuff</p>
+        </div>
+        <div className="modal-inner-display-image">
+          <img src={""} alt=""></img>
+        </div>
+      </div>
+    </div>
+  ) : null;
 
-    let modal = props.showModal ? <div className="container" onClick={() => toggleModal()}></div> : null;
-    
-    return modal;
-    
-}
+  return modal;
+};
 
 const mapStateToProps = state => {
   return {
@@ -25,7 +43,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onToggleModal: () => dispatch(actions.toggleModal())
+    onToggleModal: () => dispatch(actions.toggleModal()),
+    onToggleGlobalScrollbars: () => dispatch(actions.toggleGlobalScrollbars()) // follow this thread
+
   };
 };
 

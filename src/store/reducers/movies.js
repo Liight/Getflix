@@ -8,7 +8,8 @@ const initialState = {
   updatedMovieListSomeOther: [],
   updatedMovieListLatest: [],
   activeBigInfoKey: Number,
-  showModal: false
+  showModal: false,
+  hideOverflows: false
 };
 
 const reducer = (state = initialState, action) => {
