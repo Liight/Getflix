@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     moviesTopRated: [],
     moviesSomeOther: [],
-    moviesLatest: []
+    moviesLatest: [],
+    scrollbarsVisible: true
   };
 
   componentWillMount() {
@@ -36,7 +37,8 @@ class App extends Component {
     return (
       nextProps.moviesTopRated !== this.state.moviesTopRated ||
       nextProps.moviesSomeOther !== this.state.moviesSomeOther ||
-      nextProps.moviesLatest !== this.state.moviesLatest
+      nextProps.moviesLatest !== this.state.moviesLatest ||
+      nextProps.scrollbarsVisible !== this.state.scrollbarsVisible
     );
   };
 
@@ -45,13 +47,16 @@ class App extends Component {
     // There has to be a better way to get the body element to dynamically set scrollbar styles based on global state
     if (!this.props.scrollbarsVisible) {
       document.getElementsByTagName("body")[0].className += " hidden-overflows";
+    } else {
+      document.getElementsByTagName("body")[0].className = "";
     }
     this.setState(prevState => {
       return {
         ...prevState,
         moviesTopRated: this.props.moviesTopRated,
         moviesSomeOther: this.props.moviesSomeOther,
-        moviesLatest: this.props.moviesLatest
+        moviesLatest: this.props.moviesLatest,
+        scrollbarsVisible: this.props.scrollbarsVisible
       };
     });
   }
