@@ -8,6 +8,7 @@ import MovieRowsDisplay from './containers/MovieRowsDisplay/MovieRowsDisplay';
 import MovieFeature from './containers/MovieFeature/MovieFeature';
 import TopBar from './components/Navigation/TopBar/TopBar';
 import Footer from './components/Navigation/Footer/Footer';
+import Modal from './components/UI/Modal/Modal';
 
 class App extends Component {
   state = {
@@ -123,6 +124,7 @@ class App extends Component {
                  {someOtherMovieRow}
                  {latestMovieRow}
                  <Footer />
+                 <Modal />
                </div>
              );
            }

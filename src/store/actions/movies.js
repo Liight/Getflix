@@ -112,6 +112,12 @@ export const updateAndAddMoviesListLatest = list => {
   };
 };
 
+export const toggleModal = () => {
+  return {
+    type: actionTypes.TOGGLE_MODAL
+  }
+}
+
 const asyncWrapper = async (func1, func2, func3) => {
   return await func1().then(response => {
     //   console.log('response 1', response)

@@ -3,5 +3,6 @@ export {
   getSomeOtherMovies,
   verifyInitialListUpdatesAreComplete,
   updateActiveBigInfoKey,
-  getLatestMovies
+  getLatestMovies,
+  toggleModal
 } from "./movies";

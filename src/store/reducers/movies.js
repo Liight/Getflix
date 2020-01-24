@@ -7,7 +7,8 @@ const initialState = {
   updatedMovieListTopRated: [],
   updatedMovieListSomeOther: [],
   updatedMovieListLatest: [],
-  activeBigInfoKey: Number
+  activeBigInfoKey: Number,
+  showModal: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -62,6 +63,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         activeBigInfoKey: action.activeBigInfoKey
+      };
+    case actionTypes.TOGGLE_MODAL: // CASE
+      console.log("action.type", action.type, state.showModal);
+      return {
+        ...state,
+        showModal: !state.showModal
       };
 
     default:

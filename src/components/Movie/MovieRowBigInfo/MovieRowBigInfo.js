@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import * as actions from "../../../store/actions";
+
 import "./MovieRowBigInfo.css";
 
 class MovieRowBigInfo extends Component {
@@ -67,7 +69,12 @@ class MovieRowBigInfo extends Component {
                     </span>
                   </div>
                   <div className="info-column-bottom">
-                    <button style={{height: "50px", width: "100px"}}>More Info</button>
+                    <button
+                      style={{ height: "50px", width: "100px" }}
+                      onClick={() => this.props.onToggleModal()}
+                    >
+                      More Info
+                    </button>
                   </div>
                 </div>
                 <div
@@ -95,4 +102,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(MovieRowBigInfo);
+const mapDispatchToProps = dispatch => {
+  return {
+    onToggleModal: () => dispatch(actions.toggleModal())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieRowBigInfo);
