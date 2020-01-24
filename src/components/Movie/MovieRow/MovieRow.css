@@ -42,7 +42,9 @@
     
     .movie-row-section .movie-row-item-container:last-child :hover {
         transform: translate(-100px, 0px);
-        width: 400px;
+        left: 100px;
+        width: 300px;
+        box-sizing: border-box;
     }
     
     .leftArrow {
