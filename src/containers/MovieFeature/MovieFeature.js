@@ -6,19 +6,37 @@ import { CSSTransition } from "react-transition-group";
 import MovieFeatureInfo from "../../components/Movie/MovieFeatureInfo/MovieFeatureInfo";
 
 class MovieFeature extends Component {
+  
   state = {
     movieList: this.props.movieList,
     currentMovie: 0,
     showFeature: true,
     animationSyncTimer: 300,
-    transitionDirection: "example"
+    transitionDirection: "example",
+    autoNextFeatureSlider: false
+  };
+
+  componentDidMount() {
+    if (this.state.autoNextFeatureSlider) {
+      this.setAutoNextFeatureOn();
+    }
+  }
+
+  setAutoNextFeatureOn = () => {
+    setInterval(() => {
+      this.nextMovie();
+    }, 5000);
   };
 
   nextMovie = () => {
     // Increments state.currentMovie by 1
     this.setState(
       prevState => {
-        return { ...prevState, showFeature: false, transitionDirection: "example-right" };
+        return {
+          ...prevState,
+          showFeature: false,
+          transitionDirection: "example-right"
+        };
       },
       () => {
         setTimeout(() => {
