@@ -1,50 +1,81 @@
 import React, { Component } from "react";
 import "./MovieFeature.css";
 
-import MovieFeatureInfo from '../../components/Movie/MovieFeatureInfo/MovieFeatureInfo';
+import { CSSTransition } from "react-transition-group";
+
+import MovieFeatureInfo from "../../components/Movie/MovieFeatureInfo/MovieFeatureInfo";
 
 class MovieFeature extends Component {
   state = {
     movieList: this.props.movieList,
-    currentMovie: 0
+    currentMovie: 0,
+    showFeature: true,
+    animationSyncTimer: 300,
+    transitionDirection: "example"
   };
 
   nextMovie = () => {
     // Increments state.currentMovie by 1
-    if (this.state.currentMovie === this.state.movieList.length - 1) {
-      this.setState(prevState => {
-        return {
-          ...prevState,
-          currentMovie: 0
-        };
-      });
-    } else {
-      this.setState(prevState => {
-        return {
-          ...prevState,
-          currentMovie: this.state.currentMovie + 1
-        };
-      });
-    }
+    this.setState(
+      prevState => {
+        return { ...prevState, showFeature: false, transitionDirection: "example-right" };
+      },
+      () => {
+        setTimeout(() => {
+          if (this.state.currentMovie === this.state.movieList.length - 1) {
+            this.setState(prevState => {
+              return {
+                ...prevState,
+                currentMovie: 0,
+                showFeature: true
+              };
+            });
+          } else {
+            this.setState(prevState => {
+              return {
+                ...prevState,
+                currentMovie: this.state.currentMovie + 1,
+                showFeature: true
+              };
+            });
+          }
+        }, this.state.animationSyncTimer);
+      }
+    );
   };
 
   prevMovie = () => {
     // Decreases state.currentMovie by 1
-    if (this.state.currentMovie === 0) {
-      this.setState(prevState => {
+    this.setState(
+      prevState => {
         return {
           ...prevState,
-          currentMovie: this.state.movieList.length - 1
+          showFeature: false,
+          transitionDirection: "example"
         };
-      });
-    } else {
-      this.setState(prevState => {
-        return {
-          ...prevState,
-          currentMovie: this.state.currentMovie - 1
-        };
-      });
-    }
+      },
+      () => {
+        setTimeout(() => {
+          if (this.state.currentMovie === 0) {
+            this.setState(prevState => {
+              return {
+                ...prevState,
+                currentMovie: this.state.movieList.length - 1,
+                showFeature: true
+              };
+            });
+          } else {
+            this.setState(prevState => {
+              return {
+                ...prevState,
+                currentMovie: this.state.currentMovie - 1,
+                showFeature: true
+              };
+            });
+          }
+        }, this.state.animationSyncTimer);
+      }
+    );
   };
 
   render() {
@@ -89,29 +120,15 @@ class MovieFeature extends Component {
           </svg>
         </div>
         {/* Movie */}
-        <MovieFeatureInfo movie={movie}/>
-        {/* <div
-          className="movie-feature-info-column"
-          style={{
-            paddingLeft: window.innerWidth / 12
-          }}
+
+        <CSSTransition
+          in={this.state.showFeature}
+          classNames={this.state.transitionDirection}
+          timeout={this.state.animationSyncTimer}
         >
-          <span className="movie-feature-title">{movie.title}</span>
-          <span className="movie-feature-tagline">{movie.tagline}</span>
-          <span>
-            <span className="movie-feature-status">{movie.status + " "}</span>
-            <span className="movie-feature-release-date">
-              {movie.release_date.length > 0
-                ? movie.release_date.slice(0, 4) + " "
-                : null}
-            </span>
-            <span className="movie-feature-runtime"> {movie.runtime} mins</span>
-          </span>
-          <span className="movie-feature-overview">{movie.overview}</span>
-        </div>
-        <div className="movie-feature-image-column">
-          <img src={movie.posterUrl} alt="" height="100%" width="auto" />
-        </div> */}
+          <MovieFeatureInfo movie={movie} key={Math.random() * 1000} />
+        </CSSTransition>
+
         {/* Movie End */}
         <div
           className="movie-feature-arrow movie-feature-arrow-right"
