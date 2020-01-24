@@ -11,7 +11,7 @@ class MovieFeature extends Component {
     movieList: this.props.movieList,
     currentMovie: 0,
     showFeature: true,
-    animationSyncTimer: 300,
+    animationSyncTimer:250,
     transitionDirection: "example",
     autoNextFeatureSlider: false
   };
