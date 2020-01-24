@@ -91,8 +91,8 @@
 /* left */
 
 .example-enter {
-    opacity: 1;
-    transform: translate(-100%);
+    opacity: 0.01;
+    transform: translate(-50%);
 }
 
 .example-enter.example-enter-active {
@@ -108,7 +108,7 @@
 
 .example-exit.example-exit-active {
     opacity: 0.01;
-    transform: translate(+100%);
+    transform: translate(+50%);
     transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
 }
 
@@ -116,8 +116,8 @@
 /* right */
 
 .example-right-enter {
-    opacity: 1;
-    transform: translate(100%);
+    opacity: 0.01;
+    transform: translate(50%);
 }
 
 .example-right-enter.example-right-enter-active {
@@ -133,6 +133,6 @@
 
 .example-right-exit.example-right-exit-active {
     opacity: 0.01;
-    transform: translate(-100%);
+    transform: translate(-50%);
     transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
 }
