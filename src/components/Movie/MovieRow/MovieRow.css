@@ -38,6 +38,7 @@
         align-items: center;
         justify-content: flex-start;
         height: 450px;
+        overflow-y: visible;
     }
     
     .movie-row-section .movie-row-item-container:last-child :hover {

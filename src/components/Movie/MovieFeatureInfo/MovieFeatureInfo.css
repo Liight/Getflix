@@ -10,7 +10,8 @@
     width: 100%;
 }
 
-.movie-feature-info-column {
+
+/* .movie-feature-info-column { duplicate
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -18,8 +19,8 @@
     width: 60%;
     height: 100%;
     color: white;
-    padding: 5em 1em 1em 0em;;
-}
+    padding: 5em 1em 1em 0em;
+} */
 
 .movie-feature-image-column {
     display: flex;
@@ -52,4 +53,5 @@
 
 .movie-feature-overview {
     font-size: 1.7em;
+    color: #999
 }

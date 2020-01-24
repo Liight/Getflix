@@ -36,7 +36,7 @@
     padding: 5em 1em 1em 0em;
     width: 60%;
     height: 700px;
-    color: white;
+    color: #fff;
     box-sizing: border-box;
 }
 
@@ -92,4 +92,5 @@
 
 .overview {
     font-size: 1.7em;
+    color: #999
 }
