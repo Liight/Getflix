@@ -1,6 +1,6 @@
 .movie-feature-container {
     position: relative;
-    background-color: transparent;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -91,13 +91,13 @@
 /* left */
 
 .example-enter {
-    opacity: 0.01;
-    transform: translate(-50%);
+    /* opacity: 0.01; */
+    transform: translate(-100%);
 }
 
 .example-enter.example-enter-active {
-    opacity: 1;
-    transition: all 250ms ease-in;
+    /* opacity: 1; */
+    transition: all 200ms ease-in;
     transform: translate(0%);
 }
 
@@ -109,20 +109,20 @@
 .example-exit.example-exit-active {
     opacity: 0.01;
     transform: translate(+50%);
-    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
 }
 
 
 /* right */
 
 .example-right-enter {
-    opacity: 0.01;
-    transform: translate(50%);
+    /* opacity: 0.01; */
+    transform: translate(105%);
 }
 
 .example-right-enter.example-right-enter-active {
-    opacity: 1;
-    transition: all 250ms ease-in;
+    /* opacity: 1; */
+    transition: all 200ms ease-in;
     transform: translate(0%);
 }
 
@@ -134,5 +134,5 @@
 .example-right-exit.example-right-exit-active {
     opacity: 0.01;
     transform: translate(-50%);
-    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
 }

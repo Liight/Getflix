@@ -3,7 +3,14 @@ import "./MovieFeatureInfo.css";
 
 const MovieFeatureInfo = props => {
   return (
-    <div className="movie-feature-info-container">
+    <div
+      className="movie-feature-info-container"
+      style={{
+        // backgroundImage: "url(" + props.movie.posterUrl + ")",
+        // backgroundRepeat: "no-repeat",
+        // backgroundSize: "",
+      }}
+    >
       <div
         className="movie-feature-info-column"
         style={{ paddingLeft: window.innerWidth / 12 }}
