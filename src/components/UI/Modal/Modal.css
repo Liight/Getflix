@@ -55,6 +55,8 @@
     align-items: center;
     justify-content: center;
     color: white;
+    padding: 5em;
+    overflow-y: auto;
 }
 
 .modal-inner-display-image {
@@ -69,4 +71,19 @@
     justify-content: center;
 }
 
-.modal-inner-display-image img {}
+.modal-inner-display-image img {
+    height: 100%;
+    width: auto;
+}
+
+.modal-text{
+    font-size: 2em;
+}
+
+.modal-flex-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+}
