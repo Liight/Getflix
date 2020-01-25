@@ -112,9 +112,10 @@ export const updateAndAddMoviesListLatest = list => {
   };
 };
 
-export const toggleModal = () => {
+export const toggleModal = (movie) => {
   return {
-    type: actionTypes.TOGGLE_MODAL
+    type: actionTypes.TOGGLE_MODAL,
+    movie: movie
   }
 }
 

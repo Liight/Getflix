@@ -9,6 +9,7 @@ const initialState = {
   updatedMovieListLatest: [],
   activeBigInfoKey: Number,
   showModal: false,
+  modalMovie: null,
   hideOverflows: false
 };
 
@@ -66,10 +67,11 @@ const reducer = (state = initialState, action) => {
         activeBigInfoKey: action.activeBigInfoKey
       };
     case actionTypes.TOGGLE_MODAL: // CASE
-      console.log("action.type", action.type, state.showModal);
+      console.log("action.type", action.type, state.showModal, state.modalMovie);
       return {
         ...state,
-        showModal: !state.showModal
+        showModal: !state.showModal,
+        modalMovie: action.movie
       };
 
     default:

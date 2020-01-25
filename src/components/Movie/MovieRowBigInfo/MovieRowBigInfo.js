@@ -75,7 +75,7 @@ class MovieRowBigInfo extends Component {
                     <button
                       style={{ height: "50px", width: "100px" }}
                       onClick={() => {
-                        this.props.onToggleModal();
+                        this.props.onToggleModal(this.props.movie);
                         this.props.onToggleGlobalScrollbars();
                       }}
                     >
@@ -109,7 +109,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onToggleModal: () => dispatch(actions.toggleModal()),
+    onToggleModal: (movie) => dispatch(actions.toggleModal(movie)),
     onToggleGlobalScrollbars: () => dispatch(actions.toggleGlobalScrollbars()) // follow this thread
   };
 };
