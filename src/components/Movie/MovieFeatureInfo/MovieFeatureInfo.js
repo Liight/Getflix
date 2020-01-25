@@ -5,33 +5,42 @@ const MovieFeatureInfo = props => {
   return (
     <div
       className="movie-feature-info-container"
-      style={{
-        // backgroundImage: "url(" + props.movie.posterUrl + ")",
-        // backgroundRepeat: "no-repeat",
-        // backgroundSize: "",
-      }}
+      style={
+        {
+          // backgroundImage: "url(" + props.movie.posterUrl + ")",
+          // backgroundRepeat: "no-repeat",
+          // backgroundSize: "",
+        }
+      }
     >
       <div
         className="movie-feature-info-column"
         style={{ paddingLeft: window.innerWidth / 12 }}
       >
-        <span className="movie-feature-title">{props.movie.title}</span>
-        <span className="movie-feature-tagline">{props.movie.tagline}</span>
-        <span>
-          <span className="movie-feature-status">
-            {props.movie.status + " "}
-          </span>
-          <span className="movie-feature-release-date">
-            {props.movie.release_date.length > 0
-              ? props.movie.release_date.slice(0, 4) + " "
-              : null}
-          </span>
-          <span className="movie-feature-runtime">
-            {" "}
-            {props.movie.runtime} mins
-          </span>
-        </span>
-        <span className="movie-feature-overview">{props.movie.overview}</span>
+        <div class="table-container" role="table" aria-label="Destinations">
+          <div class="flex-row title">{props.movie.title}</div>
+          <div class="flex-row tagline">{props.movie.tagline}</div>
+
+          <div class="flex-row multi-on-line">
+            <div class="flex-row status">
+              {props.movie.status + " "}
+              {props.movie.release_date.length > 0
+                ? props.movie.release_date.slice(0, 4) + " "
+                : null}
+            </div>
+            <div class="flex-row runtime">
+              {" " + props.movie.runtime + "mins"}
+            </div>
+            <div class="flex-row rating">
+              {"popularity: " + props.movie.popularity}
+            </div>
+            <div class="flex-row rating">
+              {"voteAv: " + props.movie.vote_average}
+            </div>
+          </div>
+
+          <div class="flex-row overview">{props.movie.overview}</div>
+        </div>
       </div>
       <div
         className="movie-feature-image-column"
