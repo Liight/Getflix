@@ -10,51 +10,6 @@
     overflow: hidden;
 }
 
-.movie-feature-info-column {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-    width: 60%;
-    height: 100%;
-    color: #fff;
-    padding: 5em 1em 1em 0em;
-}
-
-.movie-feature-image-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-    height: 100%;
-}
-
-.movie-feature-title {
-    font-size: 6em;
-}
-
-.movie-feature-tagline {
-    font-size: 2em;
-}
-
-.movie-feature-status {
-    font-size: 2em;
-}
-
-.movie-feature-release-date {
-    font-size: 2em;
-}
-
-.movie-feature-runtime {
-    font-size: 2em;
-}
-
-.movie-feature-overview {
-    font-size: 1.7em;
-}
-
-
 /* arrows */
 
 .movie-feature-arrow {
