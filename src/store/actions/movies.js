@@ -237,6 +237,7 @@ const callGetMovieImageData = async MovieObjectsArray => {
   let promises = [];
 
   for (let i = 0; i < moviesWithImages.length - 1; i++) {
+    // Portrait
     promises.push(
       axios
         .get(
@@ -247,6 +248,30 @@ const callGetMovieImageData = async MovieObjectsArray => {
             params: {
               api_key: apiKey,
               page: 1
+            }
+          }
+        )
+        .then(response => {
+          moviesWithImages[i].posterUrl =
+            prefix + response.data.posters[0].file_path;
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    );
+    // Landscape
+    promises.push(
+      axios
+        .get(
+          "https://api.themoviedb.org/3/movie/" +
+            moviesWithImages[i].id +
+            "/images?",
+          {
+            params: {
+              api_key: apiKey,
+              page: 1,
+              language: "en-US",
+              include_image_language: null
             }
           }
         )

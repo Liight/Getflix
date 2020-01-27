@@ -18,6 +18,7 @@
         align-items: center;
         justify-content: center;
         height: 500px;
+        width: 100%;
     }
     
     .movie-row-items-container {
@@ -25,10 +26,11 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: flex-start;
-        padding: 0;
+        padding: 0 0 0 100px;
         margin: auto;
         overflow-x: scroll;
         overflow: hidden;
+        /* hide this to hide horizontal scrollbar */
         scroll-behavior: smooth;
     }
     
@@ -57,6 +59,9 @@
         left: 0px;
         width: 100px;
         height: 300px;
+        z-index: 1000;
+        transition: .3s ease-in-out;
+        background-color: rgba(0, 0, 0, 0.5);
     }
     
     .rightArrow {
@@ -68,17 +73,19 @@
         right: 0px;
         width: 100px;
         height: 300px;
+        z-index: 1000;
         transition: .3s ease-in-out;
+        background-color: rgba(0, 0, 0, 0.5);
     }
     
     .leftArrow:hover {
         cursor: pointer;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(0, 0, 0, 0.7);
     }
     
     .rightArrow:hover {
         cursor: pointer;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(0, 0, 0, 0.7);
     }
     
     .row-heading {

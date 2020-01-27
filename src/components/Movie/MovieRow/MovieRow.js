@@ -6,86 +6,28 @@ import MovieRowItem from "../MovieRowItem/MovieRowItem";
 // props: movieList
 
 class MovieRow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
   state = {
-    buttonEnabled: true,
-    focusedSection: 0
+    scrollLeftValue: 0
   };
 
-  toggleButtonOnTimer = () => {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        buttonEnabled: false
-      };
-    });
-    setTimeout(() => {
-      this.setState(prevState => {
-        return {
-          ...prevState,
-          buttonEnabled: true
-        };
-      });
-    }, window.innerWidth / 2);
-  };
 
   render() {
     // console.log("movie row rendered ", props);
 
-    // Dynamic Refs
-    let scrollerRefs = [];
-    const setRef = ref => {
-      scrollerRefs.push(ref);
-    };
-    // Navigate Refs
-    // Handle left and right second input to fix this bug in navaigation
-    let focusedSection = this.state.focusedSection;
-
-    const focusInput = (id, direction) => {
-      const highLimit = scrollerRefs.length - 1;
-      const lowLimit = 0;
-
-      console.log("scrollerRefs", scrollerRefs.length - 1);
-
-      // Available check
-      if (!this.state.buttonEnabled) {
-        return 0;
+    const focusInput = direction => {
+      const node = this.myRef.current;
+      if (direction === "right") {
+        node.scrollLeft += Math.floor((window.innerWidth - 100) / 200) * 200;
+      } else if (direction === "left") {
+        node.scrollLeft -= Math.floor((window.innerWidth - 100) / 200) * 200;
       }
-
-      console.log("id b4 ", id);
-
-      // Keep in Bounds Checks
-      if (id <= lowLimit && direction === "left") {
-        id = lowLimit;
-      } else if (id <= lowLimit && direction === "right") {
-        id = lowLimit + 1;
-        console.log('id <= lowLimit && direction === "right"');
-      } else if (id > lowLimit && id < highLimit && direction === "left") {
-        id = id - 1;
-      } else if (id > lowLimit && id < highLimit && direction === "right") {
-        id = id + 1;
-        console.log('id > lowLimit && id < highLimit && direction === "right"');
-      } else if (id >= highLimit && direction === "right") {
-        id = highLimit;
-      } else if (id >= highLimit && direction === "left") {
-        id = highLimit - 1;
-      }
-
-      this.setState((prevState)=>{return{...prevState, focusedSection: id}})
-      focusedSection = id; // Save focused section
-
-      console.log("id after ", id);
-
-      this.toggleButtonOnTimer();
-      scrollerRefs[id].scrollIntoView(
-        {
-          alignTo: false,
-          behavior: "smooth",
-          block: "nearest",
-          inline: "nearest"
-        },
-        () => {}
-      ); // Scroll selected section into view
     };
+
     // Define movie row sections as an array of sub arrays
     let numberOfMovieRowSections = 0;
     let movieRowSections = [];
@@ -137,7 +79,7 @@ class MovieRow extends React.Component {
               className="movie-row-section"
               style={{}}
               key={Math.random() * 10}
-              ref={setRef}
+              // ref={setRef}
             >
               {section.map(movie => {
                 return (
@@ -172,11 +114,10 @@ class MovieRow extends React.Component {
         >
           {this.props.category}
         </span>
-        <div className="movie-row" style={{ width: window.innerWidth - 200 }}>
-          <div
-            className="leftArrow"
-            onClick={() => focusInput(focusedSection, "left")}
-          >
+        <div className="movie-row">
+          {" "}
+          {/*  style={{ width: window.innerWidth - 200 }} */}
+          <div className="leftArrow" onClick={() => focusInput("left")}>
             {/* <span id="left" onClick={event => handleClick(event.target)}> */}
             <span id="left">
               <svg
@@ -213,21 +154,13 @@ class MovieRow extends React.Component {
             </span>
           </div>
           <div
+            id="movie-row-items-container"
             className="movie-row-items-container"
-            style={{
-              marginRight:
-                (window.innerWidth - (movieRowSections[0].length + 1) * 200) /
-                2,
-              marginLeft:
-                (window.innerWidth - (movieRowSections[0].length + 1) * 200) / 2
-            }}
+            ref={this.myRef}
           >
             {movieRowItems}
           </div>
-          <div
-            className="rightArrow"
-            onClick={() => focusInput(focusedSection, "right")}
-          >
+          <div className="rightArrow" onClick={() => focusInput("right")}>
             <span id="right">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
