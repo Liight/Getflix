@@ -10,9 +10,28 @@ class MovieFeature extends Component {
   }
   state = {
     movieList: this.props.movieList,
-    autoNextFeatureSlider: true,
+    autoNextFeatureSlider: false,
     scrollLeft: 0,
-    thisNode: null
+    thisNode: null,
+    buttonEnabled: true
+  };
+
+  toggleButton = () => {
+    let current = this.state.buttonEnabled;
+    if (current) {
+      this.setState(
+        prevState => {
+          return { ...prevState, buttonEnabled: false };
+        },
+        () => {
+          setTimeout(() => {
+            this.setState(prevState => {
+              return { ...prevState, buttonEnabled: true };
+            });
+          }, 1000);
+        }
+      );
+    }
   };
 
   componentWillMount() {
@@ -35,11 +54,15 @@ class MovieFeature extends Component {
   };
 
   focusInput = direction => {
-    const node = this.myRef.current;
-    if (direction === "right") {
-      node.scrollLeft += Math.floor(window.innerWidth);
-    } else if (direction === "left") {
-      node.scrollLeft -= Math.floor(window.innerWidth);
+    let buttonEnabled = this.state.buttonEnabled;
+    if (buttonEnabled) {
+      const node = this.myRef.current;
+      if (direction === "right") {
+        node.scrollLeft += Math.floor(window.innerWidth);
+      } else if (direction === "left") {
+        node.scrollLeft -= Math.floor(window.innerWidth);
+      }
+      this.toggleButton();
     }
   };
 

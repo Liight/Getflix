@@ -132,9 +132,10 @@ class App extends Component {
       <div className="App">
         <TopBar />
         {featureMovies}
+        {latestMovieRow}
         {topRatedMovieRow}
         {someOtherMovieRow}
-        {latestMovieRow}
+
         <Footer />
         <Modal />
       </div>

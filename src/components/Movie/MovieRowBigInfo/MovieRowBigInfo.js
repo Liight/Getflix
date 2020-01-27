@@ -6,9 +6,7 @@ import * as actions from "../../../store/actions";
 import "./MovieRowBigInfo.css";
 
 class MovieRowBigInfo extends Component {
-  state = {
-
-  };
+  state = {};
 
   render() {
     console.log(
@@ -23,8 +21,7 @@ class MovieRowBigInfo extends Component {
     let BigInfo =
       this.props.movie === "" ||
       this.props.thisRowsBigInfoKey !== this.props.activeBigInfoKey
-        ? 
-          (console.log("else: dont show"),
+        ? (console.log("else: dont show"),
           (<div className="movie-row-big-info-wrapper no-reveal"></div>))
         : (console.log("evaluating to show"),
           (
@@ -37,55 +34,60 @@ class MovieRowBigInfo extends Component {
                   }}
                 >
                   <div className="info-column-top">
-                    <div
-                      class="table-container"
-                      role="table"
-                      aria-label="Destinations"
-                    >
-                      <div class="flex-row title">{this.props.movie.title}</div>
-                      <div class="flex-row tagline">
-                        {this.props.movie.tagline}
+                    <div class="table-container">
+                      <div class="row ">
+                        <span className="title">{this.props.movie.title}</span>
+                      </div>
+                      <div class="row ">
+                        <span className="tagline">
+                          {this.props.movie.tagline}
+                        </span>
                       </div>
 
-                      <div class="flex-row multi-on-line">
-                        <div class="flex-row status">
-                          {this.props.movie.status + " "}
-                          {this.props.movie.release_date.length > 0
-                            ? this.props.movie.release_date.slice(0, 4) + " "
-                            : null}
+                      <div class="row-multiLine">
+                        <div class="row-multiLine-item">
+                          {/* {props.movie.status + " "} */}
+                          <span className=" release-date">
+                            {this.props.movie.release_date.length > 0
+                              ? this.props.movie.release_date.slice(0, 4) + " "
+                              : null}
+                          </span>
                         </div>
-                        <div class="flex-row runtime">
-                          {" " + this.props.movie.runtime + "mins"}
+                        <div class="row-multiLine-item ">
+                          <span className="runtime">
+                            {this.props.movie.runtime + " mins"}
+                          </span>
                         </div>
-                        <div class="flex-row rating">
-                          {"popularity: " + this.props.movie.popularity}
-                        </div>
-                        <div class="flex-row rating">
-                          {"voteAv: " + this.props.movie.vote_average}
+                        <div className="row-multiLine-item">
+                          <span className="genres">
+                            {this.props.movie.genres.slice(0, 4).map(g => {
+                              return <span>{g.name + ", "}</span>;
+                            })}
+                          </span>
                         </div>
                       </div>
 
-                      <div class="flex-row overview">
-                        {this.props.movie.overview}
+                      <div class="row ">
+                        <span className="overview">
+                          {this.props.movie.overview}
+                        </span>
+                      </div>
+
+                      <div class="row button-row">
+                        <div
+                          className="button"
+                          onClick={() => {
+                            this.props.onToggleModal(this.props.movie);
+                            this.props.onToggleGlobalScrollbars();
+                          }}
+                        >
+                          <span className="button-text">More Info</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-
-                  <div className="info-column-bottom">
-                    <button
-                      style={{ height: "50px", width: "100px" }}
-                      onClick={() => {
-                        this.props.onToggleModal(this.props.movie);
-                        this.props.onToggleGlobalScrollbars();
-                      }}
-                    >
-                      More Info
-                    </button>
-                  </div>
                 </div>
-                <div
-                  className="image-column"
-                >
+                <div className="image-column">
                   <img
                     src={this.props.movie.posterUrl}
                     alt=""
@@ -109,7 +111,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onToggleModal: (movie) => dispatch(actions.toggleModal(movie)),
+    onToggleModal: movie => dispatch(actions.toggleModal(movie)),
     onToggleGlobalScrollbars: () => dispatch(actions.toggleGlobalScrollbars()) // follow this thread
   };
 };
