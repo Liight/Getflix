@@ -51,17 +51,17 @@ class MovieRow extends React.Component {
           _movieRowSections[0].length !==
           _movieRowSections[_movieRowSections.length - 1].length
         ) {
-          let additionalChunkLength =
-            _movieRowSections[0].length -
-            _movieRowSections[_movieRowSections.length - 1].length;
+          // let additionalChunkLength =
+          //   _movieRowSections[0].length -
+          //   _movieRowSections[_movieRowSections.length - 1].length;
           // generate empty objects
-          let additionalChunk = {};
+          // let additionalChunk = {};
           // push changes to array
-          for (let j = 0; j < additionalChunkLength; j++) {
-            _movieRowSections[_movieRowSections.length - 1].push(
-              additionalChunk
-            );
-          }
+          // for (let j = 0; j < additionalChunkLength; j++) {
+          //   _movieRowSections[_movieRowSections.length - 1].push(
+          //     additionalChunk
+          //   );
+          // }
           _movieRowSections[_movieRowSections.length - 1].push();
         }
       };

@@ -14,8 +14,8 @@ const Modal = props => {
     props.onToggleGlobalScrollbars();
   };
 
-  if(props.addMovieInfo === undefined){
-    alert('movie not found')
+  if (props.addMovieInfo === undefined) {
+    alert("movie not found");
   }
 
   let modal = props.showModal ? (
@@ -129,13 +129,21 @@ const Modal = props => {
             <div className="modal-video">
               <iframe
                 title="videoPlayer"
-                width={window.innerWidth / 1.3}
-                height={(window.innerWidth / 1.3) * 0.6}
+                width={window.innerWidth / 1.6}
+                height={(window.innerWidth / 1.6) * 0.6}
                 src={
                   "https://www.youtube.com/embed/" +
                   props.movie.videos.results[0].key
                 }
               ></iframe>
+            </div>
+          </div>
+          <div className="modal-flex-row">
+            <div className="modal-bottom-info">
+              <div className="modal-flex-row">
+                <span className="modal-bottom-info-text">Info</span>
+              </div>
+              <span className="modal-bottom-info-text">Info</span>
             </div>
           </div>
         </div>
