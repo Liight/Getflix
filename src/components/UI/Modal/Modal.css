@@ -42,6 +42,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        padding-bottom: 100px;
     }
     
     .modal-column {
@@ -140,6 +141,7 @@
     .modal-text-center {
         align-items: center;
         justify-content: center;
+        text-align: center;
     }
     
     .modal-ratings {
@@ -161,5 +163,15 @@
     
     .modal-ratings-text {
         color: white;
-        font-size: 2rem;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    .modal-video {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }

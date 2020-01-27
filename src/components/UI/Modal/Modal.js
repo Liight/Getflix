@@ -82,21 +82,23 @@ const Modal = props => {
               {/** Cast */}
               <div className="modal-flex-row ">
                 <span className="modal-text">
-                  {"Directed by: " + props.addMovieInfo.Director
-                    ? props.addMovieInfo.Director
+                  {props.addMovieInfo.Director
+                    ? "Directed by: " + props.addMovieInfo.Director
                     : null}
                 </span>
               </div>
               <div className="modal-flex-row ">
                 <span className="modal-text">
-                  {"Writers: " + props.addMovieInfo.Writer
-                    ? props.addMovieInfo.Writer
+                  {props.addMovieInfo.Writer
+                    ? "Writers: " + props.addMovieInfo.Writer
                     : null}
                 </span>
               </div>
               <div className="modal-flex-row ">
                 <span className="modal-text">
-                  {"Cast: " + props.addMovieInfo.Actors ? props.addMovieInfo.Actors : null}
+                  {props.addMovieInfo.Actors
+                    ? "Cast: " + props.addMovieInfo.Actors
+                    : null}
                 </span>
               </div>
             </div>

@@ -75,7 +75,7 @@
 }
 
 .row-multiLine-item:last-child {
-    flex: 4;
+    flex: 3;
     display: flex;
     flex-direction: row;
     align-items: center;
