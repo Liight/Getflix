@@ -110,23 +110,25 @@ export const updateAndAddMoviesListLatest = list => {
   };
 };
 
+// callGetMovieVideoData
+
 export const toggleModal = movie => {
   return dispatch => {
-asyncWrapperSingle(getOMBDMovieData, movie).then(response => {
-  dispatch(updateModal(movie, response));
-});
-
-    
+    asyncWrapperDouble(getOMBDMovieData, callGetMovieVideoData, movie).then(
+      response => {
+        dispatch(updateModal(movie, response));
+      }
+    );
   };
 };
 
 export const updateModal = (movie, additionalInfo) => {
-return {
-  type: actionTypes.TOGGLE_MODAL,
-  movie: movie,
-  additionalInfo: additionalInfo
+  return {
+    type: actionTypes.TOGGLE_MODAL,
+    movie: movie,
+    additionalInfo: additionalInfo
+  };
 };
-}
 
 const asyncWrapper = async (func1, func2, func3) => {
   return await func1().then(response => {
@@ -141,10 +143,26 @@ const asyncWrapper = async (func1, func2, func3) => {
   });
 };
 
-const asyncWrapperSingle = async (func, movie) => {
-  return await func(movie).then(response => {
-    return response;
-  });
+const asyncWrapperDouble = async (func, func2, movie) => {
+  let originalMovie = movie;
+  let addedInfo = {};
+  let video = {};
+  return await func(originalMovie)
+    .then(response => {
+      console.log(response)
+      if(response === 0){
+        return 0;
+      }
+      addedInfo = response;
+      return func2(originalMovie).then(response => {
+        video = response.videos;
+      });
+    })
+    .then(() => {
+      addedInfo.newVideos = video;
+        return addedInfo;
+     
+    });
 };
 
 const getTopRatedMovieIdsList = async () => {
@@ -278,6 +296,32 @@ const callGetMovieImageData = async MovieObjectsArray => {
 
   return Promise.all(promises).then(() => {
     return moviesWithImages;
+  });
+};
+
+const callGetMovieVideoData = async movie => {
+  if(movie !== {}){return 0}
+  let promises = [];
+
+  // Portrait
+  promises.push(
+    axios
+      .get("https://api.themoviedb.org/3/movie/" + movie.id + "/videos?", {
+        params: {
+          api_key: apiKey,
+          page: 1
+        }
+      })
+      .then(response => {
+        movie.videos = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  );
+
+  return Promise.all(promises).then(() => {
+    return movie;
   });
 };
 
