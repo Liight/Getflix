@@ -30,83 +30,61 @@ const Modal = props => {
           </div>
           <div className="modal-double-column">
             <div className="modal-inner-display-info">
-              <div className="modal-flex-row modal-text">
-                {"title: " + props.movie.title}
+              {/** Description */}
+              <div className="modal-flex-row modal-text-center">
+                <span className="modal-text ">{props.addMovieInfo.Awards}</span>
               </div>
-              <div className="modal-flex-row modal-text">
-                {"budget: " + props.movie.budget}
+              <div className="modal-flex-row">
+                <span className="modal-text">{props.addMovieInfo.Plot}</span>
               </div>
-              <div className="modal-flex-row modal-text">
-                {"homepage: " + props.movie.homepage}
-              </div>
-              <div className="modal-flex-row modal-text">
-                {"original language: " + props.movie.original_language}
-              </div>
-              <div className="modal-flex-row modal-text">
-                {"original title: " + props.movie.original_title}
-              </div>
-              <div className="modal-flex-row modal-text">
-                {"overview: " + props.movie.overview}
-              </div>
-              <div className="modal-flex-row modal-text">
-                {"popularity: " + props.movie.popularity}
-              </div>
-              {/* <div className="">{props.movie.poster_path}</div> */}
-              <div className="modal-flex-row modal-text">
-                {"release date: " + props.movie.release_date}
-              </div>
-              <div className="modal-flex-row modal-text">
-                {"revenue: " + props.movie.revenue}
-              </div>
-              <div className="modal-flex-row modal-text">
-                {"runtime: " + props.movie.runtime}
-              </div>
-              <div className="modal-flex-row modal-text">
-                {"status: " + props.movie.status}
-              </div>
-              <div className="modal-flex-row modal-text">
-                {"tagline: " + props.movie.tagline}
-              </div>
-              {/* <div className="">{props.movie.video}</div> */}
-              <div className="modal-flex-row modal-text">
-                {"vote average: " + props.movie.vote_average}
-              </div>
-              <div className="modal-flex-row modal-text">
-                {"vote count: " + props.movie.vote_count}
-              </div>
-              {/* <div className="">{props.movie.posterUrl}</div> */}
+              {/** Modal MultiLine */}
+              <div className="modal-multiLine">
+                <div className="modal-multiline-item">
+                  <span className="modal-text">{props.addMovieInfo.Year}</span>
+                </div>
 
-              <div className="modal-flex-row modal-text">
-                {"Genres: "}
-                {props.movie.genres.map(g => {
-                  return <div className="">{g.name + ", "}</div>;
-                })}
+                <div className="modal-multiline-item">
+                  <span className="modal-text">
+                    {props.addMovieInfo.Runtime}
+                  </span>
+                </div>
               </div>
-
-              <div className="modal-flex-row modal-text">
-                {"Production Companies: "}
-                {props.movie.production_companies.map(pc => {
-                  return <div className="">{pc.name + ", "}</div>;
-                })}
+              <div className="modal-flex-row">
+                <span className="modal-text">{props.addMovieInfo.Genre}</span>
               </div>
-
-              <div className="modal-flex-row modal-text">
-                {"Production Countries: "}
-                {props.movie.production_countries.map(pc => {
-                  return <div className="">{pc.name}</div>;
-                })}
+              {/** Modal multiLine ends */}
+              {/** Cast */}
+              <div className="modal-flex-row ">
+                <span className="modal-text">
+                  {"Directed by: " + props.addMovieInfo.Director}
+                </span>
               </div>
-
-              <div className="modal-flex-row modal-text">
-                {"Spoken Languages: "}
-                {props.movie.spoken_languages.map(sl => {
-                  return <div className="">{sl.name + ", "}</div>;
-                })}
+              <div className="modal-flex-row ">
+                <span className="modal-text">
+                  {"Writers: " + props.addMovieInfo.Writer}
+                </span>
+              </div>
+              <div className="modal-flex-row ">
+                <span className="modal-text">
+                  {"Cast: " + props.addMovieInfo.Actors}
+                </span>
               </div>
             </div>
 
             <div className="modal-inner-display-image">
               <img src={props.movie.posterUrl} alt=""></img>
+            </div>
+          </div>
+          {/** Ratings */}
+          <div className="modal-flex-row">
+            <div className="modal-ratings">
+              <span className="modal-text">Ratings</span>
+            </div>
+          </div>
+          {/** Video */}
+          <div className="modal-flex-row">
+            <div className="modal-video">
+              <span className="modal-text">Video</span>
             </div>
           </div>
         </div>
