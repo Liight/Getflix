@@ -1,109 +1,67 @@
 import React, { Component } from "react";
 import "./MovieFeature.css";
 
-import { CSSTransition } from "react-transition-group";
-
 import MovieFeatureInfo from "../../components/Movie/MovieFeatureInfo/MovieFeatureInfo";
 
 class MovieFeature extends Component {
-  
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
   state = {
     movieList: this.props.movieList,
-    currentMovie: 0,
-    showFeature: true,
-    animationSyncTimer:200,
-    transitionDirection: "example",
-    autoNextFeatureSlider: false
+    autoNextFeatureSlider: true,
+    scrollLeft: 0,
+    thisNode: null
   };
+
+  componentWillMount() {
+    this.setState(prevState => {
+      return { ...prevState, thisNode: this.myRef.current };
+    });
+  }
 
   componentDidMount() {
     if (this.state.autoNextFeatureSlider) {
       this.setAutoNextFeatureOn();
     }
+    console.log("this.state.thisNode", this.state.thisNode);
   }
 
   setAutoNextFeatureOn = () => {
     setInterval(() => {
-      this.nextMovie();
+      this.focusInput("right");
     }, 5000);
   };
 
-  nextMovie = () => {
-    // Increments state.currentMovie by 1
-    this.setState(
-      prevState => {
-        return {
-          ...prevState,
-          showFeature: false,
-          transitionDirection: "example-right"
-        };
-      },
-      () => {
-        setTimeout(() => {
-          if (this.state.currentMovie === this.state.movieList.length - 1) {
-            this.setState(prevState => {
-              return {
-                ...prevState,
-                currentMovie: 0,
-                showFeature: true
-              };
-            });
-          } else {
-            this.setState(prevState => {
-              return {
-                ...prevState,
-                currentMovie: this.state.currentMovie + 1,
-                showFeature: true
-              };
-            });
-          }
-        }, this.state.animationSyncTimer);
-      }
-    );
-  };
-
-  prevMovie = () => {
-    // Decreases state.currentMovie by 1
-    this.setState(
-      prevState => {
-        return {
-          ...prevState,
-          showFeature: false,
-          transitionDirection: "example"
-        };
-      },
-      () => {
-        setTimeout(() => {
-          if (this.state.currentMovie === 0) {
-            this.setState(prevState => {
-              return {
-                ...prevState,
-                currentMovie: this.state.movieList.length - 1,
-                showFeature: true
-              };
-            });
-          } else {
-            this.setState(prevState => {
-              return {
-                ...prevState,
-                currentMovie: this.state.currentMovie - 1,
-                showFeature: true
-              };
-            });
-          }
-        }, this.state.animationSyncTimer);
-      }
-    );
+  focusInput = direction => {
+    const node = this.myRef.current;
+    if (direction === "right") {
+      node.scrollLeft += Math.floor(window.innerWidth);
+    } else if (direction === "left") {
+      node.scrollLeft -= Math.floor(window.innerWidth);
+    }
   };
 
   render() {
-    let movie = this.state.movieList[this.state.currentMovie];
+    // let movie = this.state.movieList[this.state.currentMovie];
+    let movieList = this.state.movieList;
+
+    let movieListComponents = movieList.map(movie => {
+      return (
+        <MovieFeatureInfo
+          movie={movie}
+          key={Math.random() * 1000}
+          style={{ width: "100%" }}
+        />
+      );
+    });
 
     return (
-      <div className="movie-feature-container">
+      <div className="movie-feature-container" ref={this.myRef}>
         <div
           className="movie-feature-arrow movie-feature-arrow-left"
-          onClick={() => this.prevMovie()}
+          onClick={() => this.focusInput("left")}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -139,18 +97,11 @@ class MovieFeature extends Component {
         </div>
         {/* Movie */}
 
-        <CSSTransition
-          in={this.state.showFeature}
-          classNames={this.state.transitionDirection}
-          timeout={this.state.animationSyncTimer}
-        >
-          <MovieFeatureInfo movie={movie} key={Math.random() * 1000} />
-        </CSSTransition>
-
-        {/* Movie End */}
+        <div className="movie-feature-row">{movieListComponents}</div>
+        {/* Movies End */}
         <div
           className="movie-feature-arrow movie-feature-arrow-right"
-          onClick={() => this.nextMovie()}
+          onClick={() => this.focusInput("right")}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

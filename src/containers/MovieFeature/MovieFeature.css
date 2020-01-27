@@ -1,19 +1,27 @@
 .movie-feature-container {
-    position: relative;
+    /* position: relative; */
     /* background-color: aqua; */
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: 50px;
+    width: 100%;
     height: 500px;
     overflow: hidden;
+    /* overflow-x: scroll; */
+    scroll-behavior: smooth;
 }
+
 
 /* arrows */
 
+.movie.feature.row {
+    width: 100%;
+}
+
 .movie-feature-arrow {
-    position: absolute;
+    margin-top: 6em;
     z-index: 1000;
     height: 500px;
     width: 100px;
@@ -27,68 +35,17 @@
 
 .movie-feature-arrow:hover {
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .movie-feature-arrow-left {
+    position: absolute;
     left: 0;
     top: 0;
 }
 
 .movie-feature-arrow-right {
+    position: absolute;
     right: 0;
     top: 0;
-}
-
-
-/* Feature Info transitions  */
-
-
-/* left */
-
-.example-enter {
-    /* opacity: 0.01; */
-    transform: translate(-100%);
-}
-
-.example-enter.example-enter-active {
-    /* opacity: 1; */
-    transition: all 200ms ease-in;
-    transform: translate(0%);
-}
-
-.example-exit {
-    opacity: 1;
-    transform: translateY(0%);
-}
-
-.example-exit.example-exit-active {
-    opacity: 0.01;
-    transform: translate(+50%);
-    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
-}
-
-
-/* right */
-
-.example-right-enter {
-    /* opacity: 0.01; */
-    transform: translate(105%);
-}
-
-.example-right-enter.example-right-enter-active {
-    /* opacity: 1; */
-    transition: all 200ms ease-in;
-    transform: translate(0%);
-}
-
-.example-right-exit {
-    opacity: 1;
-    transform: translateY(0%);
-}
-
-.example-right-exit.example-right-exit-active {
-    opacity: 0.01;
-    transform: translate(-50%);
-    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
 }

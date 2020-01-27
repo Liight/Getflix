@@ -1,17 +1,24 @@
 /* Fix Later: Some element styles (table) are not set in this file 
 they can be found in MovieBigRowInfo.css  */
+
 .movie-feature-info-container {
     position: relative;
     /* background-color: green; */
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: 50px;
     height: 500px;
     width: 100%;
 }
 
+.movie-feature-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
 
 .movie-feature-info-column {
     display: flex;

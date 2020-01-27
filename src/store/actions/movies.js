@@ -260,29 +260,29 @@ const callGetMovieImageData = async MovieObjectsArray => {
         })
     );
     // Landscape
-    promises.push(
-      axios
-        .get(
-          "https://api.themoviedb.org/3/movie/" +
-            moviesWithImages[i].id +
-            "/images?",
-          {
-            params: {
-              api_key: apiKey,
-              page: 1,
-              language: "en-US",
-              include_image_language: null
-            }
-          }
-        )
-        .then(response => {
-          moviesWithImages[i].posterUrl =
-            prefix + response.data.posters[0].file_path;
-        })
-        .catch(error => {
-          console.log(error);
-        })
-    );
+    // promises.push(
+    //   axios
+    //     .get(
+    //       "https://api.themoviedb.org/3/movie/" +
+    //         moviesWithImages[i].id +
+    //         "/images?",
+    //       {
+    //         params: {
+    //           api_key: apiKey,
+    //           page: 1,
+    //           language: "en-US",
+    //           include_image_language: null
+    //         }
+    //       }
+    //     )
+    //     .then(response => {
+    //       moviesWithImages[i].posterUrl =
+    //         prefix + response.data.posters[0].file_path;
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     })
+    // );
   }
 
   return Promise.all(promises).then(() => {
