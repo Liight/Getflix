@@ -116,6 +116,7 @@ export const toggleModal = movie => {
   return dispatch => {
     asyncWrapperDouble(getOMBDMovieData, callGetMovieVideoData, movie).then(
       response => {
+        console.log('RESPONSE ::::', response)
         dispatch(updateModal(movie, response));
       }
     );
@@ -149,20 +150,23 @@ const asyncWrapperDouble = async (func, func2, movie) => {
   let video = {};
   return await func(originalMovie)
     .then(response => {
-      console.log(response)
+      console.log("ASYNC ::: ", response);
       if(response === 0){
         return 0;
       }
       addedInfo = response;
-      return func2(originalMovie).then(response => {
-        video = response.videos;
-      });
+
+      return func2(originalMovie)
+        .then(response => {
+          video = response.videos;
+        })
+
+        .then(() => {
+          addedInfo.newVideos = video;
+          console.log("ASYNC ::: ", addedInfo.newVideos);
+          return addedInfo;
+        });
     })
-    .then(() => {
-      addedInfo.newVideos = video;
-        return addedInfo;
-     
-    });
 };
 
 const getTopRatedMovieIdsList = async () => {
@@ -300,7 +304,7 @@ const callGetMovieImageData = async MovieObjectsArray => {
 };
 
 const callGetMovieVideoData = async movie => {
-  if(movie !== {}){return 0}
+  if(!movie){return {}}
   let promises = [];
 
   // Portrait
@@ -313,6 +317,7 @@ const callGetMovieVideoData = async movie => {
         }
       })
       .then(response => {
+        console.log('VIDEO :::', response.data)
         movie.videos = response.data;
       })
       .catch(error => {
