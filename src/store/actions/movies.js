@@ -4,13 +4,13 @@ import * as localStorageHandler from "../../utility/localStorage";
 import axios from "axios";
 import { apiKey } from "../../secret/secret";
 
-export const updateActiveBigInfoKey = (key) => {
-  console.log('ACTION: global key to be updated next ', key);
+export const updateActiveBigInfoKey = key => {
+  console.log("ACTION: global key to be updated next ", key);
   return {
     type: actionTypes.UPDATE_ACTIVE_BIG_INFO_KEY,
     activeBigInfoKey: key
   };
-}
+};
 
 export const getTopRatedMovies = () => {
   return dispatch => {
@@ -65,9 +65,7 @@ export const getSomeOtherMovies = () => {
 export const getLatestMovies = () => {
   return dispatch => {
     // Check if we've already called the api and stored the result in localStorage
-    if (
-      localStorageHandler.getLocalStorageKeyCheck("updatedMovieListLatest")
-    ) {
+    if (localStorageHandler.getLocalStorageKeyCheck("updatedMovieListLatest")) {
       // console.log("local storage key confirmed in actions");
       let localStorageLatestMovies = localStorageHandler.getLocalStorage(
         "updatedMovieListLatest"
@@ -112,11 +110,22 @@ export const updateAndAddMoviesListLatest = list => {
   };
 };
 
-export const toggleModal = (movie) => {
-  return {
-    type: actionTypes.TOGGLE_MODAL,
-    movie: movie
-  }
+export const toggleModal = movie => {
+  return dispatch => {
+asyncWrapperSingle(getOMBDMovieData, movie).then(response => {
+  dispatch(updateModal(movie, response));
+});
+
+    
+  };
+};
+
+export const updateModal = (movie, additionalInfo) => {
+return {
+  type: actionTypes.TOGGLE_MODAL,
+  movie: movie,
+  additionalInfo: additionalInfo
+};
 }
 
 const asyncWrapper = async (func1, func2, func3) => {
@@ -129,6 +138,12 @@ const asyncWrapper = async (func1, func2, func3) => {
         return response;
       });
     });
+  });
+};
+
+const asyncWrapperSingle = async (func, movie) => {
+  return await func(movie).then(response => {
+    return response;
   });
 };
 
@@ -259,33 +274,36 @@ const callGetMovieImageData = async MovieObjectsArray => {
           console.log(error);
         })
     );
-    // Landscape
-    // promises.push(
-    //   axios
-    //     .get(
-    //       "https://api.themoviedb.org/3/movie/" +
-    //         moviesWithImages[i].id +
-    //         "/images?",
-    //       {
-    //         params: {
-    //           api_key: apiKey,
-    //           page: 1,
-    //           language: "en-US",
-    //           include_image_language: null
-    //         }
-    //       }
-    //     )
-    //     .then(response => {
-    //       moviesWithImages[i].posterUrl =
-    //         prefix + response.data.posters[0].file_path;
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     })
-    // );
   }
 
   return Promise.all(promises).then(() => {
     return moviesWithImages;
+  });
+};
+
+const getOMBDMovieData = async movie => {
+  if (movie === undefined) return 0;
+  let movieData = {};
+  let promises = [];
+
+  promises.push(
+    await axios
+      .get("http://www.omdbapi.com/?apikey=bfb5b4e7&t=" + movie.title + "?", {
+        params: {
+          api_key: apiKey,
+          language: "en-US"
+        }
+      })
+      .then(response => {
+        // console.log(response.data)
+        movieData = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  );
+
+  return Promise.all(promises).then(() => {
+    return movieData;
   });
 };

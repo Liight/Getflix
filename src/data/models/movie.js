@@ -1,4 +1,4 @@
-export default {
+export const movie =  {
     adult: Boolean,
     backdrop_path: String,
     belongs_to_collection: String,
@@ -25,4 +25,32 @@ export default {
     vote_average: Float32Array,
     vote_count: Number,
     posterUrl: String
+}
+
+export const movieOMDB = {
+    Title: "Ad Astra",
+Year: "2019",
+Rated: "PG-13",
+Released: "20 Sep 2019",
+Runtime: "123 min",
+Genre: "Adventure, Drama, Mystery, Sci-Fi, Thriller",
+Director: "James Gray",
+Writer: "James Gray, Ethan Gross",
+Actors: "Brad Pitt, Tommy Lee Jones, Ruth Negga, Donald Sutherland",
+Plot: "Astronaut Roy McBride undertakes a mission across an unforgiving solar system to uncover the truth about his missing father and his doomed expedition that now, 30 years later, threatens the universe.",
+Language: "English, Japanese, Russian, Norwegian",
+Country: "USA, China",
+Awards: "6 wins & 33 nominations.",
+Poster: "https://m.media-amazon.com/images/M/MV5BZTllZTdlOGEtZTBmMi00MGQ5LWFjN2MtOGEyZTliNGY1MzFiXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg",
+Ratings: [{}],
+Metascore: "80",
+imdbRating: "6.7",
+imdbVotes: "120,739",
+imdbID: "tt2935510",
+Type: "movie",
+DVD: "03 Dec 2019",
+BoxOffice: "N/A",
+Production: "20th Century Fox",
+Website: "N/A",
+Response: "True",
 }
