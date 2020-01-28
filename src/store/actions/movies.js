@@ -128,12 +128,37 @@ export const toggleModal = movie => {
 };
 
 export const toggleModalFromSearch = (movie) => {
+  console.log("movie", movie);
 return dispatch => {
-  asyncWrapperSingle(getSingleMovieAsync, movie).then(response => {
+
+  // asyncWrapperSingle(getSingleMovieAsync, movieTitle).then(response => {
+  //   dispatch(updateModal(movieTitle, response));
+  // });
+
+  asyncWrapperSpecial(
+    getSingleMovieAsync,
+    transform_IMBD_ID_to_TMBD_ID,
+    callGetMovieVideoData,
+    movie
+  ).then(response => {
     dispatch(updateModal(movie, response));
   });
+
 };
 }
+
+const asyncWrapperSpecial = async (func, func2, func3, movie) => {
+  return await func(movie.Title).then(response => {
+    console.log('RESPONSE U R Looking for : ', response)
+    return func2(response.movie.data.imdbID).then(response => {
+      console.log('this response ::: ', response)
+      movie.id = response;
+      return func3(movie).then(response => {
+        return response;
+      });
+    });
+  });
+};
 
 export const updateModal = (movie, additionalInfo) => {
   return {
@@ -414,4 +439,35 @@ const getSingleMovieAsync = async movieTitle => {
   return {
     movie
   };
+};
+
+const transform_IMBD_ID_to_TMBD_ID = async imdbID => {
+  let newImdbID = "";
+  let promises = [];
+
+  promises.push(
+    await axios
+      .get(
+        "https://api.themoviedb.org/3/find/" + imdbID ,
+        {
+          params: {
+            api_key: apiKey,
+            language: "en-US",
+            external_source: "imdb_id"
+          }
+        }
+      )
+      .then(response => {
+        // console.log('transform_IMBD_ID_to_TMBD_ID', response);
+        newImdbID = response.data.movie_results[0].id;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  );
+
+  return Promise.all(promises).then(() => {
+    // console.log("newImdbID :::::: ", newImdbID);
+    return newImdbID;
+  });
 };
