@@ -18,7 +18,7 @@ const TopBar = () => {
         <span
           className="header"
           style={{
-            width: dims.headerWidth
+            width: dims.column60Width
           }}
         >
           GETFLIX
@@ -26,7 +26,7 @@ const TopBar = () => {
         <div
           className="search"
           style={{
-            width: dims.searchWidth
+            width: dims.column40Width
           }}
         >
           <Search />

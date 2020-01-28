@@ -3,6 +3,8 @@ import "./MovieFeature.css";
 
 import MovieFeatureInfo from "../../components/Movie/MovieFeatureInfo/MovieFeatureInfo";
 
+import * as dims from "../../utility/dimensions";
+
 class MovieFeature extends Component {
   constructor(props) {
     super(props);
@@ -58,9 +60,9 @@ class MovieFeature extends Component {
     if (buttonEnabled) {
       const node = this.myRef.current;
       if (direction === "right") {
-        node.scrollLeft += Math.floor(window.innerWidth);
+        node.scrollLeft += Math.floor(dims.windowWidth);
       } else if (direction === "left") {
-        node.scrollLeft -= Math.floor(window.innerWidth);
+        node.scrollLeft -= Math.floor(dims.windowWidth);
       }
       this.toggleButton();
     }
@@ -85,6 +87,7 @@ class MovieFeature extends Component {
         <div
           className="movie-feature-arrow movie-feature-arrow-left"
           onClick={() => this.focusInput("left")}
+          style={{ width: dims.buttonWidth }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -125,6 +128,7 @@ class MovieFeature extends Component {
         <div
           className="movie-feature-arrow movie-feature-arrow-right"
           onClick={() => this.focusInput("right")}
+          style={{ width: dims.buttonWidth }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

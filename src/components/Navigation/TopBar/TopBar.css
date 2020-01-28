@@ -1,6 +1,6 @@
 .top-bar-container {
     background-color: transparent;
-    height: 6em;
+    height: 50px;
     width: 100%;
     position: relative;
     color: white;
@@ -8,11 +8,12 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: 1rem;
+    /* padding-bottom: 1rem; */
 }
 
 .header {
-    font-size: 4em;
+    /* font-size: 4em; */
+    line-height: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,6 +37,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        height: 100px;
     }
 }
 
@@ -44,7 +46,9 @@
         font-size: 48px;
     }
     .search {}
-    .top-bar-container {}
+    .top-bar-container {
+        
+    }
 }
 
 @media only screen and (min-width: 900px) {
@@ -57,7 +61,7 @@
 
 @media only screen and (min-width: 1200px) {
     .header {
-        font-size: 72px;
+        font-size: 56px;
     }
     .search {}
     .top-bar-container {}

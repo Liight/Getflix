@@ -31,7 +31,10 @@ _handlePress = (e) => {
 
   render() {
     return (
-      <div className="search-container-outer" style={{ width: dims.searchWidth}}>
+      <div
+        className="search-container-outer"
+        style={{ width: dims.column40Width }}
+      >
         <div className="search-container-inner">
           <div className="icon-container" onClick={() => this.startModal()}>
             <span style={{ color: "white" }}>
