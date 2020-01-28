@@ -33,7 +33,11 @@ const Modal = props => {
             <span className="modal-title">
               {props.addMovieInfo.Title
                 ? props.addMovieInfo.Title
-                : props.movie.title}
+                : props.movie.title
+                ? props.movie.title
+                : props.searchedMovie.Title
+                ? props.searchedMovie.Title
+                : null}
             </span>
           </div>
           <div className="modal-double-column">
@@ -41,14 +45,24 @@ const Modal = props => {
               {/** Description */}
               <div className="modal-flex-row modal-text-center">
                 <span className="modal-text ">
-                  {props.addMovieInfo.Awards ? props.addMovieInfo.Awards : null}
+                  {props.addMovieInfo.Awards
+                    ? props.addMovieInfo.Awards
+                    : props.movie.title
+                    ? props.movie.title
+                    : props.searchedMovie.Title
+                    ? props.searchedMovie.Title
+                    : null}
                 </span>
               </div>
               <div className="modal-flex-row">
                 <span className="modal-text">
                   {props.addMovieInfo.Plot
                     ? props.addMovieInfo.Plot
-                    : props.movie.overview}
+                    : props.movie.overview
+                    ? props.movie.overview
+                    : props.searchedMovie.Plot
+                    ? props.searchedMovie.Plot
+                    : null}
                 </span>
               </div>
               {/** Modal MultiLine */}
@@ -57,7 +71,11 @@ const Modal = props => {
                   <span className="modal-text">
                     {props.addMovieInfo.Year
                       ? props.addMovieInfo.Year
-                      : props.movie.release_date.slice(0, 4)}
+                      : props.movie.release_date
+                      ? props.movie.release_date.slice(0, 4)
+                      : props.searchedMovie.Year
+                      ? props.searchedMovie.Year
+                      : null}
                   </span>
                 </div>
 
@@ -65,7 +83,11 @@ const Modal = props => {
                   <span className="modal-text">
                     {props.addMovieInfo.Runtime
                       ? props.addMovieInfo.Runtime
-                      : props.movie.runtime + " mins"}
+                      : props.movie.runtime
+                      ? props.movie.runtime + " mins"
+                      : props.searchedMovie.Runtime
+                      ? props.searchedMovie.Runtime
+                      : null}
                   </span>
                 </div>
               </div>
@@ -73,9 +95,13 @@ const Modal = props => {
                 <span className="modal-text">
                   {props.addMovieInfo.Genre
                     ? props.addMovieInfo.Genre
-                    : props.movie.genres.map(g => {
+                    : props.searchedMovie.Genre
+                    ? props.searchedMovie.Genre
+                    : props.movie.genres
+                    ? props.movie.genres.map(g => {
                         return <span>{g.name + ", "}</span>;
-                      })}
+                      })
+                    : null}
                 </span>
               </div>
               {/** Modal multiLine ends */}
@@ -84,6 +110,8 @@ const Modal = props => {
                 <span className="modal-text">
                   {props.addMovieInfo.Director
                     ? "Directed by: " + props.addMovieInfo.Director
+                    : props.searchedMovie.Director
+                    ? props.searchedMovie.Director
                     : null}
                 </span>
               </div>
@@ -91,6 +119,8 @@ const Modal = props => {
                 <span className="modal-text">
                   {props.addMovieInfo.Writer
                     ? "Writers: " + props.addMovieInfo.Writer
+                    : props.searchedMovie.Writer
+                    ? props.searchedMovie.Writer
                     : null}
                 </span>
               </div>
@@ -98,13 +128,24 @@ const Modal = props => {
                 <span className="modal-text">
                   {props.addMovieInfo.Actors
                     ? "Cast: " + props.addMovieInfo.Actors
+                    : props.searchedMovie.Actors
+                    ? props.searchedMovie.Actors
                     : null}
                 </span>
               </div>
             </div>
 
             <div className="modal-inner-display-image">
-              <img src={props.movie.posterUrl} alt=""></img>
+              <img
+                src={
+                  props.movie.posterUrl
+                    ? props.movie.posterUrl
+                    : props.searchedMovie.Poster
+                    ? props.searchedMovie.Poster
+                    : null
+                }
+                alt=""
+              ></img>
             </div>
           </div>
           {/** Ratings */}
@@ -114,6 +155,17 @@ const Modal = props => {
                 ? props.addMovieInfo.Ratings.map(item => {
                     return (
                       <div className="modal-ratings-item">
+                        <span className="modal-ratings-text">{item.Value}</span>
+                        <span className="modal-ratings-text">
+                          {item.Source}
+                        </span>
+                      </div>
+                    );
+                  })
+                : props.searchedMovie.Ratings !== undefined
+                ? props.searchedMovie.Ratings.map(item => {
+                    return (
+                      <div className="modal-ratings-item" key={Math.random() * 1000}>
                         <span className="modal-ratings-text">{item.Value}</span>
                         <span className="modal-ratings-text">
                           {item.Source}
@@ -132,8 +184,10 @@ const Modal = props => {
                 width={window.innerWidth / 1.6}
                 height={(window.innerWidth / 1.6) * 0.6}
                 src={
-                  "https://www.youtube.com/embed/" +
-                  props.movie.videos.results[0].key
+                  props.movie.videos
+                    ? "https://www.youtube.com/embed/" +
+                      props.movie.videos.results[0].key
+                    : null
                 }
               ></iframe>
             </div>
@@ -151,6 +205,7 @@ const Modal = props => {
     </div>
   ) : null;
 
+
   return modal;
 };
 
@@ -158,7 +213,8 @@ const mapStateToProps = state => {
   return {
     showModal: state.movies.showModal,
     movie: state.movies.modalMovie,
-    addMovieInfo: state.movies.modalMovieAddInfo
+    addMovieInfo: state.movies.modalMovieAddInfo,
+    searchedMovie: state.movies.searchedMovie
   };
 };
 

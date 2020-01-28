@@ -4,7 +4,9 @@ export {
   verifyInitialListUpdatesAreComplete,
   updateActiveBigInfoKey,
   getLatestMovies,
-  toggleModal
+  toggleModal,
+  toggleModalFromSearch,
+  getSingleMovie
 } from "./movies";
 
 export {

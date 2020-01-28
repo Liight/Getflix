@@ -61,7 +61,7 @@ class MovieRowBigInfo extends Component {
                         <div className="row-multiLine-item">
                           <span className="genres">
                             {this.props.movie.genres.slice(0, 4).map(g => {
-                              return <span>{g.name + ", "}</span>;
+                              return <span key={Math.random() * 1000}>{g.name + ", "}</span>;
                             })}
                           </span>
                         </div>

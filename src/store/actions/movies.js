@@ -5,7 +5,7 @@ import axios from "axios";
 import { apiKey } from "../../secret/secret";
 
 export const updateActiveBigInfoKey = key => {
-  console.log("ACTION: global key to be updated next ", key);
+  // console.log("ACTION: global key to be updated next ", key);
   return {
     type: actionTypes.UPDATE_ACTIVE_BIG_INFO_KEY,
     activeBigInfoKey: key
@@ -114,20 +114,51 @@ export const updateAndAddMoviesListLatest = list => {
 
 export const toggleModal = movie => {
   return dispatch => {
+
+
     asyncWrapperDouble(getOMBDMovieData, callGetMovieVideoData, movie).then(
       response => {
-        console.log('RESPONSE ::::', response)
-        dispatch(updateModal(movie, response));
+        // console.log("RESPONSE ::::", response);
+        dispatch(updateModal(movie, response))
       }
     );
+
+
   };
 };
+
+export const toggleModalFromSearch = (movie) => {
+return dispatch => {
+  asyncWrapperSingle(getSingleMovieAsync, movie).then(response => {
+    dispatch(updateModal(movie, response));
+  });
+};
+}
 
 export const updateModal = (movie, additionalInfo) => {
   return {
     type: actionTypes.TOGGLE_MODAL,
     movie: movie,
     additionalInfo: additionalInfo
+  };
+};
+
+export const updateSearchedMovie = (movie) => {
+  return {
+    type: actionTypes.UPDATE_SEARCHED_MOVIE,
+    movie: movie
+  };
+};
+
+export const getSingleMovie = movieTitle => {
+  return dispatch => {
+    asyncWrapperSingle(getSingleMovieAsync, movieTitle)
+      .then(response => {
+        dispatch(updateSearchedMovie(response.movie.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 };
 
@@ -148,26 +179,29 @@ const asyncWrapperDouble = async (func, func2, movie) => {
   let originalMovie = movie;
   let addedInfo = {};
   let video = {};
-  return await func(originalMovie)
-    .then(response => {
-      console.log("ASYNC ::: ", response);
-      if(response === 0){
-        return 0;
-      }
-      addedInfo = response;
-
-      return func2(originalMovie)
-        .then(response => {
-          video = response.videos;
-        })
-
-        .then(() => {
-          addedInfo.newVideos = video;
-          console.log("ASYNC ::: ", addedInfo.newVideos);
-          return addedInfo;
-        });
-    })
+  return await func(originalMovie).then(response => {
+    if (response === 0) {
+      return 0;
+    }
+    addedInfo = response;
+    return func2(originalMovie)
+      .then(response => {
+        video = response.videos;
+      })
+      .then(() => {
+        addedInfo.newVideos = video;
+        return addedInfo;
+      });
+  });
 };
+
+const asyncWrapperSingle = async (func, movieTitle) => {
+  return await func(movieTitle).then(response => {
+    return response;
+  });
+} 
+
+
 
 const getTopRatedMovieIdsList = async () => {
   let movieIds = [];
@@ -304,7 +338,9 @@ const callGetMovieImageData = async MovieObjectsArray => {
 };
 
 const callGetMovieVideoData = async movie => {
-  if(!movie){return {}}
+  if (!movie) {
+    return {};
+  }
   let promises = [];
 
   // Portrait
@@ -317,7 +353,7 @@ const callGetMovieVideoData = async movie => {
         }
       })
       .then(response => {
-        console.log('VIDEO :::', response.data)
+        console.log("VIDEO :::", response.data);
         movie.videos = response.data;
       })
       .catch(error => {
@@ -331,6 +367,7 @@ const callGetMovieVideoData = async movie => {
 };
 
 const getOMBDMovieData = async movie => {
+  // console.log('OMBD data moie :: ', movie)
   if (movie === undefined) return 0;
   let movieData = {};
   let promises = [];
@@ -353,6 +390,28 @@ const getOMBDMovieData = async movie => {
   );
 
   return Promise.all(promises).then(() => {
+    console.log('SEARCH :::::: ', movieData)
     return movieData;
   });
+};
+
+const getSingleMovieAsync = async movieTitle => {
+  let movie = null;
+  await axios
+    .get("http://www.omdbapi.com/?apikey=bfb5b4e7&t=" + movieTitle, {
+      params: {
+        api_key: apiKey,
+        language: "en-US",
+        page: 1
+      }
+    })
+    .then(response => {
+      movie = response;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  return {
+    movie
+  };
 };

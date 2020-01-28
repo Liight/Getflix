@@ -11,7 +11,8 @@ const initialState = {
   showModal: false,
   modalMovie: null,
   modalMovieAddInfo: null,
-  hideOverflows: false
+  hideOverflows: false,
+  searchedMovie: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -68,14 +69,27 @@ const reducer = (state = initialState, action) => {
         activeBigInfoKey: action.activeBigInfoKey
       };
     case actionTypes.TOGGLE_MODAL: // CASE
-      console.log("action.type", action.type, state.showModal, state.modalMovie, action.additionalInfo);
+      console.log(
+        "action.type",
+        action.type,
+        state.showModal,
+        state.modalMovie,
+        action.additionalInfo
+      );
       return {
         ...state,
         showModal: !state.showModal,
         modalMovie: action.movie,
         modalMovieAddInfo: action.additionalInfo
       };
-
+    case actionTypes.UPDATE_SEARCHED_MOVIE: // CASE
+      console.log(
+        "action.type", action.type, action.movie);
+      return {
+        ...state,
+        searchedMovie: action.movie,
+        modalMovie: action.movie
+      };
     default:
       return state;
   }
