@@ -58,7 +58,7 @@
         align-items: center;
         left: 0px;
         width: 100px;
-        height: 500px;
+        height: 450px;
         z-index: 1000;
         transition: .3s ease-in-out;
         background-color: rgba(20, 20, 20, 0.1);
@@ -73,7 +73,7 @@
         align-items: center;
         right: 0px;
         width: 100px;
-        height: 500px;
+        height: 450px;
         z-index: 1000;
         transition: .5s ease-in-out;
         background-color: rgba(20, 20, 20, 0.1);
