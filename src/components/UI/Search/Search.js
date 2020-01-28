@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Search.css";
 import * as actions from "../../../store/actions";
+import * as dims from "../../../utility/dimensions";
 
 class Search extends Component {
   state = {
@@ -30,7 +31,7 @@ _handlePress = (e) => {
 
   render() {
     return (
-      <div className="search-container-outer">
+      <div className="search-container-outer" style={{ width: dims.searchWidth}}>
         <div className="search-container-inner">
           <div className="icon-container" onClick={() => this.startModal()}>
             <span style={{ color: "white" }}>

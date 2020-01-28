@@ -3,11 +3,32 @@ import './TopBar.css';
 
 import Search from '../../UI/Search/Search';
 
+import * as dims from "../../../utility/dimensions";
+
 const TopBar = () => {
     return (
-      <div className="top-bar-container">
-        <span className="header">GETFLIX</span>
-        <div className="search">
+      <div
+        className="top-bar-container"
+        style={{
+          paddingLeft: dims.offSetButtonWidth,
+          paddingRight: dims.offSetButtonWidth,
+          width: dims.featureWidth
+        }}
+      >
+        <span
+          className="header"
+          style={{
+            width: dims.headerWidth
+          }}
+        >
+          GETFLIX
+        </span>
+        <div
+          className="search"
+          style={{
+            width: dims.searchWidth
+          }}
+        >
           <Search />
         </div>
       </div>
