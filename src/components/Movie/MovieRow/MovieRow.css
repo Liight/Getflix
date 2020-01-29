@@ -26,7 +26,7 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: flex-start;
-        padding: 0 0 0 100px;
+        /* padding: 0 0 0 100px; */
         margin: auto;
         overflow-x: scroll;
         overflow: hidden;
@@ -98,5 +98,5 @@
         text-align: left;
         position: absolute;
         left: 0;
-        top: 0;
+        top: 30px;
     }

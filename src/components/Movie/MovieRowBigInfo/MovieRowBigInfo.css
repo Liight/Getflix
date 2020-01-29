@@ -1,11 +1,16 @@
 .movie-row-big-info-wrapper {
-    height: 700px;
+    height: 300px;
     position: relative;
     transition: all .2s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .no-reveal {
     height: 0px;
+    display: none;
 }
 
 .movie-row-big-info-container {
@@ -15,10 +20,11 @@
     background-color: black;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 .reveal {
@@ -33,12 +39,17 @@
     align-items: flex-start;
     justify-content: flex-start;
     /* margin: 1em; */
-    padding: 5em 1em 1em 0em;
+    padding: 0 5px;
     width: 60%;
-    height: 700px;
+    height: 100%;
     color: #fff;
     box-sizing: border-box;
 }
+
+
+/* .info-column-top {
+    position: relative;
+} */
 
 .image-column {
     display: flex;
@@ -59,27 +70,29 @@
 }
 
 .row-multiLine {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
 }
 
 .row-multiLine-item {
-    flex: 1;
     display: flex;
+    width: 50%;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     display: flex;
 }
 
-.row-multiLine-item:last-child {
-    flex: 3;
+.multiLine-group {
     display: flex;
+    width: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    display: flex;
 }
 
 .title {
@@ -139,4 +152,86 @@
 
 .button:hover {
     cursor: pointer
+}
+
+@media only screen and (max-width: 599px) {
+    .movie-row-big-info-wrapper {
+        height: 300px;
+    }
+    .title-text {
+        font-size: 24px;
+    }
+    .main-text {
+        font-size: 16px
+    }
+    .button {
+        padding: 5px 10px;
+    }
+    .button-text {
+        font-size: 16px
+    }
+    /* .movie-feature-row-multiLine {
+        flex-direction: column;
+        align-items: flex-start;
+    } */
+}
+
+@media only screen and (min-width: 600px) {
+    .movie-row-big-info-wrapper {
+        height: 400px;
+    }
+    .title-text {
+        font-size: 36px
+    }
+    .main-text {
+        font-size: 16px
+    }
+    .button {
+        padding: 8px 16px;
+    }
+    .button-text {
+        font-size: 16px
+    }
+    .movie-feature-row-multiLine-item {
+        flex: 1;
+    }
+    .multiLine-group .main-text {
+        width: auto;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .movie-row-big-info-wrapper {
+        height: 500px;
+    }
+    .title-text {
+        font-size: 48px
+    }
+    .main-text {
+        font-size: 20px
+    }
+    .button {
+        padding: 8px 16px;
+    }
+    .button-text {
+        font-size: 16px
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .movie-row-big-info-wrapper {
+        height: 600px;
+    }
+    .title-text {
+        font-size: 48px
+    }
+    .main-text {
+        font-size: 24px
+    }
+    .button {
+        padding: 8px 16px;
+    }
+    .button-text {
+        font-size: 24px
+    }
 }

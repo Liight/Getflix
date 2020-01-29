@@ -3,6 +3,8 @@ import "./MovieRow.css";
 
 import MovieRowItem from "../MovieRowItem/MovieRowItem";
 
+import * as dims from '../../../utility/dimensions';
+
 // props: movieList
 
 class MovieRow extends React.Component {
@@ -51,23 +53,12 @@ class MovieRow extends React.Component {
           _movieRowSections[0].length !==
           _movieRowSections[_movieRowSections.length - 1].length
         ) {
-          // let additionalChunkLength =
-          //   _movieRowSections[0].length -
-          //   _movieRowSections[_movieRowSections.length - 1].length;
-          // generate empty objects
-          // let additionalChunk = {};
-          // push changes to array
-          // for (let j = 0; j < additionalChunkLength; j++) {
-          //   _movieRowSections[_movieRowSections.length - 1].push(
-          //     additionalChunk
-          //   );
-          // }
+
           _movieRowSections[_movieRowSections.length - 1].push();
         }
       };
       check(movieRowSections);
 
-      // console.log("movieRowSections : FINAL : ", movieRowSections);
     }
 
     let movieRowItems =
@@ -99,26 +90,22 @@ class MovieRow extends React.Component {
         <p>Loading</p>
       );
 
-    let windowWidthPercentage = window.innerWidth / 100;
-
     return (
       <div className="movie-row-container" style={{}}>
         <span
           className="row-heading"
           style={{
-            paddingLeft:
-              (window.innerWidth - (movieRowSections[0].length + 1) * 200) / 2 +
-              windowWidthPercentage * 2 +
-              50
+            paddingLeft: dims.offSetButtonWidth
           }}
         >
           {this.props.category}
         </span>
         <div className="movie-row">
-          {" "}
-          {/*  style={{ width: window.innerWidth - 200 }} */}
-          <div className="leftArrow" onClick={() => focusInput("left")}>
-            {/* <span id="left" onClick={event => handleClick(event.target)}> */}
+          <div
+            className="leftArrow"
+            onClick={() => focusInput("left")}
+            style={{ width: dims.buttonWidth }}
+          >
             <span id="left">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -157,10 +144,15 @@ class MovieRow extends React.Component {
             id="movie-row-items-container"
             className="movie-row-items-container"
             ref={this.myRef}
+            style={{ paddingLeft: dims.buttonWidth }}
           >
             {movieRowItems}
           </div>
-          <div className="rightArrow" onClick={() => focusInput("right")}>
+          <div
+            className="rightArrow"
+            onClick={() => focusInput("right")}
+            style={{ width: dims.buttonWidth }}
+          >
             <span id="right">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

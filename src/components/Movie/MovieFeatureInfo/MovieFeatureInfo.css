@@ -18,6 +18,7 @@ they can be found in MovieBigRowInfo.css  */
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
+        height: 100%;
     }
     
     .table-container {
@@ -44,7 +45,7 @@ they can be found in MovieBigRowInfo.css  */
     }
     
     .movie-feature-row-multiLine-item:last-child {
-        flex: 3;
+        /* flex: 3; */
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -60,9 +61,6 @@ they can be found in MovieBigRowInfo.css  */
         display: flex;
     }
     
-    .multiLine-group .main-text {
-        width: 50%;
-    }
     
     .movie-feature-info-column {
         position: relative;
@@ -74,6 +72,7 @@ they can be found in MovieBigRowInfo.css  */
         height: 100%;
         color: white;
         padding: 0px 5px;
+        overflow-y: hidden;
     }
     
     .movie-feature-image-column {
@@ -87,12 +86,12 @@ they can be found in MovieBigRowInfo.css  */
     
     .button-row {
         position: absolute;
-        top: 240px;
+        bottom: 0;
         width: 100%;
-        height: 50px;
+        height: 70px;
         left: 0;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         background-image: linear-gradient(transparent, #141414 10%);
@@ -138,9 +137,7 @@ they can be found in MovieBigRowInfo.css  */
     }
     
     @media only screen and (min-width: 600px) {
-        .button-row {
-            top: 225px;
-        }
+
         .title-text {
             font-size: 36px
         }
@@ -162,9 +159,7 @@ they can be found in MovieBigRowInfo.css  */
     }
     
     @media only screen and (min-width: 900px) {
-        .button-row {
-            top: 300px;
-        }
+
         .title-text {
             font-size: 48px
         }
@@ -180,9 +175,7 @@ they can be found in MovieBigRowInfo.css  */
     }
     
     @media only screen and (min-width: 1200px) {
-        .button-row {
-            top: 350px;
-        }
+
         .title-text {
             font-size: 48px
         }
