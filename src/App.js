@@ -43,7 +43,7 @@ class App extends Component {
   };
 
   componentDidUpdate() {
-    console.log("app updated : ", this.state);
+    // console.log("app updated : ", this.state);
     // There has to be a better way to get the body element to dynamically set scrollbar styles based on global state
     if (!this.props.scrollbarsVisible) {
       document.getElementsByTagName("body")[0].className += " hidden-overflows";
@@ -64,7 +64,7 @@ class App extends Component {
   componentDidMount() {}
 
   render() {
-    console.log("App rendered");
+    // console.log("App rendered");
     // This is to fix an issue where react starts requiring RAM resources very fast
     // on screen widths below 500px this occurs
     // There is a lot of dimensions reading with javascript in this application,

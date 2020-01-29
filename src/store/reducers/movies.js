@@ -63,19 +63,19 @@ const reducer = (state = initialState, action) => {
         initialListsUpdatesComplete: true
       };
     case actionTypes.UPDATE_ACTIVE_BIG_INFO_KEY: // CASE
-      console.log("action.type", action.type, "KEY: ", action.activeBigInfoKey);
+      // console.log("action.type", action.type, "KEY: ", action.activeBigInfoKey);
       return {
         ...state,
         activeBigInfoKey: action.activeBigInfoKey
       };
     case actionTypes.TOGGLE_MODAL: // CASE
-      console.log(
-        "action.type",
-        action.type,
-        state.showModal,
-        state.modalMovie,
-        action.additionalInfo
-      );
+      // console.log(
+      //   "action.type",
+      //   action.type,
+      //   state.showModal,
+      //   state.modalMovie,
+      //   action.additionalInfo
+      // );
       return {
         ...state,
         showModal: !state.showModal,
@@ -83,8 +83,8 @@ const reducer = (state = initialState, action) => {
         modalMovieAddInfo: action.additionalInfo
       };
     case actionTypes.UPDATE_SEARCHED_MOVIE: // CASE
-      console.log(
-        "action.type", action.type, action.movie);
+      // console.log(
+      //   "action.type", action.type, action.movie);
       return {
         ...state,
         searchedMovie: action.movie,

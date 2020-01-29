@@ -128,7 +128,7 @@ export const toggleModal = movie => {
 };
 
 export const toggleModalFromSearch = (movie) => {
-  console.log("movie", movie);
+  // console.log("movie", movie);
 return dispatch => {
 
   // asyncWrapperSingle(getSingleMovieAsync, movieTitle).then(response => {
@@ -149,9 +149,9 @@ return dispatch => {
 
 const asyncWrapperSpecial = async (func, func2, func3, movie) => {
   return await func(movie.Title).then(response => {
-    console.log('RESPONSE U R Looking for : ', response)
+    // console.log('RESPONSE U R Looking for : ', response)
     return func2(response.movie.data.imdbID).then(response => {
-      console.log('this response ::: ', response)
+      // console.log('this response ::: ', response)
       movie.id = response;
       return func3(movie).then(response => {
         return response;
@@ -378,7 +378,7 @@ const callGetMovieVideoData = async movie => {
         }
       })
       .then(response => {
-        console.log("VIDEO :::", response.data);
+        // console.log("VIDEO :::", response.data);
         movie.videos = response.data;
       })
       .catch(error => {
@@ -399,12 +399,18 @@ const getOMBDMovieData = async movie => {
 
   promises.push(
     await axios
-      .get("http://www.omdbapi.com/?apikey=bfb5b4e7&t=" + movie.title + "?", {
-        params: {
-          api_key: apiKey,
-          language: "en-US"
+      .get(
+        "https://www.omdbapi.com/?apikey=bfb5b4e7&t=" +
+          movie.title +
+          "?"
+          ,
+        {
+          params: {
+            api_key: apiKey,
+            language: "en-US"
+          }
         }
-      })
+      )
       .then(response => {
         // console.log(response.data)
         movieData = response.data;
@@ -415,7 +421,7 @@ const getOMBDMovieData = async movie => {
   );
 
   return Promise.all(promises).then(() => {
-    console.log('SEARCH :::::: ', movieData)
+    // console.log('SEARCH :::::: ', movieData)
     return movieData;
   });
 };
@@ -423,7 +429,7 @@ const getOMBDMovieData = async movie => {
 const getSingleMovieAsync = async movieTitle => {
   let movie = null;
   await axios
-    .get("http://www.omdbapi.com/?apikey=bfb5b4e7&t=" + movieTitle, {
+    .get("https://www.omdbapi.com/?apikey=bfb5b4e7&t=" + movieTitle, {
       params: {
         api_key: apiKey,
         language: "en-US",

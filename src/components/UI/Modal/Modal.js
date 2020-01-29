@@ -36,11 +36,11 @@ const Modal = props => {
         <div className="modal-column">
           <div className="title-row">
             <span className="modal-title-text">
-              {props.addMovieInfo.Title
+              {props.addMovieInfo.Title !== null
                 ? props.addMovieInfo.Title
-                : props.movie.title
+                : props.movie.title !== null
                 ? props.movie.title
-                : props.searchedMovie.Title
+                : props.searchedMovie.Title !== null
                 ? props.searchedMovie.Title
                 : null}
             </span>
@@ -50,22 +50,22 @@ const Modal = props => {
               {/** Description */}
               <div className="modal-flex-row modal-text-center">
                 <span className="modal-ratings-text">
-                  {props.addMovieInfo.Awards
+                  {props.addMovieInfo.Awards !== null
                     ? props.addMovieInfo.Awards
-                    : props.movie.title
+                    : props.movie.title !== null
                     ? props.movie.title
-                    : props.searchedMovie.Title
+                    : props.searchedMovie.Title !== null
                     ? props.searchedMovie.Title
                     : null}
                 </span>
               </div>
               <div className="modal-flex-row">
                 <span className="main-text">
-                  {props.addMovieInfo.Plot
+                  {props.addMovieInfo.Plot !== null
                     ? props.addMovieInfo.Plot
-                    : props.movie.overview
+                    : props.movie.overview !== null
                     ? props.movie.overview
-                    : props.searchedMovie.Plot
+                    : props.searchedMovie.Plot 
                     ? props.searchedMovie.Plot
                     : null}
                 </span>
@@ -74,11 +74,11 @@ const Modal = props => {
               <div className="modal-multiLine">
                 <div className="modal-multiline-item">
                   <span className="main-text">
-                    {props.addMovieInfo.Year
+                    {props.addMovieInfo.Year !== null
                       ? props.addMovieInfo.Year
-                      : props.movie.release_date
+                      : props.movie.release_date !== null
                       ? props.movie.release_date.slice(0, 4)
-                      : props.searchedMovie.Year
+                      : props.searchedMovie.Year !== null
                       ? props.searchedMovie.Year
                       : null}
                   </span>
@@ -86,11 +86,11 @@ const Modal = props => {
 
                 <div className="modal-multiline-item">
                   <span className="main-text">
-                    {props.addMovieInfo.Runtime
+                    {props.addMovieInfo.Runtime !== null
                       ? props.addMovieInfo.Runtime
-                      : props.movie.runtime
+                      : props.movie.runtime !== null
                       ? props.movie.runtime + " mins"
-                      : props.searchedMovie.Runtime
+                      : props.searchedMovie.Runtime !== null
                       ? props.searchedMovie.Runtime
                       : null}
                   </span>
@@ -98,11 +98,11 @@ const Modal = props => {
               </div>
               <div className="modal-flex-row">
                 <span className="main-text">
-                  {props.addMovieInfo.Genre
+                  {props.addMovieInfo.Genre !== null
                     ? props.addMovieInfo.Genre
-                    : props.searchedMovie.Genre
+                    : props.searchedMovie.Genre !== null
                     ? props.searchedMovie.Genre
-                    : props.movie.genres
+                    : props.movie.genres !== null
                     ? props.movie.genres.map(g => {
                         return <span>{g.name + ", "}</span>;
                       })
@@ -113,27 +113,27 @@ const Modal = props => {
               {/** Cast */}
               <div className="modal-flex-row ">
                 <span className="main-text">
-                  {props.addMovieInfo.Director
+                  {props.addMovieInfo.Director !== null
                     ? "Directed by: " + props.addMovieInfo.Director
-                    : props.searchedMovie.Director
+                    : props.searchedMovie.Director !== null
                     ? props.searchedMovie.Director
                     : null}
                 </span>
               </div>
               <div className="modal-flex-row ">
                 <span className="main-text">
-                  {props.addMovieInfo.Writer
+                  {props.addMovieInfo.Writer !== null
                     ? "Writers: " + props.addMovieInfo.Writer
-                    : props.searchedMovie.Writer
+                    : props.searchedMovie.Writer !== null
                     ? props.searchedMovie.Writer
                     : null}
                 </span>
               </div>
               <div className="modal-flex-row ">
                 <span className="main-text">
-                  {props.addMovieInfo.Actors
+                  {props.addMovieInfo.Actors !== null
                     ? "Cast: " + props.addMovieInfo.Actors
-                    : props.searchedMovie.Actors
+                    : props.searchedMovie.Actors !== null
                     ? props.searchedMovie.Actors
                     : null}
                 </span>
@@ -143,7 +143,7 @@ const Modal = props => {
             <div className="modal-inner-display-image">
               <img
                 src={
-                  props.movie.posterUrl !== null
+                  props.movie.posterUrl
                     ? props.movie.posterUrl
                     : props.searchedMovie.Poster
                     ? props.searchedMovie.Poster
