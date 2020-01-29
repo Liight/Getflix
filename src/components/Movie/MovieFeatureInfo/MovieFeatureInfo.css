@@ -61,7 +61,6 @@ they can be found in MovieBigRowInfo.css  */
         display: flex;
     }
     
-    
     .movie-feature-info-column {
         position: relative;
         /* affects button row position */
@@ -109,6 +108,11 @@ they can be found in MovieBigRowInfo.css  */
         color: white;
     }
     
+    .button:hover {
+        color: black;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    
     .button-text {
         font-size: 2em;
     }
@@ -137,7 +141,6 @@ they can be found in MovieBigRowInfo.css  */
     }
     
     @media only screen and (min-width: 600px) {
-
         .title-text {
             font-size: 36px
         }
@@ -159,7 +162,6 @@ they can be found in MovieBigRowInfo.css  */
     }
     
     @media only screen and (min-width: 900px) {
-
         .title-text {
             font-size: 48px
         }
@@ -175,7 +177,6 @@ they can be found in MovieBigRowInfo.css  */
     }
     
     @media only screen and (min-width: 1200px) {
-
         .title-text {
             font-size: 48px
         }

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import * as actions from "../../../store/actions";
 
+import * as dims from "../../../utility/dimensions";
+
 import "./Modal.css";
 
 const Modal = props => {
@@ -22,7 +24,10 @@ const Modal = props => {
     <div className="modal-container">
       <div
         className="modal-close-button"
-        style={{ fontSize: "2em", color: "white" }}
+        style={{
+          fontSize: "2em",
+          height: (dims.windowWidth / 100) * 8
+        }}
         onClick={() => toggleModal()}
       >
         X
@@ -30,7 +35,7 @@ const Modal = props => {
       <div className="modal-inner-display">
         <div className="modal-column">
           <div className="title-row">
-            <span className="modal-title">
+            <span className="modal-title-text">
               {props.addMovieInfo.Title
                 ? props.addMovieInfo.Title
                 : props.movie.title
@@ -44,7 +49,7 @@ const Modal = props => {
             <div className="modal-inner-display-info">
               {/** Description */}
               <div className="modal-flex-row modal-text-center">
-                <span className="modal-text ">
+                <span className="modal-ratings-text">
                   {props.addMovieInfo.Awards
                     ? props.addMovieInfo.Awards
                     : props.movie.title
@@ -55,7 +60,7 @@ const Modal = props => {
                 </span>
               </div>
               <div className="modal-flex-row">
-                <span className="modal-text">
+                <span className="main-text">
                   {props.addMovieInfo.Plot
                     ? props.addMovieInfo.Plot
                     : props.movie.overview
@@ -68,7 +73,7 @@ const Modal = props => {
               {/** Modal MultiLine */}
               <div className="modal-multiLine">
                 <div className="modal-multiline-item">
-                  <span className="modal-text">
+                  <span className="main-text">
                     {props.addMovieInfo.Year
                       ? props.addMovieInfo.Year
                       : props.movie.release_date
@@ -80,7 +85,7 @@ const Modal = props => {
                 </div>
 
                 <div className="modal-multiline-item">
-                  <span className="modal-text">
+                  <span className="main-text">
                     {props.addMovieInfo.Runtime
                       ? props.addMovieInfo.Runtime
                       : props.movie.runtime
@@ -92,7 +97,7 @@ const Modal = props => {
                 </div>
               </div>
               <div className="modal-flex-row">
-                <span className="modal-text">
+                <span className="main-text">
                   {props.addMovieInfo.Genre
                     ? props.addMovieInfo.Genre
                     : props.searchedMovie.Genre
@@ -107,7 +112,7 @@ const Modal = props => {
               {/** Modal multiLine ends */}
               {/** Cast */}
               <div className="modal-flex-row ">
-                <span className="modal-text">
+                <span className="main-text">
                   {props.addMovieInfo.Director
                     ? "Directed by: " + props.addMovieInfo.Director
                     : props.searchedMovie.Director
@@ -116,7 +121,7 @@ const Modal = props => {
                 </span>
               </div>
               <div className="modal-flex-row ">
-                <span className="modal-text">
+                <span className="main-text">
                   {props.addMovieInfo.Writer
                     ? "Writers: " + props.addMovieInfo.Writer
                     : props.searchedMovie.Writer
@@ -125,7 +130,7 @@ const Modal = props => {
                 </span>
               </div>
               <div className="modal-flex-row ">
-                <span className="modal-text">
+                <span className="main-text">
                   {props.addMovieInfo.Actors
                     ? "Cast: " + props.addMovieInfo.Actors
                     : props.searchedMovie.Actors
@@ -165,7 +170,10 @@ const Modal = props => {
                 : props.searchedMovie.Ratings !== undefined
                 ? props.searchedMovie.Ratings.map(item => {
                     return (
-                      <div className="modal-ratings-item" key={Math.random() * 1000}>
+                      <div
+                        className="modal-ratings-item"
+                        key={Math.random() * 1000}
+                      >
                         <span className="modal-ratings-text">{item.Value}</span>
                         <span className="modal-ratings-text">
                           {item.Source}
@@ -204,7 +212,6 @@ const Modal = props => {
       </div>
     </div>
   ) : null;
-
 
   return modal;
 };
