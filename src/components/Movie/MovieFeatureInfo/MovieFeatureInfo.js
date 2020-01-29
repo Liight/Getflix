@@ -11,13 +11,13 @@ const MovieFeatureInfo = props => {
       className="movie-feature-info-container"
       style={{
         width: dims.featureWidth,
-        paddingLeft: dims.offSetButtonWidth,
-        paddingRight: dims.offSetButtonWidth
+        // paddingLeft: dims.offSetButtonWidth,
+        // paddingRight: dims.offSetButtonWidth
       }}
     >
       <div
         className="movie-feature-info-column"
-        style={{ width: dims.column60Width }}
+        // style={{ width: dims.column60Width }}
       >
         <div className="table-container">
           <div className="movie-feature-row-multiLine">
@@ -57,7 +57,7 @@ const MovieFeatureInfo = props => {
 
           <div
             className="movie-feature-row button-row"
-            style={{ width: dims.column60Width }}
+            // style={{ width: dims.column60Width }}
           >
             <div
               className="button"
@@ -74,7 +74,7 @@ const MovieFeatureInfo = props => {
 
       <div
         className="movie-feature-image-column"
-        style={{ width: dims.column40Width }}
+        // style={{ width: dims.column40Width }}
       >
         <img
           src={props.movie.posterUrl}

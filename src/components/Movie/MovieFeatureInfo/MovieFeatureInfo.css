@@ -1,4 +1,4 @@
-    /* Fix Later: Some element styles (table) are not set in this file 
+/* Fix Later: Some element styles (table) are not set in this file 
 they can be found in MovieBigRowInfo.css  */
     
     .movie-feature-info-container {
@@ -8,7 +8,8 @@ they can be found in MovieBigRowInfo.css  */
         align-items: flex-start;
         justify-content: flex-start;
         height: 100%;
-        width: 350px;
+        width: 350px; /* Initial */
+        padding: 0px 50px 0px 50px;
         overflow-y: hidden;
         background: #141414;
     }
@@ -69,6 +70,7 @@ they can be found in MovieBigRowInfo.css  */
         align-items: flex-start;
         justify-content: flex-start;
         height: 100%;
+        width: 60%;
         color: white;
         padding: 0px 5px;
         overflow-y: hidden;
@@ -141,52 +143,65 @@ they can be found in MovieBigRowInfo.css  */
     }
     
     @media only screen and (min-width: 600px) {
-        .title-text {
-            font-size: 36px
-        }
-        .main-text {
-            font-size: 16px
-        }
-        .button {
-            padding: 8px 16px;
-        }
-        .button-text {
-            font-size: 16px
-        }
-        .movie-feature-row-multiLine-item {
-            flex: 1;
-        }
-        .multiLine-group .main-text {
-            width: auto;
-        }
+        .movie-feature-info-container{
+            padding: 0px 100px 0px 100px;
     }
     
-    @media only screen and (min-width: 900px) {
-        .title-text {
-            font-size: 48px
-        }
-        .main-text {
-            font-size: 20px
-        }
-        .button {
-            padding: 8px 16px;
-        }
-        .button-text {
-            font-size: 16px
-        }
+    .title-text {
+        font-size: 36px
     }
     
-    @media only screen and (min-width: 1200px) {
-        .title-text {
-            font-size: 48px
-        }
-        .main-text {
-            font-size: 24px
-        }
-        .button {
-            padding: 8px 16px;
-        }
-        .button-text {
-            font-size: 24px
-        }
+    .main-text {
+        font-size: 16px
     }
+    
+    .button {
+        padding: 8px 16px;
+    }
+    
+    .button-text {
+        font-size: 16px
+    }
+    
+    .movie-feature-row-multiLine-item {
+        flex: 1;
+    }
+    
+    .multiLine-group .main-text {
+        width: auto;
+    }
+}
+@media only screen and (min-width: 900px) {
+    .title-text {
+        font-size: 48px
+    }
+    
+    .main-text {
+        font-size: 20px
+    }
+    
+    .button {
+        padding: 8px 16px;
+    }
+    
+    .button-text {
+        font-size: 16px
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .title-text {
+        font-size: 48px
+    }
+    
+    .main-text {
+        font-size: 24px
+    }
+    
+    .button {
+        padding: 8px 16px;
+    }
+    
+    .button-text {
+        font-size: 24px
+    }
+}
