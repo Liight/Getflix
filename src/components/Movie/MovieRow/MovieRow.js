@@ -3,7 +3,7 @@ import "./MovieRow.css";
 
 import MovieRowItem from "../MovieRowItem/MovieRowItem";
 
-import * as dims from '../../../utility/dimensions';
+import * as dims from "../../../utility/dimensions";
 
 // props: movieList
 
@@ -17,7 +17,6 @@ class MovieRow extends React.Component {
     scrollLeftValue: 0
   };
 
-
   render() {
     // console.log("movie row rendered ", props);
 
@@ -25,8 +24,15 @@ class MovieRow extends React.Component {
       const node = this.myRef.current;
       if (direction === "right") {
         node.scrollLeft += Math.floor((window.innerWidth - 100) / 200) * 200;
+        // this.setState((prevState)=>{return{...prevState, scrollLeftValue: this.state.scrollLeftValue + 200}})
       } else if (direction === "left") {
         node.scrollLeft -= Math.floor((window.innerWidth - 100) / 200) * 200;
+        // this.setState(prevState => {
+        //   return {
+        //     ...prevState,
+        //     scrollLeftValue: this.state.scrollLeftValue - 200
+        //   };
+        // });
       }
     };
 
@@ -34,7 +40,9 @@ class MovieRow extends React.Component {
     let numberOfMovieRowSections = 0;
     let movieRowSections = [];
     if (this.props.movies.length > 0) {
-      let tempChunkSize = Math.floor((window.innerWidth - 100) / 200);
+      let tempChunkSize = Math.floor(
+        (window.innerWidth - dims.buttonWidth) / 200
+      );
       let chunk = (arr, chunkSize) => {
         var R = [];
         for (var i = 0, len = arr.length; i < len; i += chunkSize - 1) {
@@ -53,12 +61,10 @@ class MovieRow extends React.Component {
           _movieRowSections[0].length !==
           _movieRowSections[_movieRowSections.length - 1].length
         ) {
-
           _movieRowSections[_movieRowSections.length - 1].push();
         }
       };
       check(movieRowSections);
-
     }
 
     let movieRowItems =
@@ -104,7 +110,10 @@ class MovieRow extends React.Component {
           <div
             className="leftArrow"
             onClick={() => focusInput("left")}
-            style={{ width: dims.buttonWidth }}
+            style={{
+              width: dims.buttonWidth
+              // display: this.state.scrollLeftValue <= 0 ? "none" : "flex"
+            }}
           >
             <span id="left">
               <svg

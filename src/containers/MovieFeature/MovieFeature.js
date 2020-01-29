@@ -18,22 +18,22 @@ class MovieFeature extends Component {
     buttonEnabled: true
   };
 
-  toggleButton = () => {
-    let current = this.state.buttonEnabled;
-    if (current) {
-      this.setState(
-        prevState => {
-          return { ...prevState, buttonEnabled: false };
-        },
-        () => {
-          setTimeout(() => {
-            this.setState(prevState => {
-              return { ...prevState, buttonEnabled: true };
-            });
-          }, 1000);
-        }
-      );
-    }
+  toggleButton = e => {
+    // let current = this.state.buttonEnabled;
+    // if (current) {
+    //   this.setState(
+    //     prevState => {
+    //       return { ...prevState, buttonEnabled: false };
+    //     },
+    //     () => {
+    //       setTimeout(() => {
+    //         this.setState(prevState => {
+    //           return { ...prevState, buttonEnabled: true };
+    //         });
+    //       }, 1000);
+    //     }
+    //   );
+    // }
   };
 
   componentWillMount() {
@@ -55,21 +55,20 @@ class MovieFeature extends Component {
     }, 5000);
   };
 
-  focusInput = direction => {
-    let buttonEnabled = this.state.buttonEnabled;
-    if (buttonEnabled) {
-      const node = this.myRef.current;
-      if (direction === "right") {
-        node.scrollLeft += Math.floor(dims.windowWidth);
-      } else if (direction === "left") {
-        node.scrollLeft -= Math.floor(dims.windowWidth);
-      }
-      this.toggleButton();
+  focusInput = (direction, e) => {
+    let offSetLeft =
+      this.state.scrollLeft - (this.state.scrollLeft % dims.windowWidth);
+    console.log("offSetLeft", offSetLeft);
+    e.target.onClick = {};
+    const node = this.myRef.current;
+    if (direction === "right") {
+      node.scrollLeft += Math.floor(dims.windowWidth);
+    } else if (direction === "left") {
+      node.scrollLeft -= Math.floor(dims.windowWidth);
     }
   };
 
   render() {
-    // let movie = this.state.movieList[this.state.currentMovie];
     let movieList = this.state.movieList;
 
     let movieListComponents = movieList.map(movie => {
@@ -86,8 +85,11 @@ class MovieFeature extends Component {
       <div className="movie-feature-container" ref={this.myRef}>
         <div
           className="movie-feature-arrow movie-feature-arrow-left"
-          onClick={() => this.focusInput("left")}
-          style={{ width: dims.buttonWidth }}
+          onClick={event => this.focusInput("left", event)}
+          style={{
+            width: dims.buttonWidth,
+
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +129,7 @@ class MovieFeature extends Component {
         {/* Movies End */}
         <div
           className="movie-feature-arrow movie-feature-arrow-right"
-          onClick={() => this.focusInput("right")}
+          onClick={event => this.focusInput("right", event)}
           style={{ width: dims.buttonWidth }}
         >
           <svg

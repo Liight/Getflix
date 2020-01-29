@@ -64,7 +64,7 @@
         height: 290px;
     }
     .movie-feature-arrow {
-        margin-top: 50px;
+        margin-top: 80px;
     }
 }
 
@@ -72,10 +72,16 @@
     .movie-feature-container {
         height: 350px;
     }
+    .movie-feature-arrow {
+        margin-top: 80px;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
     .movie-feature-container {
         height: 400px;
+    }
+    .movie-feature-arrow {
+        margin-top: 80px;
     }
 }

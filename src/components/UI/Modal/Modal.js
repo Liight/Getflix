@@ -143,7 +143,7 @@ const Modal = props => {
             <div className="modal-inner-display-image">
               <img
                 src={
-                  props.movie.posterUrl
+                  props.movie.posterUrl !== null
                     ? props.movie.posterUrl
                     : props.searchedMovie.Poster
                     ? props.searchedMovie.Poster

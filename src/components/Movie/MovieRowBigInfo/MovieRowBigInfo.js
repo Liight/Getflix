@@ -97,7 +97,7 @@ class MovieRowBigInfo extends Component {
                 alt=""
                 height="auto"
                 width="100%"
-                style={{ maxHeight: "900px", maxWidth: "450px" }}
+                style={{ maxHeight: "800px", maxWidth: "400px" }}
               />
             </div>
           </div>
