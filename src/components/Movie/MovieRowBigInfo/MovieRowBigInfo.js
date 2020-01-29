@@ -30,9 +30,9 @@ class MovieRowBigInfo extends Component {
           >
             <div
               className="info-column"
-              style={{
-                width: dims.column60Width
-              }}
+              // style={{
+              //   width: dims.column60Width
+              // }}
             >
               <div className="info-column-top">
                 <div className="table-container">
@@ -91,7 +91,10 @@ class MovieRowBigInfo extends Component {
                 </div>
               </div>
             </div>
-            <div className="image-column" style={{ width: dims.column40Width }}>
+            <div className="image-column" 
+            // style={{ width: dims.column40Width }}
+            >
+
               <img
                 src={this.props.movie.posterUrl}
                 alt=""
