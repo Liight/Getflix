@@ -23,7 +23,7 @@ const MovieRowItem = props => {
           props.scaleOnHover ? "movie-row-item scale-up" : "movie-row-item"
         }
         key={Math.random() * 10000}
-        onClick={() => 
+        onClick={() =>
           updateParentStateAndGlobalState(props.movie, props.thisRowsBigInfoKey)
         }
       >
@@ -34,7 +34,17 @@ const MovieRowItem = props => {
             height="300"
             width="200"
           ></img>
-          <div className={props.activeKey === props.thisRowsBigInfoKey ? "clicker" : "clicker-big"}>V</div>
+          <div
+            className={
+              props.activeKey === props.thisRowsBigInfoKey
+                ? "clicker"
+                : window.innerWidth < 900
+                ? "clicker-med"
+                : "clicker-big"
+            }
+          >
+            V
+          </div>
         </div>
 
         <div className="movie-row-item-areaHolder">
