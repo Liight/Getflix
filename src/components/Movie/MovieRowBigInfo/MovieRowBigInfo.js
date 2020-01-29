@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import * as actions from "../../../store/actions";
-import * as dims from "../../../utility/dimensions";
+
 import "./MovieRowBigInfo.css";
 
 class MovieRowBigInfo extends Component {
