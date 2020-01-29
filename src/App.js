@@ -103,7 +103,7 @@ class App extends Component {
       this.state.moviesSomeOther.length > 0 ? (
         <MovieRowsDisplay
           movieList={this.state.moviesSomeOther}
-          category={"Some Other"}
+          category={"Popular"}
         />
       ) : (
         <p style={{ color: "white" }}>Loading...</p>

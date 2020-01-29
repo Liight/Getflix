@@ -35,14 +35,14 @@ class MovieRowBigInfo extends Component {
               }}
             >
               <div className="info-column-top">
-                <div class="table-container">
-                  <div class="row ">
+                <div className="table-container">
+                  <div className="row ">
                     <span className="title-text">{this.props.movie.title}</span>
                   </div>
 
-                  <div class="row-multiLine">
+                  <div className="row-multiLine">
                     <div className="multiLine-group">
-                      <div class="row-multiLine-item">
+                      <div className="row-multiLine-item">
                         {/* {props.movie.status + " "} */}
                         <span className="main-text">
                           {this.props.movie.release_date.length > 0
@@ -51,7 +51,7 @@ class MovieRowBigInfo extends Component {
                         </span>
                       </div>
 
-                      <div class="row-multiLine-item ">
+                      <div className="row-multiLine-item ">
                         <span className="main-text">
                           {this.props.movie.runtime + " mins"}
                         </span>
@@ -71,13 +71,13 @@ class MovieRowBigInfo extends Component {
                     </span>
                   </div>
 
-                  <div class="row ">
+                  <div className="row ">
                     <span className="main-text">
                       {this.props.movie.overview}
                     </span>
                   </div>
 
-                  <div class="row button-row">
+                  <div className="row button-row">
                     <div
                       className="button"
                       onClick={() => {

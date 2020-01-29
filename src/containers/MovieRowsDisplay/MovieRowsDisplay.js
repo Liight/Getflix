@@ -39,8 +39,8 @@ class MovieRowsDisplay extends Component {
         };
       },
       () => {
-        console.log("movie row display state updated : ", this.state);
-        console.log("movie row display props : ", this.props);
+        // console.log("movie row display state updated : ", this.state);
+        // console.log("movie row display props : ", this.props);
       }
     );
   };

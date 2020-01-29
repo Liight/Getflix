@@ -1,16 +1,23 @@
 .movie-row-big-info-wrapper {
     height: 300px;
     position: relative;
-    transition: all .2s ease-in-out;
+    transition: all .3s ease-in-out;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    background-color: #141414;
 }
 
 .no-reveal {
-    height: 0px;
-    display: none;
+    height: 0px !important;
+    /* display: none; */
+}
+
+.reveal {
+    transform-origin: top;
+    background-color: transparent;
+    display: flex;
 }
 
 .movie-row-big-info-container {
@@ -25,11 +32,6 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-}
-
-.reveal {
-    transform-origin: top;
-    background-color: transparent;
 }
 
 .info-column {
