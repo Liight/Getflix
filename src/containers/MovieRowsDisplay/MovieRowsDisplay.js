@@ -46,7 +46,7 @@ class MovieRowsDisplay extends Component {
   };
 
   render() {
-    console.log("movie row display rendered");
+    // console.log("movie row display rendered");
 
     let hoverScaleMovieItems = this.updateScaleMovieItems();
 

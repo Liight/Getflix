@@ -12,28 +12,7 @@ class MovieFeature extends Component {
   }
   state = {
     movieList: this.props.movieList,
-    autoNextFeatureSlider: false,
-    scrollLeft: 0,
     thisNode: null,
-    buttonEnabled: true
-  };
-
-  toggleButton = e => {
-    // let current = this.state.buttonEnabled;
-    // if (current) {
-    //   this.setState(
-    //     prevState => {
-    //       return { ...prevState, buttonEnabled: false };
-    //     },
-    //     () => {
-    //       setTimeout(() => {
-    //         this.setState(prevState => {
-    //           return { ...prevState, buttonEnabled: true };
-    //         });
-    //       }, 1000);
-    //     }
-    //   );
-    // }
   };
 
   componentWillMount() {
@@ -46,20 +25,10 @@ class MovieFeature extends Component {
     if (this.state.autoNextFeatureSlider) {
       this.setAutoNextFeatureOn();
     }
-    console.log("this.state.thisNode", this.state.thisNode);
+    // console.log("this.state.thisNode", this.state.thisNode);
   }
 
-  setAutoNextFeatureOn = () => {
-    setInterval(() => {
-      this.focusInput("right");
-    }, 5000);
-  };
-
-  focusInput = (direction, e) => {
-    let offSetLeft =
-      this.state.scrollLeft - (this.state.scrollLeft % dims.windowWidth);
-    console.log("offSetLeft", offSetLeft);
-    e.target.onClick = {};
+  focusInput = direction => {
     const node = this.myRef.current;
     if (direction === "right") {
       node.scrollLeft += Math.floor(dims.windowWidth);
@@ -85,10 +54,9 @@ class MovieFeature extends Component {
       <div className="movie-feature-container" ref={this.myRef}>
         <div
           className="movie-feature-arrow movie-feature-arrow-left"
-          onClick={event => this.focusInput("left", event)}
+          onClick={event => this.focusInput("left")}
           style={{
-            width: dims.buttonWidth,
-
+            width: dims.buttonWidth
           }}
         >
           <svg
@@ -129,7 +97,7 @@ class MovieFeature extends Component {
         {/* Movies End */}
         <div
           className="movie-feature-arrow movie-feature-arrow-right"
-          onClick={event => this.focusInput("right", event)}
+          onClick={event => this.focusInput("right")}
           style={{ width: dims.buttonWidth }}
         >
           <svg

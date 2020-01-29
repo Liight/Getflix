@@ -9,14 +9,14 @@ class MovieRowBigInfo extends Component {
   state = {};
 
   render() {
-    console.log(
-      " movie row big info rendered",
-      "key from movie rows display ",
-      this.props.thisRowsBigInfoKey,
-      "global state active key ",
-      this.props.activeBigInfoKey,
-      this.props.movie
-    );
+    // console.log(
+    //   " movie row big info rendered",
+    //   "key from movie rows display ",
+    //   this.props.thisRowsBigInfoKey,
+    //   "global state active key ",
+    //   this.props.activeBigInfoKey,
+    //   this.props.movie
+    // );
 
     let BigInfo =
       this.props.movie === "" ||

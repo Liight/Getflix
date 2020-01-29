@@ -8,8 +8,8 @@ import * as dims from "../../../utility/dimensions";
 import "./Modal.css";
 
 const Modal = props => {
-  console.log("MODAL PROPS :: ", props);
-  console.log(props.addMovieInfo);
+  // console.log("MODAL PROPS :: ", props);
+  // console.log(props.addMovieInfo);
 
   const toggleModal = () => {
     props.onToggleModal(null);

@@ -27,9 +27,9 @@ class App extends Component {
         this.props.onVerifyInitialListUpdatesAreComplete();
       }, 1000);
     } else {
-      console.log(
-        "no need to spam external apis, this has been handled and call responses have been added to global state for caching."
-      );
+      // console.log(
+      //   "no need to spam external apis, this has been handled and call responses have been added to global state for caching."
+      // );
     }
   }
 

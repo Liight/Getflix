@@ -238,6 +238,7 @@
     .modal-inner-display-image {
         width: 100%;
         height: auto;
+        margin-bottom: 10px;
     }
     .modal-inner-display-image img {
         height: auto;

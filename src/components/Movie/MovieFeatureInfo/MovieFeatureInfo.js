@@ -23,10 +23,6 @@ const MovieFeatureInfo = props => {
           <div className="movie-feature-row-multiLine">
             <span className="title-text">{props.movie.title}</span>
 
-            {/* <div className="movie-feature-row ">
-            <span className="main-text">{props.movie.tagline}</span>
-          </div> */}
-
             <div className="movie-feature-row-multiLine">
               <div className="movie-feature-row-multiLine-item">
                 {/* {props.movie.status + " "} */}
