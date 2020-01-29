@@ -10,7 +10,7 @@ const MovieFeatureInfo = props => {
     <div
       className="movie-feature-info-container"
       style={{
-        width: dims.featureWidth,
+        width: dims.featureWidth
         // paddingLeft: dims.offSetButtonWidth,
         // paddingRight: dims.offSetButtonWidth
       }}
@@ -41,9 +41,11 @@ const MovieFeatureInfo = props => {
 
               <div className="movie-feature-row-multiLine-item">
                 <span className="main-text">
-                  {props.movie.genres.slice(0, 4).map(g => {
+                  {props.movie.genres.slice(0, 3).map((g, i) => {
                     return (
-                      <span key={Math.random() * 100}>{g.name + ", "}</span>
+                      <span key={Math.random() * 100}>
+                        {i < 2 ? g.name + ", " : g.name}
+                      </span>
                     );
                   })}
                 </span>
@@ -52,7 +54,7 @@ const MovieFeatureInfo = props => {
           </div>
 
           <div className="movie-feature-row ">
-            <span className="main-text">{props.movie.overview}</span>
+            <span className="main-text subText">{props.movie.overview}</span>
           </div>
 
           <div

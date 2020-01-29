@@ -6,3 +6,7 @@
 .hidden-overflows {
     overflow: hidden;
 }
+
+.subText {
+    color: #999
+}

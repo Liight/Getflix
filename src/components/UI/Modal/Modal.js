@@ -60,7 +60,7 @@ const Modal = props => {
                 </span>
               </div>
               <div className="modal-flex-row">
-                <span className="main-text">
+                <span className="main-text subText">
                   {props.addMovieInfo.Plot !== null
                     ? props.addMovieInfo.Plot
                     : props.movie.overview !== null
@@ -97,7 +97,7 @@ const Modal = props => {
                 </div>
               </div>
               <div className="modal-flex-row">
-                <span className="main-text">
+                <span className="main-text subText">
                   {props.addMovieInfo.Genre !== null
                     ? props.addMovieInfo.Genre
                     : props.searchedMovie.Genre !== null
@@ -112,7 +112,7 @@ const Modal = props => {
               {/** Modal multiLine ends */}
               {/** Cast */}
               <div className="modal-flex-row ">
-                <span className="main-text">
+                <span className="main-text subText">
                   {props.addMovieInfo.Director !== null
                     ? "Directed by: " + props.addMovieInfo.Director
                     : props.searchedMovie.Director !== null
@@ -121,7 +121,7 @@ const Modal = props => {
                 </span>
               </div>
               <div className="modal-flex-row ">
-                <span className="main-text">
+                <span className="main-text subText">
                   {props.addMovieInfo.Writer !== null
                     ? "Writers: " + props.addMovieInfo.Writer
                     : props.searchedMovie.Writer !== null
@@ -130,7 +130,7 @@ const Modal = props => {
                 </span>
               </div>
               <div className="modal-flex-row ">
-                <span className="main-text">
+                <span className="main-text subText">
                   {props.addMovieInfo.Actors !== null
                     ? "Cast: " + props.addMovieInfo.Actors
                     : props.searchedMovie.Actors !== null
@@ -163,7 +163,7 @@ const Modal = props => {
                     return (
                       <div className="modal-ratings-item">
                         <span className="modal-ratings-text">{item.Value}</span>
-                        <span className="modal-ratings-text">
+                        <span className="modal-ratings-text" style={{ lineHeight: 1 }}>
                           {item.Source}
                         </span>
                       </div>

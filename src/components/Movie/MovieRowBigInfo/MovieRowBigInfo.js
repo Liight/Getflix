@@ -26,7 +26,7 @@ class MovieRowBigInfo extends Component {
         <div className="movie-row-big-info-wrapper">
           <div
             className="movie-row-big-info-container reveal"
-            style={{ width: dims.featureWidth, left: dims.offSetButtonWidth }}
+            // style={{ width: dims.featureWidth, left: dims.offSetButtonWidth }}
           >
             <div
               className="info-column"
@@ -72,7 +72,7 @@ class MovieRowBigInfo extends Component {
                   </div>
 
                   <div className="row ">
-                    <span className="main-text">
+                    <span className="main-text subText">
                       {this.props.movie.overview}
                     </span>
                   </div>
@@ -91,10 +91,10 @@ class MovieRowBigInfo extends Component {
                 </div>
               </div>
             </div>
-            <div className="image-column" 
-            // style={{ width: dims.column40Width }}
+            <div
+              className="image-column"
+              // style={{ width: dims.column40Width }}
             >
-
               <img
                 src={this.props.movie.posterUrl}
                 alt=""
