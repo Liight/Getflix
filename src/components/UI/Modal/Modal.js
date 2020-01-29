@@ -65,7 +65,7 @@ const Modal = props => {
                     ? props.addMovieInfo.Plot
                     : props.movie.overview !== null
                     ? props.movie.overview
-                    : props.searchedMovie.Plot 
+                    : props.searchedMovie.Plot
                     ? props.searchedMovie.Plot
                     : null}
                 </span>
@@ -143,9 +143,9 @@ const Modal = props => {
             <div className="modal-inner-display-image">
               <img
                 src={
-                  props.movie.posterUrl
+                  props.movie.posterUrl !== null
                     ? props.movie.posterUrl
-                    : props.searchedMovie.Poster
+                    : props.searchedMovie.Poster !== null
                     ? props.searchedMovie.Poster
                     : null
                 }
@@ -156,7 +156,8 @@ const Modal = props => {
           {/** Ratings */}
           <div className="modal-flex-row">
             <div className="modal-ratings">
-              {props.addMovieInfo.Ratings !== undefined
+              {props.addMovieInfo.Ratings !== undefined &&
+              props.addMovieInfo.Ratings !== null
                 ? props.addMovieInfo.Ratings.map(item => {
                     return (
                       <div className="modal-ratings-item">
@@ -167,7 +168,8 @@ const Modal = props => {
                       </div>
                     );
                   })
-                : props.searchedMovie.Ratings !== undefined
+                : props.searchedMovie.Ratings !== undefined &&
+                  props.searchedMovie.Ratings !== null
                 ? props.searchedMovie.Ratings.map(item => {
                     return (
                       <div
