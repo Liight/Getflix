@@ -23,9 +23,9 @@ class MovieRow extends React.Component {
     const focusInput = direction => {
       const node = this.myRef.current;
       if (direction === "right") {
-        node.scrollLeft += Math.floor((window.innerWidth - 100) / 200) * 200;
+        node.scrollLeft += Math.floor(((window.innerWidth - 100) / 200) * 200)-200;
       } else if (direction === "left") {
-        node.scrollLeft -= Math.floor((window.innerWidth - 100) / 200) * 200;
+        node.scrollLeft -= Math.floor(((window.innerWidth - 100) / 200) * 200)-200;
       }
     };
 

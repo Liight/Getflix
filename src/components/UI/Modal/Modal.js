@@ -8,7 +8,7 @@ import * as dims from "../../../utility/dimensions";
 import "./Modal.css";
 
 const Modal = props => {
-  // console.log("MODAL PROPS :: ", props);
+  console.log("MODAL PROPS :: ", props);
   // console.log(props.addMovieInfo);
 
   const toggleModal = () => {
@@ -156,7 +156,8 @@ const Modal = props => {
           {/** Ratings */}
           <div className="modal-flex-row">
             <div className="modal-ratings">
-              {props.addMovieInfo.Ratings !== undefined &&
+              {props.addMovieInfo !== null &&
+              props.addMovieInfo.Ratings !== undefined &&
               props.addMovieInfo.Ratings !== null
                 ? props.addMovieInfo.Ratings.map(item => {
                     return (
@@ -168,7 +169,8 @@ const Modal = props => {
                       </div>
                     );
                   })
-                : props.searchedMovie.Ratings !== undefined &&
+                : props.searchedMovie !== null &&
+                  props.searchedMovie.Ratings !== undefined &&
                   props.searchedMovie.Ratings !== null
                 ? props.searchedMovie.Ratings.map(item => {
                     return (
