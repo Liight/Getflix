@@ -20,6 +20,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    color: #e50914;
 }
 
 .search {
@@ -48,9 +49,7 @@
         font-size: 48px;
     }
     .search {}
-    .top-bar-container {
-        
-    }
+    .top-bar-container {}
 }
 
 @media only screen and (min-width: 900px) {
