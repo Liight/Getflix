@@ -72,7 +72,7 @@ class MovieRowBigInfo extends Component {
                   </div>
 
                   <div className="row ">
-                    <span className="main-text subText">
+                    <span className="main-text subText big-info-overview">
                       {this.props.movie.overview}
                     </span>
                   </div>

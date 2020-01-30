@@ -42,8 +42,9 @@
     align-items: flex-start;
     justify-content: flex-start;
     /* margin: 1em; */
-    padding: 0 50px;
+    padding-left: 50px;
     width: 60%;
+    max-width: 600px;
     height: 100%;
     color: #fff;
     box-sizing: border-box;
@@ -57,9 +58,10 @@
 .image-column {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     width: 40%;
+    max-width: 400px;
     height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
@@ -159,6 +161,10 @@
     cursor: pointer
 }
 
+.big-info-overview {
+    max-height: 150px;
+}
+
 @media only screen and (max-width: 599px) {
     .movie-row-big-info-wrapper {
         height: 300px;
@@ -175,10 +181,9 @@
     .button-text {
         font-size: 16px
     }
-    /* .movie-feature-row-multiLine {
-        flex-direction: column;
-        align-items: flex-start;
-    } */
+    .big-info-overview {
+        max-height: 110px;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -186,7 +191,7 @@
         height: 400px;
     }
     .info-column {
-        padding: 0 100px;
+        padding-left: 100px;
     }
     .title-text {
         font-size: 36px
@@ -206,6 +211,9 @@
     .multiLine-group .main-text {
         width: auto;
     }
+    .big-info-overview {
+        max-height: 190px;
+    }
 }
 
 @media only screen and (min-width: 900px) {
@@ -223,6 +231,9 @@
     }
     .button-text {
         font-size: 16px
+    }
+    .big-info-overview {
+        max-height: 220px;
     }
 }
 
@@ -244,5 +255,9 @@
     }
     .info-column {
         justify-content: center;
+        padding-left: 0;
+    }
+    .big-info-overview {
+        max-height: 230px;
     }
 }

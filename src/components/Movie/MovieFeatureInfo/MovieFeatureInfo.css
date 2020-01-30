@@ -135,7 +135,7 @@ they can be found in MovieBigRowInfo.css  */
         font-size: 16px
     }
     .overview {
-        max-height: 150px;
+        max-height: 130px;
         overflow: hidden;
     }
 }
