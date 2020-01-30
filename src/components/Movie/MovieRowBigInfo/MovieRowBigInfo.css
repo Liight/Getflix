@@ -16,21 +16,22 @@
 
 .reveal {
     transform-origin: top;
-    background-color: transparent;
+    background: linear-gradient(0deg, #141414, rgba(255, 255, 255, 0.1) 50%, #141414);
+    /* background: linear-gradient(135deg, orange, orange 60%, cyan); */
     display: flex;
 }
 
 .movie-row-big-info-container {
     position: absolute;
     top: -70px;
-    left: 2.5%;
+    left: 0;
     /* background-color: #141414; */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
     height: 100%;
-    width: 95%;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -41,7 +42,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     /* margin: 1em; */
-    padding: 0 5px;
+    padding: 0 50px;
     width: 60%;
     height: 100%;
     color: #fff;
@@ -124,36 +125,37 @@
     flex: 1;
 }
 
-.button-row {
+.movie-row-big-info-button-row {
     position: absolute;
-    bottom: 50px;
+    bottom: 0;
     width: 100%;
-    height: 50px;
+    height: 80px;
     left: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /* background-color: aqua; */
+    background: transparent;
 }
 
-.button {
+.movie-row-big-info-button {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 1rem;
+    border-radius: 30px;
     color: white;
+    padding: 15px;
 }
 
-.button:hover {
+.movie-row-big-info-button:hover {
     color: black;
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-.button:hover {
+.movie-row-big-info-button:hover {
     cursor: pointer
 }
 
@@ -182,6 +184,9 @@
 @media only screen and (min-width: 600px) {
     .movie-row-big-info-wrapper {
         height: 400px;
+    }
+    .info-column {
+        padding: 0 100px;
     }
     .title-text {
         font-size: 36px
@@ -237,7 +242,7 @@
     .button-text {
         font-size: 24px
     }
-    .info-column{
+    .info-column {
         justify-content: center;
     }
 }

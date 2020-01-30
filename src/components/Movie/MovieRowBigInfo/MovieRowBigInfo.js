@@ -77,9 +77,9 @@ class MovieRowBigInfo extends Component {
                     </span>
                   </div>
 
-                  <div className="row button-row">
+                  <div className="movie-row-big-info-button-row">
                     <div
-                      className="button"
+                      className="movie-row-big-info-button"
                       onClick={() => {
                         this.props.onToggleModal(this.props.movie);
                         this.props.onToggleGlobalScrollbars();
