@@ -96,7 +96,10 @@ const Modal = props => {
                   </span>
                 </div>
               </div>
-              <div className="modal-flex-row">
+              <div
+                className="modal-flex-row"
+                style={{ justifyContent: "center"}}
+              >
                 <span className="main-text subText">
                   {props.addMovieInfo.Genre !== null
                     ? props.addMovieInfo.Genre
@@ -154,7 +157,7 @@ const Modal = props => {
             </div>
           </div>
           {/** Ratings */}
-          <div className="modal-flex-row">
+          <div className="modal-flex-row" style={{ justifyContent: "center"}}>
             <div className="modal-ratings">
               {props.addMovieInfo !== null &&
               props.addMovieInfo.Ratings !== undefined &&
@@ -163,7 +166,10 @@ const Modal = props => {
                     return (
                       <div className="modal-ratings-item">
                         <span className="modal-ratings-text">{item.Value}</span>
-                        <span className="modal-ratings-text" style={{ lineHeight: 1 }}>
+                        <span
+                          className="modal-ratings-text"
+                          style={{ lineHeight: 1 }}
+                        >
                           {item.Source}
                         </span>
                       </div>

@@ -48,10 +48,10 @@ const MovieFeatureInfo = props => {
             </div>
           </div>
 
-          <div className="movie-feature-row">
-            <span className="main-text subText">
+          <div className="movie-feature-row-multiLine-item">
+            <span className="main-text subText overview">
               {props.movie.overview.length > 300
-                ? props.movie.overview.slice(0,345) + "..."
+                ? props.movie.overview.slice(0, 345) + "..."
                 : props.movie.overview}
             </span>
           </div>

@@ -6,7 +6,7 @@ they can be found in MovieBigRowInfo.css  */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
     height: 100%;
     width: 350px;
     /* Initial */
@@ -27,7 +27,6 @@ they can be found in MovieBigRowInfo.css  */
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    max-height: 320px;
     overflow: hidden;
 }
 
@@ -135,6 +134,10 @@ they can be found in MovieBigRowInfo.css  */
     .button-text {
         font-size: 16px
     }
+    .overview {
+        max-height: 150px;
+        overflow: hidden;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -159,6 +162,10 @@ they can be found in MovieBigRowInfo.css  */
     .multiLine-group .main-text {
         width: auto;
     }
+    .overview {
+        max-height: 130px;
+        overflow: hidden;
+    }
 }
 
 @media only screen and (min-width: 900px) {
@@ -174,6 +181,10 @@ they can be found in MovieBigRowInfo.css  */
     .button-text {
         font-size: 16px
     }
+    .overview {
+        max-height: 160px;
+        overflow: hidden;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -188,5 +199,15 @@ they can be found in MovieBigRowInfo.css  */
     }
     .button-text {
         font-size: 24px
+    }
+    .overview {
+        max-height: 190px;
+        overflow: hidden;
+    }
+    .movie-feature-info-column {
+        max-width: 600px;
+    }
+    .movie-feature-image-column {
+        width: auto;
     }
 }
