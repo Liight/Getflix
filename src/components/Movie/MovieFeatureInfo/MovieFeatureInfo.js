@@ -11,14 +11,9 @@ const MovieFeatureInfo = props => {
       className="movie-feature-info-container"
       style={{
         width: dims.featureWidth
-        // paddingLeft: dims.offSetButtonWidth,
-        // paddingRight: dims.offSetButtonWidth
       }}
     >
-      <div
-        className="movie-feature-info-column"
-        // style={{ width: dims.column60Width }}
-      >
+      <div className="movie-feature-info-column">
         <div className="table-container">
           <div className="movie-feature-row-multiLine">
             <span className="title-text">{props.movie.title}</span>
@@ -53,14 +48,15 @@ const MovieFeatureInfo = props => {
             </div>
           </div>
 
-          <div className="movie-feature-row ">
-            <span className="main-text subText">{props.movie.overview}</span>
+          <div className="movie-feature-row">
+            <span className="main-text subText">
+              {props.movie.overview.length > 300
+                ? props.movie.overview.slice(0,345) + "..."
+                : props.movie.overview}
+            </span>
           </div>
 
-          <div
-            className="movie-feature-row button-row"
-            // style={{ width: dims.column60Width }}
-          >
+          <div className="movie-feature-row button-row">
             <div
               className="button"
               onClick={() => {
